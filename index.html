@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://dl.dropbox.com/s/oemywuzu4opua19/ninostyle.css?dl=0" type="text/css" rel="stylesheet" />
+    <title>ilmovnino.tk</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="apple-touch-icon-precomposed" href="https://dl.dropbox.com/s/jhgw2mhs4ypxs3a/favicon_256x256.png?dl=0">
+    <meta name="robots" content="noindex">
+    <script type="text/javascript" src="https://dl.dropbox.com/s/ddaz93deiwjgdqa/jquery-1.11.3.min.js?dl=0"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/dy0l349vmxsvp3n/jquery.simpleWeather.min.js?dl=0"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/t0zfiua1hpahx0j/script.js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/uoo8z628069edam/chi.js"></script>
+    <script>
+        $(document).ready(function() {
+            CreateHomeFeed();
+            CreateReminderFeed();
+            CreateTimetable();
+            CreateWeather();
+            CreateMoreInfo();
+            CreatePiantina();
+        });
+    </script>
+
+    <style>
+        a {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wallpaper"></div>
+    <header>
+        <div id="the-header">
+            <a href="javascript:void(0);"><div id="navigate" onclick="ShowMenu('#navigate', '#navigate-menu');"><div id="the-logo">i<span style="font-weight: 700;">m</span>n</div><h1><span style="font-weight: 400">il</span><span style="font-weight: 700;">mov</span><span style="font-weight: 400">nino</span><span style="font-weight: 700;">.tk</span><span class="menuSymbol">&#9660;</span></h1></div></a>
+            <a href="javascript:void(0);"><div id="action" onclick="ShowMenu('#action', '#action-menu');">+</div></a>
+        </div>
+        <div id="navigate-menu">
+			<a href="https://ilmovnino.tk"><div id="nm-header">il<span style="font-weight: 700;">mov</span>nino<span style="font-weight: 700;">.tk</span> &#9656;</div></a>
+			<div id="nm-body">
+				<a href="/news.html"><div class="nm-body-item"><div class="nm-body-icon"><img src="https://dl.dropbox.com/s/gymljjs5b10961d/newscenter.svg" onerror="this.src=''"/></div><div class="nm-body-name"><span style="font-weight: 700;">news</span>center</div></div></a>
+				<a href="/disk.html"><div class="nm-body-item"><div class="nm-body-icon"><img src="https://dl.dropbox.com/s/5waxccj6zh2svpe/downloadcenter.svg"/></div><div class="nm-body-name"><span style="font-weight: 700;">disk</span>center</div></div></a>
+			</div>
+			<div id="nm-footer">
+				<a href="https://twitter.com/ilmovnino"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/0br8m1orqku9kt6/twitter.svg"/></div></a>
+				<a href="https://instagram.com/ilmovnino"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/f6ywomuezsdvjfk/instagram.svg"/></div></a>
+				<a href="mailto:ilmovnino@outlook.it"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/k1h53z7p2u6wzua/mail.svg"/></div></a>
+				<a href="mailto:ilmovnino@outlook.it?&subject=Feedback%20ilmovnino.tk&body=Ho%20avuto%20i%20seguenti%20problemi/riscontri/suggerimenti%20nell'uso%20di%20ilmovnino.tk:"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/b6d1w8nkq6wjwd5/feedback.svg"/></div></a>
+			</div>
+		</div>
+        <div id="action-menu">
+            <div class="act-body">
+				<textarea id="text-field" placeholder="Scrivi qualcosa..."></textarea>
+            </div>
+            <div class="act-footer">
+                <a href="javascript:void(0);" onclick="AddReminder();"><div class="action-item">Aggiungi &#9656;</div></a>
+            </div>
+        </div>
+    </header>
+    <div id="do-not-overlap" style="clear: both; height: 4em;"></div>
+    <div id="home-body">
+    
+    <div class="card">
+        <div class="card-header giorno">
+            <a href="javascript:void();" id="today-switch-oggi" class="card-selected" onclick="onclick_tso();"><h4>OGGI</h4></a>
+            <a href="javascript:void();" id="today-switch-domani" onclick="onclick_tsd();"><h4>DOMANI</h4></a>
+            <a href="javascript:void();" id="today-switch-tutti" onclick="onclick_tst();"><h4>TUTTI</h4></a>
+        </div>
+        <div class="card-body giorno">
+            <div class="left-top-side giorno">
+                <div class="oggi">
+                    <h2 id="giorno-oggi"></h2>
+                    <div id="meteo-oggi">
+                        <img class="weatherIcon" id="todayFore" src="" />
+                        <h4 class="weatherTemp" id="todayTemp"></h4>
+                    </div>
+                </div>
+                <div class="domani">
+                    <h2 id="giorno-domani"></h2>
+                    <div id="meteo-domani">
+                        <img class="weatherIcon" id="tomorrowFore" src="" />
+                        <h4 class="weatherTemp" id="tomorrowTemp"></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bottom-side giorno">
+                <ol class="orario" id="Lunedi">
+                    <h2 class="orario">Luned&igrave;</h2>
+                    <li>ANNOE</li>
+                    <li>DE GRANDI</li>
+                    <li>ZAPPAL&Agrave;</li>
+                    <li>TEDESCO</li>
+                    <li>TEDESCO</li>
+                </ol>
+                <ol class="orario" id="Martedi">
+                    <h2 class="orario">Marted&igrave;</h2>
+                    <li>GULISANO</li>
+                    <li>TEDESCO</li>
+                    <li>ANNOE</li>
+                    <li>DE GRANDI</li>
+                    <li>GULISANO</li>
+                </ol>
+                <ol class="orario" id="Mercoledi">
+                    <h2 class="orario">Mercoled&igrave;</h2>
+                    <li>GULISANO</li>
+                    <li>CAMILLERI</li>
+                    <li>MONACO</li>
+                    <li>ANNOE</li>
+                    <li>IANNIZZOTTO</li>
+                </ol>
+                <ol class="orario" id="Giovedi">
+                    <h2 class="orario">Gioved&igrave;</h2>
+                    <li>DE GRANDI</li>
+                    <li>MONACO</li>
+                    <li>GULISANO</li>
+                    <li>IANNIZZOTTO</li>
+                    <li>IANNIZZOTTO</li>
+                </ol>
+                <ol class="orario" id="Venerdi">
+                    <h2 class="orario">Venerd&igrave;</h2>
+                    <li>GULISANO</li>
+                    <li>GULISANO</li>
+                    <li>MONACO</li>
+                    <li>GULISANO</li>
+                    <li>MONACO</li>
+                </ol>
+                <ol class="orario" id="Sabato">
+                    <h2 class="orario">Sabato</h2>
+                    <li>ZAPPAL&Agrave;</li>
+                    <li>MONACO</li>
+                    <li>MONACO</li>
+                    <li>TEDESCO</li>
+                    <li>CAMILLERI</li>
+                </ol>
+                <!--<p class="no-lezione" id="Domenica">
+                    Non vi sono lezioni oggi
+                </p>-->
+            </div>
+            <div class="card-footer giorno">
+                <div class="oggi moreInfo">
+                    <p id="oggiMI">Nessuna info aggiuntiva disponibile</p>
+                </div>
+                <div class="domani moreInfo">
+                   <p id="domaniMI">Nessuna info aggiuntiva disponibile</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header posto">
+            <h4 class="chiSei">CHI SEI?</h4>
+            <h4 class="piantina">POSTO</h4>
+        </div>
+        <div class="card-body">
+            <div class="postoHint">
+                <a href="javascript:void(0);" onclick="onclickPostoHint();"><div class="postoHintDiv">mostra il mio posto ▸</div></a>
+            </div>
+            <div class="chiSei">
+                <select id="scegli-nome">
+					<option selected disabled value="">Scegli il tuo nome</option>
+                    <option value="Domenico">Domenico Belfiore</option>
+                    <option value="Mariacarla">Mariacarla Castorina</option>
+                    <option value="Dario">Dario Caudullo</option>
+					<option value="Giovanni">Giovanni Coppola</option>
+                    <option value="Marzia">Marzia Costanzo</option>
+                    <option value="Giorgia D">Giorgia D'Aleo</option>
+                    <option value="Francesca">Francesca Di Bella</option>
+                    <option value="Monia">Monia Di Fazio</option>
+                    <option value="Laura">Laura Forzese</option>
+                    <option value="Carolina">Carolina Gabellone</option>
+                    <option value="Fabrizio G">Fabrizio Garipoli</option>
+                    <option value="Alessio">Alessio Giordano</option>
+                    <option value="Giuseppe">Giuseppe Gulisano</option>
+                    <option value="Vittorio">Vittorio Ingrassia</option>
+                    <option value="Greta">Greta Intelisano</option>
+                    <option value="Luigi">Luigi La Cagnina</option>
+                    <option value="Ginevra L">Ginevra Lalicata</option>
+                    <option value="Fabrizio L">Fabrizio Lo Certo</option>
+                    <option value="Federico">Federico Mertoli</option>
+                    <option value="Marco">Marco Mille</option>
+                    <option value="Francesco">Francesco Mirto</option>
+                    <option value="Alessandro">Alessandro Muzzetta</option>
+                    <option value="Chiara">Chiara Nicolosi</option>
+                    <option value="Ginevra P">Ginevra Papalia</option>
+                    <option value="Giorgia P">Giorgia Puglisi</option>
+                    <option value="Elena">Elena Ragusa</option>
+                    <option value="Dalila">Dalila Spadaro</option>
+                    <option value="Samuele">Samuele Spampinato</option>
+                    <option value="Filippo">Filippo Spezioli</option>
+                    <option value="Leonardo">Leonardo Tricomi</option>
+                </select>
+            </div>
+            <div class="piantina">
+                <div id="piantina-container">
+                    <div id="piantina-leftcol">
+                        <div class="inner-container">
+                            <div id="1-1"></div>
+                            <div id="1-2"></div>
+                            <div id="1-3"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="2-1"></div>
+                            <div id="2-2"></div>
+                            <div id="2-3"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="3-1"></div>
+                            <div id="3-2"></div>
+                            <div id="3-3"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="4-1"></div>
+                            <div id="4-2"></div>
+                            <div id="4-3"></div>
+                        </div>
+                   </div>
+                   <div id="piantina-centercol">
+                        <div class="inner-container">
+                            <div id="1-4"></div>
+                            <div id="1-5"></div>
+                            <div id="1-6"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="2-4"></div>
+                            <div id="2-5"></div>
+                            <div id="2-6"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="3-4"></div>
+                            <div id="3-5"></div>
+                            <div id="3-6"></div>
+                        </div>
+                   </div>
+                   <div id="piantina-rightcol">
+                        <div class="inner-container">
+                            <div id="1-7"></div>
+                            <div id="1-8"></div>
+                            <div id="1-9"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="2-7"></div>
+                            <div id="2-8"></div>
+                            <div id="2-9"></div>
+                        </div>
+                        <div class="inner-container">
+                            <div id="3-7"></div>
+                            <div id="3-8"></div>
+                            <div id="3-9"></div>
+                        </div>
+                   </div>
+                </div>
+            </div>
+       </div>
+       <a href="javascript:void(0);"><div id="resetName" class="card-footer piantina"><h4 id="resetNameLabel" class="card-link">Non sei tu? ▸</h4></div></a>
+       <a href="javascript:void(0);"><div id="setName" class="card-footer chiSei" onclick="onclickSet();"><h4 class="card-link">conferma ▸</h4></div></a>
+    </div>
+    
+    </div>
+</body>
+</html>
