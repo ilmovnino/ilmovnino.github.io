@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://dl.dropbox.com/s/oemywuzu4opua19/ninostyle.css?dl=0" type="text/css" rel="stylesheet" />
+    <meta name="robots" content="noindex">
+    <title>Disk Center - ilmovnino</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="https://dl.dropbox.com/s/ddaz93deiwjgdqa/jquery-1.11.3.min.js?dl=0"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/t0zfiua1hpahx0j/script.js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
+    <script>
+        $(document).ready(function() {
+            CreateDiskFile();
+            CreateDiskFoto();
+        });
+    </script>
+    <style>
+        a {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="wallpaper"></div>
+    <header>
+        <div id="the-header">
+            <a href="javascript:void(0);"><div id="navigate" onclick="ShowMenu('#navigate', '#navigate-menu');"><div id="the-logo">i<span style="font-weight: 700;">m</span>n</div><h1><span style="font-weight: 700;">disk</span><span style="font-weight: 400">center</span>&#9662;</h1></div></a>
+        </div>
+        <div id="navigate-menu">
+			<a href="/"><div id="nm-header">il<span style="font-weight: 700;">mov</span>nino<span style="font-weight: 700;">.tk</span> &#9656;</div></a>
+			<div id="nm-body">
+				<a href="/news.html"><div class="nm-body-item"><div class="nm-body-icon"><img src="https://dl.dropbox.com/s/gymljjs5b10961d/newscenter.svg" onerror="this.src=''"/></div><div class="nm-body-name"><span style="font-weight: 700;">news</span>center</div></div></a>
+				<a href="/disk.html"><div class="nm-body-item"><div class="nm-body-icon"><img src="https://dl.dropbox.com/s/5waxccj6zh2svpe/downloadcenter.svg"/></div><div class="nm-body-name"><span style="font-weight: 700;">disk</span>center</div></div></a>
+			</div>
+			<div id="nm-footer">
+				<a href="https://twitter.com/ilmovnino"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/0br8m1orqku9kt6/twitter.svg"/></div></a>
+				<a href="https://instagram.com/ilmovnino"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/f6ywomuezsdvjfk/instagram.svg"/></div></a>
+				<a href="mailto:ilmovnino@outlook.it"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/k1h53z7p2u6wzua/mail.svg"/></div></a>
+				<a href="mailto:ilmovnino@outlook.it?&subject=Feedback%20ilmovnino.tk&body=Ho%20avuto%20i%20seguenti%20problemi/riscontri/suggerimenti%20nell'uso%20di%20ilmovnino.tk:"><div class="nm-footer-item"><img src="https://dl.dropbox.com/s/b6d1w8nkq6wjwd5/feedback.svg"/></div></a>
+			</div>
+		</div>
+        <a href="javascript:void(0)"><div class="back-button" id="disk-back-button" onclick="onclick_dbb();">&#9666;indietro</div></a>
+    </header>
+    <div id="do-not-overlap" style="clear: both; height: 4em;"></div>
+    <div class="Preview-label"><bold>// August Preview //</bold></div>
+    <div class="page-body notextdecoration theninodisk">
+       <div class="disk-section" id="disk-files">
+           <div class="disk-header">
+               <h2>file</h2>
+           </div>
+           <div class="disk-body" id="file-body">
+           </div>
+           <div class="disk-footer">
+               <a id="file-mostra" class="mostra-toggle" href="javascript:void(0);" onclick="onclick_fim();">mostra tutti &#9660; </a>
+           </div>
+       </div>
+       
+       <div class="disk-section" id="disk-photos">
+           <div class="disk-header">
+               <h2>foto</h2>
+           </div>
+           <div class="disk-body" id="foto-body">
+           </div>
+           <div class="disk-footer">
+               <a id="foto-mostra" class="mostra-toggle" href="javascript:void(0);" onclick="onclick_fom();">mostra tutti &#9660; </a>
+           </div>
+       </div>
+       <div id="disk-foto-preview">
+           <div class="disk-footer">
+               <a id="download-preview" href="">scarica ></a>
+           </div>
+       </div>
+    </div>
+    <div style="width: 100%; height: 10px;"></div>
+</body>
+</html>
