@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://dl.dropbox.com/s/oemywuzu4opua19/ninostyle.css?dl=0" type="text/css" rel="stylesheet" />
+    <title>Breve resoconto consiglio di classe adozione libri di testo - Il Movimento Nino</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <script type="text/javascript" src="https://dl.dropbox.com/s/ddaz93deiwjgdqa/jquery-1.11.3.min.js?dl=0"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="robots" content="noindex">
+	<script>
+		$(document).ready(function(){
+			CreateResocontoShare();
+		});
+	</script>
+</head>
+
+<body>
+	<div id="wallpaper"></div>
+    <header>
+		<div id="the-header">
+            <a href="https://dl.dropboxusercontent.com/s/jltj2qd86gskunq/news.html"><div id="navigate"><h1 class="newsNavigate">&#9666;il<strong>mov</strong>nino</h1></div></a>
+			<a id="shareNewsA" href="javascript:void(0);"><div id="shareNews"><img src="https://dl.dropbox.com/s/k1h53z7p2u6wzua/mail.svg"/></div></a>
+        </div>
+    </header>
+	<div id="do-not-overlap" style="clear: both; height: 63px"></div>
+	<article class="resoconto">
+		<h1>
+			Breve resoconto consiglio di classe adozione libri di testo
+		</h1>
+		<time>Marted&igrave 19 Maggio 2015</time>
+		<div id="shareMe" class="r-body">
+		    <p>
+		    	Dall'anno prossimo tutto il triennio cambia libro di storia<br/>Non cambiamo assolutamente libro di letteratura italiana<br/>Il libro di fisica non si tocca<br/>Piccola curiosit&agrave - il costo totale dei libri da acquistare dai futuri 3 anni eccedono di circa &euro;20 lo scientifico e di &euro;70 il classico
+		    </p>
+		</div>
+	</article>
+	<div style="clear: both; height: 50px;"></div>
+	<script>
+        var CreateResocontoShare = function() {
+            document.getElementById("shareNewsA").href = "mailto:?&subject=Leggi questo Resoconto dal Movimento Nino!&body=" + document.title + "%0A%0A%0A" + document.URL +  "%0A%0A%0A" +  document.getElementById("shareMe").textContent + "%0A%0A%0AInformazioni su ilmovnino.tk%0A%0A'ilmovnino.tk' è il sito ufficale del Movimento Nino dove puoi trovare tutte le ultime novità sul 4 Scientifico%0A%0Ahttp://ilmovnino.tk/";
+        };
+    </script>
+</body>
+</html>

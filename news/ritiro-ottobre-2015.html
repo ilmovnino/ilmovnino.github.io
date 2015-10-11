@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://dl.dropbox.com/s/oemywuzu4opua19/ninostyle.css?dl=0" type="text/css" rel="stylesheet" />
+	<meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Ritiro Ottobre 2015 - ilmovnino.tk</title>
+	<script type="text/javascript" src="https://dl.dropbox.com/s/ddaz93deiwjgdqa/jquery-1.11.3.min.js?dl=0"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/t0zfiua1hpahx0j/script.js"></script>
+	<script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+		var myLatlng =  new google.maps.LatLng(37.5129207, 15.0765380);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.TERRAIN
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+		 var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+			 label: 'A',
+             title: 'Ritiro Ottobre 2015'
+         });
+      }
+    </script>
+	<script>
+        $(document).ready(function() {
+            CreateChi();
+            CreateEventShare();
+            ExtraChiNavigation();
+        });
+        var eventID = ritiro_ottobre_2015;
+    </script>
+</head>
+
+<body>
+	<div id="wallpaper"></div>
+	<header>
+		<div id="the-header">
+            <a href="https://dl.dropboxusercontent.com/s/jltj2qd86gskunq/news.html"><div id="navigate"><h1 class="newsNavigate">&#9666;il<strong>mov</strong>nino</h1></div></a>
+            <a id="shareNewsA" href="javascript:void(0);"><div id="shareNews"><img src="https://dl.dropbox.com/s/k1h53z7p2u6wzua/mail.svg"/></div></a>
+        </div>
+    </header>
+	<div id="do-not-overlap" style="clear: both; height: 63px"></div>
+	<div id="eventcard">
+		<div id="eventquando">
+			<h1>Ritiro Ottobre 2015</h1>
+			<time>Giorno XX Mese</time>
+			<time>Ora Inizio - Ora fine (XX:XX)</time>
+		</div>
+		<div id="dovecomechi">
+			<a id="back-to-dovecomechi" href="#go-to-dove"><div id="choosedove">DOVE</div></a>
+			<a href="#go-to-come"><div id="choosecome">COME</div></a>
+			<a href="#go-to-chi"><div id="choosechi">CHI</div></a>
+		</div>
+		<a id="go-to-dove"><div id="eventdove">
+			<div class="section-header">
+			    <h4><strong>DOVE</strong></h4>
+			    <div class="section-choose">
+			        <a id="get-dove-main" href="javascript:void(0);" class="section-selected"><h4>INFO</h4></a>
+			        <a id="get-dove-map" href="javascript:void(0);"><h4>MAPPA</h4></a>
+			    </div>
+			</div>
+			<div id="dove-content">
+			    <h2>Nome Luogo</h2>
+			    <p>Indicazioni e informazioni sul posto</p>
+			</div>
+			<div id="map-canvas"></div>
+		</div></a>
+		<a id="go-to-come"><div id="eventcome">
+			<div class="section-header">
+			    <h4><strong>COME</strong></h4>
+			    <div class="section-choose toobig">
+			        <a id="get-come-main" href="javascript:void(0);" class="section-selected"><h4>INFO</h4></a>
+			        <a id="get-come-more" href="javascript:void(0);"><h4>AUTORIZZAZIONE</h4></a>
+			    </div>
+			</div>
+			<div id="come-content">
+			    <p>Informazioni Varie</p>
+			    <h2>&euro;Costo</h2>
+			</div>
+			<div id="come-more">
+				<img src="link Autorizzazione" />
+				<a href="link Autorizzazione"><div class="hint">scarica ></div></a>
+			</div>
+		</div></a>
+		<div id="eventchi">
+			<a id="go-to-chi"></a>
+			<div class="section-header">
+			<h4><strong>CHI</strong></h4>
+			<div class="section-choose">
+			    <a id="choosesi" href="javascript:void(0);" onclick="ChooseSi();" class="section-selected"><h4>SI</h4></a>
+			    <a id="chooseno" href="javascript:void(0);" onclick="ChooseNo();"><h4>NO</h4></a>
+				<a id="chooseforse" href="javascript:void(0);" onclick="ChooseForse();"><h4>FORSE</h4></a>
+			</div>
+			</div>
+            <div id="chi-list">
+				<p id="si-default" class="si">Nessun Si</p>
+				<p id="no-default" class="no">Nessun No</p>
+				<p id="forse-default" class="forse">Nessun Forse</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
