@@ -82,6 +82,7 @@
             var body = document.getElementById("body");
             body.removeChild(document.getElementById("removeMe"));
         };
+        var onloadScript = function() { CreateInfo(); CreateNews(); CreatePromemoria(); };
 	</script>
     <style>
         body {
@@ -120,7 +121,7 @@
         }
     </style>
 </head>
-<body id="body" onload="CreateInfo(); CreateNews(); CreatePromemoria(); RemoveRicarica();">
+<body id="body" onload="onloadScript();">
 	<h1>il<span>mov</span>nino<span>.tk</span><span id="basic"> basic</span></h1>
 	<a href="javascript:void(0);" id="removeMe" onclick="CreateNews();">Ricarica Contenuto</a>
     <div id="navbar" class="inline-a"><a id="H" class="selected" href="javascript:void(0);" onclick="ShowHome();">HOME</a>   <a id="N" href="javascript:void(0);" onclick="ShowNews();">NOTIZIE LIVE</a></div>
