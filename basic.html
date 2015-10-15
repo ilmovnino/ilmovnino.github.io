@@ -5,8 +5,9 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
 	<script type="text/javascript">
-	    var CreateInfo = function() {
-			for (i = 0; i < MoreInfo.length; i++) {
+	    var onloadScript = function() {
+            // Create MoreInfo
+            for (i = 0; i < MoreInfo.length; i++) {
                 // Get today date
                 var currentDate = new Date(new Date().getTime());
                 var day = currentDate.getDate();
@@ -38,9 +39,8 @@
                         document.getElementById("info-domani").innerHTML = moreContent;
                     };
             };
-		};
-		var CreateNews = function() {
-			for (i = 0; i < NewsFeed.length; i++) {
+            // Create News
+            for (i = 0; i < NewsFeed.length; i++) {
 				var current_news = NewsFeed[i];
 				if(current_news[0] === "n"){
 					current_news = current_news.slice(2);
@@ -53,8 +53,7 @@
 					document.getElementById("news-body").appendChild(news_div);
 				};
 			};
-		};
-        var CreatePromemoria = function() {
+            // Create Promemoria
             for (i = 0; i < HomeCards.length; i++) {
                 var current_card = HomeCards[i];
                 if(current_card[0] === "p") {
@@ -82,7 +81,6 @@
             var body = document.getElementById("body");
             body.removeChild(document.getElementById("removeMe"));
         };
-        var onloadScript = function() { CreateInfo(); CreateNews(); CreatePromemoria(); };
 	</script>
     <style>
         body {
