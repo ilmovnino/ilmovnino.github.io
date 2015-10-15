@@ -79,8 +79,8 @@
             document.getElementById("N").className = "selected";
         };
         var RemoveRicarica = function() {
-            var body = document.getElementsByTagName("body");
-            body.removeChild(document.getElementsByTagName("button"));
+            var body = document.getElementById("body");
+            body.removeChild(document.getElementById("removeMe"));
         };
 	</script>
     <style>
@@ -120,9 +120,9 @@
         }
     </style>
 </head>
-<body onload="CreateInfo(); CreateNews(); CreatePromemoria(); RemoveRicarica();">
+<body id="body" onload="CreateInfo(); CreateNews(); CreatePromemoria(); RemoveRicarica();">
 	<h1>il<span>mov</span>nino<span>.tk</span><span id="basic"> basic</span></h1>
-	<button onclick="CreateInfo(); CreateNews(); CreatePromemoria(); RemoveRicarica();">Ricarica Contenuto</button>
+	<button id="removeMe" onclick="CreateInfo(); CreateNews(); CreatePromemoria(); RemoveRicarica();">Ricarica Contenuto</button>
     <div id="navbar" class="inline-a"><a id="H" class="selected" href="javascript:void(0);" onclick="ShowHome();">HOME</a>   <a id="N" href="javascript:void(0);" onclick="ShowNews();">NOTIZIE LIVE</a></div>
     <div id="home-body">
 	    <h2>info di oggi</h2>
