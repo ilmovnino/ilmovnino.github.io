@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ilmovnino.tk - Basic</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
+	<script type="text/javascript">
+	    var CreateInfo = function() {
+			for (i = 0; i < MoreInfo.length; i++) {
+                // Get today date
+                var currentDate = new Date(new Date().getTime());
+                var day = currentDate.getDate();
+                var month = currentDate.getMonth() + 1;
+                var year = currentDate.getFullYear();
+                var todayCompare = day + " " + month + " " + year;
+                console.log(todayCompare);
+                // Extract content
+                var currentInfo = MoreInfo[i];
+                var infoCompare = currentInfo.slice(0, currentInfo.indexOf("|"));
+                    if(todayCompare == infoCompare) {
+                        var moreContent = currentInfo.slice(currentInfo.indexOf("|") + 1);
+                        document.getElementById("info-oggi").innerHTML = moreContent;
+                    };
+            };
+            for (i = 0; i < MoreInfo.length; i++) {
+                // Get tommorrow date
+                var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+                var day = currentDate.getDate();
+                var month = currentDate.getMonth() + 1;
+                var year = currentDate.getFullYear();
+                var tomorrowCompare = day + " " + month + " " + year;
+                console.log(tomorrowCompare);
+                // Extract content
+                var currentInfo = MoreInfo[i];
+                var infoCompare = currentInfo.slice(0, currentInfo.indexOf("|"));
+                    if(tomorrowCompare == infoCompare) {
+                        var moreContent = currentInfo.slice(currentInfo.indexOf("|") + 1);
+                        document.getElementById("info-domani").innerHTML = moreContent;
+                    };
+            };
+		};
+		var CreateNews = function() {
+			for (i = 0; i < NewsFeed.length; i++) {
+				var current_news = NewsFeed[i];
+				if(current_news[0] === "n"){
+					current_news = current_news.slice(2);
+					var index_of = current_news.indexOf("|");
+					var news_class = current_news.slice(0, index_of);
+					   index_of += 1;
+					var news_body =current_news.slice(index_of);
+                    var news_div = document.createElement("div");
+                    news_div.innerHTML = "<h2>" + news_class + "</h2><p>" + news_body + "</p>";
+					document.getElementById("news-body").appendChild(news_div);
+				};
+			};
+		};
+        var CreatePromemoria = function() {
+            for (i = 0; i < HomeCards.length; i++) {
+                var current_card = HomeCards[i];
+                if(current_card[0] === "p") {
+                    current_card = current_card.slice(2);
+                    current_card = current_card.replace(/à/g, "&agrave;").replace(/á/g, "&aacute;").replace(/è/g, "&egrave;").replace(/é/g, "&eacute;").replace(/ì/g, "&igrave;").replace(/í/g, "&iacute;").replace(/ò/g, "&ograve;").replace(/ó/g, "&oacute;").replace(/ù/g, "&ugrave;").replace(/ú/g, "&uacute;").replace(/À/g, "&Agrave;").replace(/Á/g, "&Aacute;").replace(/È/g, "&Egrave;").replace(/É/g, "&Eacute;").replace(/Ì/g, "&Igrave;").replace(/Í/g, "&Iacute;").replace(/Ò/g, "&Ograve;").replace(/Ó/g, "&Oacute;").replace(/Ù/g, "&Ugrave;").replace(/Ú/g, "&Uacute;").replace(/€/g, "&euro;");
+                    var pro_div = document.createElement("div");
+                    pro_div.innerHTML = "<p>" + current_card + "</p>";
+                    document.getElementById("home-body").appendChild(pro_div);
+                };
+            };
+        };
+        var ShowHome = function() {
+            document.getElementById("home-body").style.display = "block";
+            document.getElementById("news-body").style.display = "none";
+            document.getElementById("H").className = "selected";
+            document.getElementById("N").className = "";
+        };
+        var ShowNews = function() {
+            document.getElementById("home-body").style.display = "none";
+            document.getElementById("news-body").style.display = "block";
+            document.getElementById("H").className = "";
+            document.getElementById("N").className = "selected";
+        };
+	</script>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        h1 {
+            font-weight: 400;
+        }
+        span {
+            font-weight: 800;
+        }
+        h2 {
+            font-size: 1.55em;
+            font-variant: small-caps;
+        }
+        p {
+            font-size: 1.1em;
+        }
+        #basic {
+            font-weight: 300;
+        }
+        .inline-a a {
+            display: inline-block;
+        }
+        #news-body {
+            display: none;
+        }
+        #navbar a {
+            text-decoration: none;
+            color: #333333;
+            font-weight: 400;
+        }
+        .selected {
+            font-weight: 800!important;
+            color: black!important;
+        }
+    </style>
+</head>
+<body onload="CreateInfo(); CreateNews(); CreatePromemoria();">
+	<h1>il<span>mov</span>nino<span>.tk</span><span id="basic"> basic</span></h1>
+    <div id="navbar" class="inline-a"><a id="H" class="selected" href="javascript:void(0);" onclick="ShowHome();">HOME</a>   <a id="N" href="javascript:void(0);" onclick="ShowNews();">NOTIZIE LIVE</a></div>
+    <div id="home-body">
+	    <h2>info di oggi</h2>
+	    <p id="info-oggi">Nessuna info disponibile</p>
+	    <h2>info di domani</h2>
+	    <p id="info-domani">Nessuna info disponibile</p>
+        <h2>promemoria</h2>
+    </div>
+	<div id="news-body"></div>
+    <footer class="inline-a">
+        <a href="http://twitter.com/ilmovnino/">Twitter</a>
+        <a href="http://instagram.com/ilmovnino/">Instagram</a>
+        <a href="mailto:ilmovnino@outlook.it">Mail</a>
+        <a href="mailto:ilmovnino@outlook.it?&subject=Feedback%20ilmovnino.tk&body=Ho%20avuto%20i%20seguenti%20problemi/riscontri/suggerimenti%20nell'uso%20di%20ilmovnino.tk:">Feedback</a>
+    </footer>
+</body>
+</html>
