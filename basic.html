@@ -5,9 +5,8 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 	<script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
 	<script type="text/javascript">
-	    var onloadScript = function() {
-            // Create MoreInfo
-            for (i = 0; i < MoreInfo.length; i++) {
+	    var CreateInfo = function() {
+			for (i = 0; i < MoreInfo.length; i++) {
                 // Get today date
                 var currentDate = new Date(new Date().getTime());
                 var day = currentDate.getDate();
@@ -39,8 +38,11 @@
                         document.getElementById("info-domani").innerHTML = moreContent;
                     };
             };
-            // Create News
-            for (i = 0; i < NewsFeed.length; i++) {
+            var body = document.getElementById("home-body");
+            body.removeChild(document.getElementById("removeCaricaInfo"));
+		};
+		var CreateNews = function() {
+			for (i = 0; i < NewsFeed.length; i++) {
 				var current_news = NewsFeed[i];
 				if(current_news[0] === "n"){
 					current_news = current_news.slice(2);
@@ -53,7 +55,10 @@
 					document.getElementById("news-body").appendChild(news_div);
 				};
 			};
-            // Create Promemoria
+            var body = document.getElementById("news-body");
+            body.removeChild(document.getElementById("removeCaricaNews"));
+		};
+        var CreatePromemoria = function() {
             for (i = 0; i < HomeCards.length; i++) {
                 var current_card = HomeCards[i];
                 if(current_card[0] === "p") {
@@ -64,6 +69,8 @@
                     document.getElementById("home-body").appendChild(pro_div);
                 };
             };
+            var body = document.getElementById("home-body");
+            body.removeChild(document.getElementById("removeCaricaPro"));
         };
         var ShowHome = function() {
             document.getElementById("home-body").style.display = "block";
@@ -76,10 +83,6 @@
             document.getElementById("news-body").style.display = "block";
             document.getElementById("H").className = "";
             document.getElementById("N").className = "selected";
-        };
-        var RemoveRicarica = function() {
-            var body = document.getElementById("body");
-            body.removeChild(document.getElementById("removeMe"));
         };
 	</script>
     <style>
@@ -119,24 +122,25 @@
         }
     </style>
 </head>
-<body id="body" onload="onloadScript();">
+<body id="body" onload="CreateInfo(); CreateNews(); CreatePromemoria();">
 	<h1>il<span>mov</span>nino<span>.tk</span><span id="basic"> basic</span></h1>
-	<a href="javascript:void(0);" id="removeMe" onclick="CreateNews();">Ricarica Contenuto</a>
     <div id="navbar" class="inline-a"><a id="H" class="selected" href="javascript:void(0);" onclick="ShowHome();">HOME</a>   <a id="N" href="javascript:void(0);" onclick="ShowNews();">NOTIZIE LIVE</a></div>
     <div id="home-body">
 	    <h2>info di oggi</h2>
 	    <p id="info-oggi">Nessuna info disponibile</p>
 	    <h2>info di domani</h2>
 	    <p id="info-domani">Nessuna info disponibile</p>
+        <a href="javascript:void(0);" id="removeCaricaInfo" onclick="CreateMoreInfo();">Carica Info</a>
         <h2>promemoria</h2>
+        <a href="javascript:void(0);" id="removeCaricaPro" onclick="CreatePromemoria();">Carica Promemoria</a>
     </div>
-	<div id="news-body"></div>
+	<div id="news-body"><a href="javascript:void(0);" id="removeCaricaNews" onclick="CreateNews();">Carica Notizie Live</a></div>
     <footer class="inline-a">
         <a href="http://twitter.com/ilmovnino/">Twitter</a>
         <a href="http://instagram.com/ilmovnino/">Instagram</a>
         <a href="mailto:ilmovnino@outlook.it">Mail</a>
         <a href="mailto:ilmovnino@outlook.it?&subject=Feedback%20ilmovnino.tk&body=Ho%20avuto%20i%20seguenti%20problemi/riscontri/suggerimenti%20nell'uso%20di%20ilmovnino.tk:">Feedback</a>
     </footer>
-    <noscript><h1>Non riesci a visualizzare il contenuto?</h1><p>Javascript non &egrave; disponibile, abilitalo per utilizzare "ilmovnino.tk"</p></noscript>
+    <noscript><h1>Javascript </h1><p>Javascript non &egrave; disponibile, abilitalo per utilizzare "ilmovnino.tk"</p></noscript>
 </body>
 </html>
