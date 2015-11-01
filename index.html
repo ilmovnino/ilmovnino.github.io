@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://dl.dropbox.com/s/ozgi16w60i3tqkq/database.js"></script>
     <script type="text/javascript" src="https://dl.dropbox.com/s/uoo8z628069edam/chi.js"></script>
     <script>
+    var countdowns = [];
         $(document).ready(function() {
             CreateHomeFeed();
             CreateReminderFeed();
@@ -20,7 +21,6 @@
             CreateWeather();
             CreateMoreInfo();
             CreatePiantina();
-            window.countdowns = [];
             setInterval(function(){ updateCountdown(); }, 1000 );
         });
     </script>
