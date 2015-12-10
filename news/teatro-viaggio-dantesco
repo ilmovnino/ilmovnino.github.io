@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://dl.dropbox.com/s/oemywuzu4opua19/ninostyle.css?dl=0" type="text/css" rel="stylesheet" />
+	<meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<title>Spettacolo teatrale "Il viaggio Dantesco" - ilmovnino.tk</title>
+	<script type="text/javascript" src="https://dl.dropbox.com/s/ddaz93deiwjgdqa/jquery-1.11.3.min.js?dl=0"></script>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/t0zfiua1hpahx0j/script.js"></script>
+    <script type="text/javascript" src="https://dl.dropbox.com/s/uoo8z628069edam/chi.js"></script>
+	<script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+		var myLatlng =  new google.maps.LatLng(37.5030872, 15.0879273,21);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.TERRAIN
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+		 var marker = new google.maps.Marker({
+             position: myLatlng,
+             map: map,
+			 label: 'A',
+             title: 'Spettacolo teatrale Il viaggio Dantesco'
+         });
+      }
+    </script>
+	<script>
+        $(document).ready(function() {
+            CreateChi();
+            CreateEventShare();
+            ExtraChiNavigation();
+        });
+        var eventID = teatro_viaggio_dantesco;
+    </script>
+</head>
+
+<body>
+	<div id="wallpaper"></div>
+	<header>
+		<div id="the-header">
+            <a href="http://ilmovnino.tk/news.html"><div id="navigate"><h1 class="newsNavigate">&#9666;il<strong>mov</strong>nino</h1></div></a>
+            <a id="shareNewsA" href="javascript:void(0);"><div id="shareNews"><img src="https://dl.dropbox.com/s/k1h53z7p2u6wzua/mail.svg"/></div></a>
+        </div>
+    </header>
+	<div id="do-not-overlap" style="clear: both; height: 63px"></div>
+	<div id="eventcard">
+		<div id="eventquando">
+			<h1>Ritiro</h1>
+			<time>Venerd&igrave; 18 Dicembre</time>
+			<time>10:20 - 12:30</time>
+		</div>
+		<div id="dovecomechi">
+			<a id="back-to-dovecomechi" href="#go-to-dove"><div id="choosedove">DOVE</div></a>
+			<a href="#go-to-come"><div id="choosecome">COME</div></a>
+			<a href="#go-to-chi"><div id="choosechi">CHI</div></a>
+		</div>
+		<a id="go-to-dove"><div id="eventdove">
+			<div class="section-header">
+			    <h4><strong>DOVE</strong></h4>
+			    <div class="section-choose">
+			        <a id="get-dove-main" href="javascript:void(0);" class="section-selected"><h4>INFO</h4></a>
+			        <a id="get-dove-map" href="javascript:void(0);"><h4>MAPPA</h4></a>
+			    </div>
+			</div>
+			<div id="dove-content">
+			    <h2>Chiesa della Badia di Sant'Agata - Catania</h2>
+			    <p>Si ci recher&agrave; in luogo a piedi tutti insieme, al ritorno saremo liberi. Per usufruire di mezzi propri &egrave; necessaria un'autorizzazione firmata per sollevare la scuola da ogni responsabilit&agrave;</p>
+			</div>
+			<div id="map-canvas"></div>
+		</div></a>
+		<a id="go-to-come"><div id="eventcome">
+			<div class="section-header">
+			    <h4><strong>COME</strong></h4>
+			    <div class="section-choose toobig">
+			        <a id="get-come-main" href="javascript:void(0);" class="section-selected"><h4>INFO</h4></a>
+			        <a id="get-come-more" href="javascript:void(0);"><h4>AUTORIZZAZIONE</h4></a>
+			    </div>
+			</div>
+			<div id="come-content">
+			  <p>Condizioni meteo previste: Prevalentemente Soleggiato con una massima di 22° e una minima di 13°</p>
+			  <p>Spettacolo teatrale itinerante "Il Viaggio Dantesco"</p>
+			  <p>Si svolgeranno regolarmente solo le prime due ore fino alle 10, quando si terr&agrave; una breve ricreazione di 20 minuti prima della partenza</p>
+			  <p> Quota &euro;5</p>
+			</div>
+			<div id="come-more">
+				<img src="https://dl.dropbox.com/s/5086iiqbh1gp76g/teatro-viaggio-dantesco.jpeg" />
+				<a href="https://dl.dropbox.com/s/5086iiqbh1gp76g/teatro-viaggio-dantesco.jpeg"><div class="hint">scarica ></div></a>
+			</div>
+		</div></a>
+		<div id="eventchi">
+			<a id="go-to-chi"></a>
+			<div class="section-header">
+			<h4><strong>CHI</strong></h4>
+			<div class="section-choose">
+			    <a id="choosesi" href="javascript:void(0);" onclick="ChooseSi();" class="section-selected"><h4>SI</h4></a>
+			    <a id="chooseno" href="javascript:void(0);" onclick="ChooseNo();"><h4>NO</h4></a>
+				<a id="chooseforse" href="javascript:void(0);" onclick="ChooseForse();"><h4>FORSE</h4></a>
+			</div>
+			</div>
+            <div id="chi-list">
+				<p id="si-default" class="si">Nessun Si</p>
+				<p id="no-default" class="no">Nessun No</p>
+				<p id="forse-default" class="forse">Nessun Forse</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
