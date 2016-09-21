@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ilmovnino.tk Register</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="robots" content="noindex">
+    <style>p{margin: 1% 5%;}.time-set-label{margin-top: 0.1em;}</style>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="login.js"></script>
+    <script src="assets/scripts/backendless.js"></script>
+    <script>
+        var APPLICATION_ID = 'EFCE3663-EC61-9735-FF32-1297E1FF6E00',
+            SECRET_KEY     = 'B6F6AF1B-4E52-6FDD-FF57-46296FF26800',
+            VERSION        = 'v1'; //default application version;
+        Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
+    </script>
+    <script>var WallpaperChoice = "motion"; function SetWallpaper(choice) { document.getElementById("wp-motion").className = "wallprev"; document.getElementById("wp-watercolor").className = "wallprev";document.getElementById("wp-flowerpower").className = "wallprev";document.getElementById("wp-noi").className = "wallprev"; WallpaperChoice = choice; document.getElementById("wp-" + choice).className = "wallprev wallselect"; var plus = ""; if(choice =="motion") {plus=" (Predefinito)"}; if(choice =="flowerpower") {choice = "Flower Power"}; document.getElementById("wallselect").innerText = choice + plus; } function ShowReason() { alert("Il tuo account non ha ancora completato la registrazione, per questo ti viene chiesto di farlo") }</script>
+</head>
+<body onload="OnLoadRegister();">
+    <div id="wallpaper"></div>
+    <div id="page-container">
+        <div id="registration-container" style="padding-bottom: 3em; display: none;">
+            <div class="ol-header">
+                <a href="javascript:void(0);" style="margin-left: 4%;"><img class="olh-button" onclick="ShowReason()" src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDkyIDkyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA5MiA5MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMnB4IiBoZWlnaHQ9IjMycHgiPgo8Zz4KCTxwYXRoIGQ9Ik00NS4zODYsMC4wMDRDMTkuOTgzLDAuMzQ0LTAuMzMzLDIxLjIxNSwwLjAwNSw0Ni42MTljMC4zNCwyNS4zOTMsMjEuMjA5LDQ1LjcxNSw0Ni42MTEsNDUuMzc3ICAgYzI1LjM5OC0wLjM0Miw0NS43MTgtMjEuMjEzLDQ1LjM4LTQ2LjYxNUM5MS42NTYsMTkuOTg2LDcwLjc4Ni0wLjMzNSw0NS4zODYsMC4wMDR6IE00NS4yNSw3NGwtMC4yNTQtMC4wMDQgICBjLTMuOTEyLTAuMTE2LTYuNjctMi45OTgtNi41NTktNi44NTJjMC4xMDktMy43ODgsMi45MzQtNi41MzgsNi43MTctNi41MzhsMC4yMjcsMC4wMDRjNC4wMjEsMC4xMTksNi43NDgsMi45NzIsNi42MzUsNi45MzcgICBDNTEuOTA0LDcxLjM0Niw0OS4xMjMsNzQsNDUuMjUsNzR6IE02MS43MDUsNDEuMzQxYy0wLjkyLDEuMzA3LTIuOTQzLDIuOTMtNS40OTIsNC45MTZsLTIuODA3LDEuOTM4ICAgYy0xLjU0MSwxLjE5OC0yLjQ3MSwyLjMyNS0yLjgyLDMuNDM0Yy0wLjI3NSwwLjg3My0wLjQxLDEuMTA0LTAuNDM0LDIuODhsLTAuMDA0LDAuNDUxSDM5LjQzbDAuMDMxLTAuOTA3ICAgYzAuMTMxLTMuNzI4LDAuMjIzLTUuOTIxLDEuNzY4LTcuNzMzYzIuNDI0LTIuODQ2LDcuNzcxLTYuMjg5LDcuOTk4LTYuNDM1YzAuNzY2LTAuNTc3LDEuNDEyLTEuMjM0LDEuODkzLTEuOTM2ICAgYzEuMTI1LTEuNTUxLDEuNjIzLTIuNzcyLDEuNjIzLTMuOTcyYzAtMS42NjUtMC40OTQtMy4yMDUtMS40NzEtNC41NzZjLTAuOTM5LTEuMzIzLTIuNzIzLTEuOTkzLTUuMzAzLTEuOTkzICAgYy0yLjU1OSwwLTQuMzExLDAuODEyLTUuMzU5LDIuNDc4Yy0xLjA3OCwxLjcxMy0xLjYyMywzLjUxMi0xLjYyMyw1LjM1djAuNDU3SDI3LjkzNmwwLjAyLTAuNDc3ICAgYzAuMjg1LTYuNzY5LDIuNzAxLTExLjY0Myw3LjE3OC0xNC40ODdDMzcuOTQ3LDE4LjkxOCw0MS40NDcsMTgsNDUuNTMxLDE4YzUuMzQ2LDAsOS44NTksMS4yOTksMTMuNDEyLDMuODYxICAgYzMuNiwyLjU5Niw1LjQyNiw2LjQ4NCw1LjQyNiwxMS41NTZDNjQuMzY5LDM2LjI1NCw2My40NzMsMzguOTE5LDYxLjcwNSw0MS4zNDF6IiBmaWxsPSIjMDAwMDAwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" style="opacity: 0.7;cursor: pointer;height: 32px; width: 32px;"></a>
+                <div class="olh-separator"></div>
+                <div class="olh-content" style="margin-right: 4%;">
+                    <div class="olh-title">Registrazione</div>
+                    <a href="javascript:void(0);"><img class="olh-button olhb-reverse" src="assets/icons/arrow-black.svg" onclick="Register();"/></a>
+                </div>
+            </div>
+            <div class="ol-body">
+                <div class="register-welcome" style="font-size: 2em; margin: 0 5%;">Ciao <div id="register-username" style="display: inline; opacity: 0.6;">username</div>,</div>
+                <div class="register-help" style="margin: 0 5%;">Inserisci tutti i dati richiesti nei rispettivi campi, poi clicca ">"</div>
+                <div class="time-set-label">Identit&agrave;</div>
+                <p>Per identificare gli elementi da te pubblicati</p>
+                <input id="first_name-field" class="" type="text" autocomplete="off" placeholder="Nome" />
+                <input id="last_name-field" class="" type="text" autocomplete="off" placeholder="Cognome" />
+                <div class="time-set-label">Password</div>
+                <p>Per accedere in sicurezza al sito</p>
+                <input id="change-password-field" class="login" type="password" autocomplete="off" placeholder="Password" style="margin: 0.1cm 4.5%; width: 90%; font-size: 1em; height: 1.7em;" />
+                <div class="time-set-label">Email</div>
+                <p>Per recuperare la Password dimenticata e ricevere email dal sito e dalla classe</p>
+                <input id="email-field" class="login" type="email" placeholder="Email" style="margin: 0.1cm 4.5%; width: 90%; font-size: 1em; height: 1.7em;" />
+                <label style="display: none"><input id="summary_field" class="" type="checkbox" disabled />Ricevi newsletter giornaliera (Non disponibile)</label>
+                <label><input id="file_field" class="" type="checkbox" />Ricevi file via email</label>
+                <div class="time-set-label">Awareness</div>
+                <p>Attiva l'Awareness per mantenere aggiornata la tua istanza del sito con il server in tempo reale. Puoi disattivarla per risparmiare dati.</p>
+                <label><input id="awns_field" class="" type="checkbox" checked />Attiva Awareness</label>
+                <div class="time-set-label">Sfondo</div>
+                <p>Scegli uno sfondo per il sito. All'interno delle impostazioni potrai anche caricarne uno personalizzato</p>
+                <div style="margin-left: 5%; margin-top: 0.5em;">
+                    <div class="wallprev wallselect" id="wp-motion" onclick="SetWallpaper('motion')" title="Motion"></div>
+                    <div onclick="SetWallpaper('watercolor')" class="wallprev" id="wp-watercolor" title="Watercolor"></div>
+                    <div class="wallprev" id="wp-flowerpower" onclick="SetWallpaper('flowerpower')" title="Flower Power"></div>
+                    <div class="wallprev" id="wp-noi" onclick="SetWallpaper('noi')" title="Noi"></div>
+                 </div>
+                 <div style="display: flex; margin-bottom: 0.5em;" class="about-us">Selezionato<div id="wallselect" style="text-transform: capitalize">Motion (Predefinito)</div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
