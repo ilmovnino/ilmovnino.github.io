@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ilmovnino.tk Login</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta name="robots" content="noindex">
+    <style>p{margin: 1% 5%;}.time-set-label{margin-top: 0.1em;}a{text-decoration:none!important}#bottom-links div:hover{opacity:0.5!important}</style>
+    <link rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="login.js"></script>
+    <script src="assets/scripts/backendless.js"></script>
+    <script>
+        var APPLICATION_ID = 'EFCE3663-EC61-9735-FF32-1297E1FF6E00',
+            SECRET_KEY     = 'B6F6AF1B-4E52-6FDD-FF57-46296FF26800',
+            VERSION        = 'v1'; //default application version;
+        Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
+    </script>
+</head>
+<body onload="CheckLoginPage();">
+    <div id="wallpaper"></div>
+    <div id="page-container" style="align-self: center!important;background-color:transparent;background: radial-gradient(circle, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0)); margin: auto; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute; max-height: 21.7em;overflow:hidden">
+        <div id="login-container">
+            <div class="logo">il<span class="bolder">mov</span>nino<span class="bolder">.tk</span></div>
+            <div class="login-buttons-container">
+                <a href="javascript:void(0);" style="cursor:default"><div class="login-button" onclick="ShowFields();">
+                    <img src="assets/icons/key.svg" class="login-image"/>
+                    <div class="login-text">LOGIN</div>
+                </div></a>
+            </div>
+            <div id="bottom-links">
+                <a href="legacy.html"><div class="support-link">Sito pubblico</div></a>
+            </div>
+        </div>
+        <div id="fields-container" style="padding-bottom: 1.5em; display: none;">
+            <div class="ol-header">
+                <a href="javascript:void(0);"><img class="olh-button" src="assets/icons/arrow-black.svg" onclick="LoginBack();"/></a>
+                <div class="olh-separator"></div>
+                <div class="olh-content">
+                    <div class="olh-title">Login</div>
+                    <a href="javascript:void(0);"><img class="olh-button olhb-reverse" src="assets/icons/arrow-black.svg" onclick="Login();"/></a>
+                </div>
+            </div>
+            <div class="ol-body" style="padding-top: 1em">
+                <form id="logform" action="#">
+                    <input id="username-field" class="login" type="text" placeholder="Username" style="width: 17em; margin: 2% auto; display: block; padding-left: 0.3em;" onkeypress="return EnterInUsername(event)" autofocus/>
+                    <input id="password-field" class="login" type="password" placeholder="Password" style="width: 17em; margin: 2% auto; display: block; font-size: 1em; height: 1.7em; padding-left: 0.3em;" onkeypress="return EnterInPassword(event)"/>
+                </form>
+            </div>
+            <div id="bottom-links">
+                <a href="javascript:void(0);" onclick="StinoRecovery();"><div class="support-link">Password dimenticata</div></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
