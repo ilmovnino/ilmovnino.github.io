@@ -1,5 +1,6 @@
 CACHE MANIFEST
 # ilmovnino.tk Platform v1.0 2016-09-22
+index.html
 script.js
 style.css
 favicon.ico
@@ -100,6 +101,7 @@ NETWORK:
 login.html
 register.html
 login.js
+*
 
 # Fallback content
 FALLBACK:
