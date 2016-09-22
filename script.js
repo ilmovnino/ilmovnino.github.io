@@ -1737,7 +1737,7 @@ var SavePiantina = function() {
     var xhr  = new XMLHttpRequest();
     var type = 'POST';
     var url  = 'http://api.backendless.com/v1/data/Piantina';
-    xhr.onload = function() { $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block"); originalPiantina = PiantinaToUpload; RestoreRealPiantina(); SendNotification(null, null, "Piantina aggiornata da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Puoi visualizzarla, stamparla o modificarla", "http://beta.ilmovnino.tk/#classroom") };
+    xhr.onload = function() { $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block"); originalPiantina = PiantinaToUpload; RestoreRealPiantina(); SendNotification(null, null, "Piantina aggiornata da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Puoi visualizzarla, stamparla o modificarla", "http://www.ilmovnino.tk/#classroom") };
     xhr.onerror = function (e) { alert("Errore, riprova"); };
     xhr.open(type, url, true);
     xhr.setRequestHeader('application-id', 'EFCE3663-EC61-9735-FF32-1297E1FF6E00');
