@@ -4,11 +4,30 @@ index.html
 script.js
 style.css
 favicon.ico
-assets/
+jquery-ui.js
+404.html
+assets/flower-power-thumb.jpg
+assets/motion-thumb.jpg
+assets/noi-thumb.jpg
+assets/watercolor-thumb.jpg
+assets/wallpaper.png
+assets/arrow.ico
+assets/apple-touch-icon-precomposed.png
+assets/apple-touch-icon-72x72-precomposed.png
+assets/stylesheets/jquery-ui.css
+assets/stylesheets/jquery-ui-custom.css
+assets/scripts/StackBlur.js
+assets/scripts/backendless.js
+assets/scripts/datepicker-it.js
+assets/scripts/filestack.js
+assets/scripts/filestack.js
+assets/icons/
+assets/font/
 
 # Use from network if available
 NETWORK:
 login.html
+register.html
 
 # Fallback content
 FALLBACK:
