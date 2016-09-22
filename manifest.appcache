@@ -101,7 +101,6 @@ NETWORK:
 login.html
 register.html
 login.js
-/*
 
 # Fallback content
 FALLBACK:
