@@ -20,9 +20,16 @@ assets/scripts/StackBlur.js
 assets/scripts/backendless.js
 assets/scripts/datepicker-it.js
 assets/scripts/filestack.js
-assets/scripts/filestack.js
-assets/icons/
-assets/font/
+assets/scripts/jquery-1.10.2.js
+assets/scripts/jquery-ui.js
+assets/scripts/jquery.ui.touch-punch.min.js
+assets/scripts/smil.user.js
+assets/scripts/promise.min.js
+assets/icons/OLlist.svg
+assets/icons/OLlist.svg
+assets/font/open-sans.bold.ttf
+assets/font/open-sans.light.ttf
+assets/font/open-sans.regular.ttf
 
 # Use from network if available
 NETWORK:
