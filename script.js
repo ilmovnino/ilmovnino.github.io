@@ -179,7 +179,7 @@ var Start = function() {
         };
     });
 };
-function ShowReason() { alert("Non è stato possibile connettersi ad Internet, ma puoi comunque consultare l'orario e gli ultimi 100 elementi aperti") }; 
+function ShowReason() { alert("Non è stato possibile connettersi ad Internet, ma puoi comunque consultare l'orario e gli ultimi elementi aperti") }; 
 // LogOut & Password Recovery
 var LogOut = function() {
     OneSignal.push(["setSubscription", false]);
