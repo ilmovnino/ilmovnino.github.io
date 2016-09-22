@@ -1455,7 +1455,6 @@ var CreateOrario = function() {
 var OnUpdateOrario = function() {
   if (navigator.onLine) {
     var timetableFinished = 0;
-    var stillAvaileble = true;
     var orarioId = "" + new Date().getTime;
     for (var item = 0, item_limit=timetableStorage.length; item < item_limit; item++) {
         var current_item = timetableStorage[item];
@@ -1495,7 +1494,7 @@ var OnUpdateOrario = function() {
             current_item.friday = document.getElementById("ven5").value;
             current_item.saturday = document.getElementById("sab5").value;
         };
-        Backendless.Persistence.of( Timetable ).save( current_item ).then(function(){ timetableFinished += 1; if(timetableFinished = 5 && stillAvaileble) { stillAvaileble = false; try{ SuccessBanner(orarioId) }catch(err){}}; SendNotification(null, null, "Orario aggiornato da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Visualizza le modifiche", "http://www.ilmovnino.tk/#timetable")}).catch(function(err){try{ ErrorBanner(orarioId) }catch(err){}});
+        Backendless.Persistence.of( Timetable ).save( current_item ).then(function(){ timetableFinished += 1; if(timetableFinished = 5) { try{ SuccessBanner(orarioId) }catch(err){}; SendNotification(null, null, "Orario aggiornato da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Visualizza le modifiche", "http://www.ilmovnino.tk/#timetable")};}).catch(function(err){try{ ErrorBanner(orarioId) }catch(err){}});
     };
     DisplayBanner(orarioId, "Aggiorno Orario...");
     OnBack();
