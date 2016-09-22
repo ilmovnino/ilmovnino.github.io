@@ -220,7 +220,7 @@ var HashFunction = function() {
     } else if (location.hash == "#feed") {
         if ( jQuery.isEmptyObject(feedStorage) ) {
             document.getElementById("c-feed").innerHTML = '<span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span>';
-            var ten = new Backendless.DataQuery().options = {pageSize: 10}; Backendless.Persistence.of( Feed ).find(ten).then( function(result) { document.getElementById("c-feed").innerHTML = '<div id="cf-load-more" class="c-loader" onclick="SetLoader' + "('feed');LoadNext('feed')" + ';"><div style="">CARICA DI PIÙ</div><img src="assets/icons/arrow-black.svg" style=""><span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span></div>'; tempFeed = result; feedStorage = result.data; PushFeed(tempFeed.data); try { localStorage.offlineFeed = JSON.stringify(feedStorage) } catch(err) {}; }).catch( function(err) { console.log(err) } );
+            var ten = new Backendless.DataQuery().options = {pageSize: 10}; Backendless.Persistence.of( Feed ).find(ten).then( function(result) { document.getElementById("c-feed").innerHTML = '<div id="cf-load-more" class="c-loader" onclick="SetLoader' + "('feed');LoadNext('feed')" + ';"><div style="">CARICA DI PIÙ</div><img src="assets/icons/arrow-black.svg" style=""><span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span></div>'; tempFeed = result; feedStorage = result.data; PushFeed(tempFeed.data); ResetLoader("feed"); try { localStorage.offlineFeed = JSON.stringify(feedStorage) } catch(err) {}; }).catch( function(err) { console.log(err) } );
         };
         HideAnything();
         document.getElementById("navigate").value = "feed";
