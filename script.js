@@ -751,7 +751,7 @@ var LoadEdit = function(source) {
                         document.getElementById("valutazione-type")[2].checked = true;
                     };
                 } else if (current_type == "Promemoria") {
-                    document.getElementById("olp-body").innerHTML = '<textarea maxlength="21000" id="text-field" placeholder="Es. Allerta Meteo!"></textarea><input type="text" id="date-field" placeholder="Data" readonly><div class="cfb-footer delete-footer"><a href="javascript:void(0);"><div class="cfb-button delete-button" onclick="DeleteElement()">Elimina</div></a></div>';
+                    document.getElementById("olp-body").innerHTML = '<textarea maxlength="21000" id="text-field" placeholder="Es. Allerta Meteo!"></textarea><input type="text" id="date-field" placeholder="Data" readonly><div class="cfb-footer delete-footer"><a href="javascript:void(0);"><div class="cfb-button delete-button" onclick="DeleteElement(' + "'agenda'" + ')">Elimina</div></a></div>';
                     $( "#date-field" ).datepicker();
                     document.getElementById("text-field").value = current_item.text;
                     document.getElementById("date-field").value = current_item.data;
