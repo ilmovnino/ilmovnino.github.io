@@ -1610,13 +1610,14 @@ var ShowInfoPaper
 var CreateClass = function() {
     for(user = 0, limit = userStorage.length; user < limit; user++) {
         var current_user = userStorage[user];
+        if(current_user.registred) {
         var alunni = new RegExp("Alunno", "i");
         var rappre = new RegExp("Rappresentante", "i");
         var prof = new RegExp("Professore", "i");
         var userEl = '<div class="utente"><div class="ut-name">' + current_user.first_name + ' ' + current_user.last_name + '</div><a href="mailto:' + current_user.email + '" style="margin-right: 5%;"><img class="ut-mail" onclick="" src="assets/icons/mail.svg"/></a></div>';
         if (alunni.test(current_user.class)) { $("#olc-alunni").append(userEl); };
         if (rappre.test(current_user.class)) { $("#olc-rappre").append(userEl); };
-        if (prof.test(current_user.class)) { $("#olc-prof").append(userEl); };
+        if (prof.test(current_user.class)) { $("#olc-prof").append(userEl); }; };
     };
 };
 var EnableActivePiantina = function() {
