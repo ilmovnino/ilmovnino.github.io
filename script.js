@@ -2401,7 +2401,7 @@ var DeleteFile = function(file_path, id) {
             };
         };
         var bannerID = "" + new Date().getTime();
-        Backendless.Files.remove( file_path ).then(function(){Backendless.Persistence.of( Feed ).remove( current_modified_object ).then(function(){var fedeleid = current_modified_object.objectId;document.getElementById("c-feed").removeChild(document.getElementById(fedeleid));feedStorage.splice(index_to_get_rid_of, 1);}).catch(function(err) { ErrorBanner(bannerID) });}).catch(function(err) { ErrorBanner(bannerID) });
+        Backendless.Files.remove( file_path ).then(function(){Backendless.Persistence.of( Feed ).remove( current_modified_object ).then(function(){var fedeleid = current_modified_object.objectId;document.getElementById("c-feed").removeChild(document.getElementById(fedeleid));feedStorage.splice(index_to_get_rid_of, 1); SuccessBanner(bannerID)}).catch(function(err) { ErrorBanner(bannerID) });}).catch(function(err) { ErrorBanner(bannerID) });
         DisplayBanner(bannerID, "Elimino File...");
     };
 };
