@@ -217,6 +217,7 @@ var HashFunction = function() {
         document.getElementById("main-layer").style.display = "block";
         document.getElementById("ab-home").style.display = "flex";
         document.getElementById("c-home").style.display = "block";
+        try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
     } else if (location.hash == "#feed") {
         if ( jQuery.isEmptyObject(feedStorage) ) {
             document.getElementById("c-feed").innerHTML = '<span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span>';
@@ -232,6 +233,7 @@ var HashFunction = function() {
             document.getElementById("c-search").style.display = "block";
         };
         document.getElementById("page-container").style.alignSelf = "flex-start";
+        try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
     } else if (location.hash == "#agenda") {
         if ( jQuery.isEmptyObject(agendaStorage) ) {
             CreateAgenda();
@@ -241,6 +243,7 @@ var HashFunction = function() {
         document.getElementById("main-layer").style.display = "block";
         document.getElementById("ab-agenda").style.display = "block";
         document.getElementById("c-agenda").style.display = "block";
+        try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
     } else if (location.hash.slice(0, 8) == "#content") {
         LoadContent();
     } else if (location.hash.slice(0, 8) == "#publish") {
@@ -296,6 +299,7 @@ var HashFunction = function() {
         document.getElementById("navigate").value = "wiki";
         document.getElementById("main-layer").style.display = "block";
         document.getElementById("ab-wiki").style.display = "block";
+        try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
         if (document.getElementById("search-wiki").value == "") {
             document.getElementById("c-wiki").style.display = "block";
         } else {
@@ -307,6 +311,7 @@ var HashFunction = function() {
         HideAnything();
         document.getElementById("over-layer").style.display = "flex";
         document.getElementById("ol-settings").style.display = "block";
+        try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
       } else {
           alert("Connettiti ad Internet");
           OnBack();
@@ -383,6 +388,7 @@ var HideAnything = function() {
     document.getElementById("ol-classroom").style.display = "none";
     document.getElementById("ol-info").style.display = "none";
     document.getElementById("banner-container").style.display = "block";
+    try{ document.getElementById("onesignal-bell-container").style.display = "none" } catch(e) {};
     if(location.hash.slice(0, 10) == "#edit=wiki" || location.hash.slice(0, 13) == "#publish=wiki"){ document.getElementById("banner-container").style.display = "none" };
     HidePiantina();
     if(location.hash.slice(0, 8) != "#content") {document.getElementById("ol-content").innerHTML = ""};
