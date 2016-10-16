@@ -2297,7 +2297,7 @@ var OnEdit = function() {
             var wiki_title = document.getElementById("title-field").value;
             var wiki_subject = document.getElementById("subject").value;
             if(wiki_title != "" && wiki_subject != "materia" ) {
-                var nwp = document.getElementById("wiki-html-view").innerHTML.replace(/à/g, "&agrave;").replace(/á/g, "&aacute;").replace(/è/g, "&egrave;").replace(/é/g, "&eacute;").replace(/ì/g, "&igrave;").replace(/í/g, "&iacute;").replace(/ò/g, "&ograve;").replace(/ó/g, "&oacute;").replace(/ù/g, "&ugrave;").replace(/ú/g, "&uacute;").replace(/À/g, "&Agrave;").replace(/Á/g, "&Aacute;").replace(/È/g, "&Egrave;").replace(/É/g, "&Eacute;").replace(/Ì/g, "&Igrave;").replace(/Í/g, "&Iacute;").replace(/Ò/g, "&Ograve;").replace(/Ó/g, "&Oacute;").replace(/Ù/g, "&Ugrave;").replace(/Ú/g, "&Uacute;").replace(/€/g, "&euro;");
+                var nwp = encodeURIComponent(document.getElementById("wiki-html-view").innerHTML.replace(/à/g, "&agrave;").replace(/á/g, "&aacute;").replace(/è/g, "&egrave;").replace(/é/g, "&eacute;").replace(/ì/g, "&igrave;").replace(/í/g, "&iacute;").replace(/ò/g, "&ograve;").replace(/ó/g, "&oacute;").replace(/ù/g, "&ugrave;").replace(/ú/g, "&uacute;").replace(/À/g, "&Agrave;").replace(/Á/g, "&Aacute;").replace(/È/g, "&Egrave;").replace(/É/g, "&Eacute;").replace(/Ì/g, "&Igrave;").replace(/Í/g, "&Iacute;").replace(/Ò/g, "&Ograve;").replace(/Ó/g, "&Oacute;").replace(/Ù/g, "&Ugrave;").replace(/Ú/g, "&Uacute;").replace(/€/g, "&euro;"));
                 var filename = current_modified_object.url.slice(current_modified_object.url.lastIndexOf("/") + 1,current_modified_object.url.lastIndexOf('"'));
                 var byteArray = btoa(nwp);
                 var xhr = new XMLHttpRequest();
