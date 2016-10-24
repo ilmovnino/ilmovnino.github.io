@@ -1291,6 +1291,7 @@ var WikiGet = function(choiche) {
         } else if(choiche == "scienze") {
             var choice = document.getElementById("WikiGetChoice").innerHTML = 'Scienze';
         } else if(choiche == "educazionefisica") {
+	    var choiche = "scienzeMotorie";
             var choice = document.getElementById("WikiGetChoice").innerHTML = 'Educazione Fisica';
         } else if(choiche == "religione") {
             var choice = document.getElementById("WikiGetChoice").innerHTML = 'Religone';
@@ -1322,7 +1323,7 @@ var DoCommand = function(command,value) {
 };
 var PrintWiki = function() {
     var printWiki = window.open();
-    printWiki.document.write('<html><head><title>File &gt; Stampa...</title><style>body{width: 190mm;height: 282.15mm;font-family: Helvetica, sans-serif;} img{max-width:100%}</style></head><body id="body">' + document.getElementById('wiki-html-view').innerHTML + '</body></html>');
+    printWiki.document.write('<html><head><title>File &gt; Stampa...</title><style>body{width: 190mm;height: 282.15mm;font-family: Helvetica, sans-serif!important;} img{max-width:100%!important; height: auto!important}</style></head><body id="body">' + document.getElementById('wiki-html-view').innerHTML + '</body></html>');
 };
   //Home
 var CreateHome = function() {
@@ -2491,6 +2492,7 @@ var SendNotification = function(currentElement, bannerID, custo_title, custo_tex
     var title, content, link; var alertOK = true; var rssOK = true; var bannerOK = true; var alertFinished = false; var rssFinished = false; var notificationRelation = "!=";
     if(currentElement == null) { currentElement = { type: "Custom", author_username : LoggedUser.name }};
     if(currentElement.text == "") {currentElement.text = "Contenuto non disponibile"};
+    try{if (currentElement.subject == "ScienzeMotorie") { currentElement.subject = "Educazione Fisica"; } else if (currentElement.subject == "ArteDisegno") { currentElement.subject = "Arte e disegno"; };} catch(e){};
     switch(currentElement.type) {
         case "Notizia": title = "Notizia da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
         case "Domanda": title = "Domanda da " + currentElement.author_fullname ; content = currentElement.title; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
