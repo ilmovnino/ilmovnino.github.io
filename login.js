@@ -3,6 +3,16 @@
 // Login.html
 var PageAvaileble = true;
 var CheckLoginPage = function() {
+  if(window.localStorage) {
+      try {
+          localStorage.test = "check_if_it_works";
+      } catch (e) {
+          window.location = "private-error.html";
+      };
+      delete localStorage.test;
+  } else {
+      window.location = "private-error.html";
+  };
   if (navigator.onLine) {
     var userTokenIsValid = Backendless.UserService.isValidLogin();
     if (userTokenIsValid) {
