@@ -68,7 +68,7 @@ function Forward() {
 };
 function EnterInText(e) {
     if(e.keyCode == 13) {
-        if (document.getElementById("text").value != "") { Forward() };
+        if (document.getElementById("text").value != "") { document.getElementById("text").blur(); Forward() };
         return false;
     } else {
         return true;
