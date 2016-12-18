@@ -27,6 +27,7 @@ function Back() {
             document.getElementById("one").style.fontWeight = "bold";
             document.getElementById("two").style.fontWeight = "inherit";
             step = 1;
+            window.scrollTo(0, 0);
         };
     } else if (step == 3) {
         document.getElementById("step3").style.display = "none";
@@ -37,6 +38,7 @@ function Back() {
         document.getElementById("two").style.fontWeight = "bold";
         document.getElementById("three").style.fontWeight = "inherit";
         step = 2;
+        window.scrollTo(0, 0);
     } else {};
 };
 function Forward() {
@@ -47,6 +49,7 @@ function Forward() {
         document.getElementById("two").style.fontWeight = "bold";
         document.getElementById("one").style.fontWeight = "inherit";
         step = 2;
+        window.scrollTo(0, 0);
     } else if (step == 1 && document.getElementById("text").value == "") {
         alert("Scrivi il tuo nome nel campo di testo");
     } else if (step == 2) {
@@ -63,6 +66,7 @@ function Forward() {
             document.getElementById("three").style.fontWeight = "bold";
             document.getElementById("two").style.fontWeight = "inherit";
             step = 3;
+            window.scrollTo(0, 0);
         };
     } else {}
 };
