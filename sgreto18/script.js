@@ -96,7 +96,7 @@ function UploadFiles() {
             var my_id = "" + new Date().getTime() + Math.random();
             my_id = my_id.replace(".","");
             var text = encodeURIComponent(document.getElementById("text").value);
-            var not_twice = "" + Math.random(); not_twice = not_twice.replace(".","");
+            var not_twice = "" + Math.random(); not_twice = not_twice.replace(".",""); not_twice = not_twice.slice(1,9);
             var file_name = document.getElementById("hidden-input").files[i].name;
             file_name = text + "-" + not_twice + "-" + file_name.replace(" ", "%20");
             document.getElementById("upload-list").insertAdjacentHTML('afterbegin', '<div id="' + my_id + '" class="upload-element"><div class="ue-container"><div class="ue-icon"></div><div class="ue-text">' + document.getElementById("hidden-input").files[i].name + '</div></div><div class="loader sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div><div class="suc"></div><div class="err"></div></div>');
