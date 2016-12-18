@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>#Sgreto18 Richiesta File - ilmovnino.tk Wizard</title>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div id="wallpaper"></div>
+        <div id="container"><div id="inner">
+            <header>
+                <div class="button disabled" id="back" onclick="Back()"></div>
+                <div id="steps"><div id="one">1</div><div id="two">2</div><div id="three">3</div></div>
+                <div class="button" id="forward" onclick="Forward()"></div>
+                <div class="button" id="complete" onclick="Complete()"></div>
+            </header>
+            <div id="step1">
+                <div class="title">Benvenuto nella richiesta file per #sgreto18</div>
+                <div class="description">Nel prossimo passaggio potrai caricare i file, ma prima scrivi il tuo nome nel campo di testo qui sotto</div>
+                <input id="text" type="text" placeholder="Chi sei?" autocomplete="off" onkeypress="return EnterInText(event)"/>
+                <div class="description">Per continuare premi ">". Se vuoi tornare indietro premi "<".</div>
+                <noscript>
+                    <div class="title">Attiva Javascript</div>
+                    <div class="description">Senza non &egrave; possibile usare ilmovnino.tk Wizard</div>
+                    <div class="description">Se non ti &egrave; possibile attivarlo puoi inviare i file via mail a questo indirizzo: <a href="mailto:gretaturns18@outlook.it">gretaturns18@outlook.it</a></div>
+                </noscript>
+            </div>
+            <div id="step2">
+                <div class="title">Carica file</div>
+                <div class="description">Seleziona i file che vuoi caricare dopo aver premuto "Scegli file". Vedrai lo stato del caricamento sotto la linea.</div>
+                <!--<div class="description">Trascina i file che vuoi pubblicare su questa schermata oppure selezionali dopo aver premuto "Scegli file". Vedrai lo stato del caricamento sotto la linea.</div>-->
+                <div id="upload-button" onclick="Add()">
+                    <div class="ue-icon upload-icon"></div>
+                    <div class="ue-text">Scegli File</div>
+                </div>
+                <div class="separator"></div>
+                <div id="upload-list"></div>
+            </div>
+            <div id="step3">
+                <div class="title">Grazie!</div>
+                <div class="description">Hai completato tutti i passaggi richiesti per caricare i file su #sgreto18. Se vuoi caricare altro, premi "<", altrimenti chiudi la finestra.</div>
+                <!--<div class="description">Hai completato tutti i passaggi richiesti per caricare i file su #sgreto18. Se vuoi caricare altro, premi "<", altrimenti premi ">" per chiudere la finestra.</div>-->
+            </div>
+            <footer style="display: flex;justify-content: center;align-items: center;flex-direction: column;font-size: 2em;line-height: 1em;opacity: 0.7;margin: 1em;">
+                <div>il<span style="font-weight:bolder">mov</span>nino<span style="font-weight:bolder">.tk</span><div style="font-weight: lighter;">wizard</div></div></footer>
+        </div></div>
+        <!--<div id="drag"><div id="drag-div" ondragleave="HideDrag()" ondrag="Drag()"></div><div id="drag-img"></div></div>-->
+        <input type="file" id="hidden-input" onchange="UploadFiles()" multiple/>
+    </body>
+</html>
