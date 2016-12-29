@@ -1,4 +1,4 @@
-try { if(!CSS.supports('display', 'flex') || !window.FileReader) { window.location = "fallback.html" } } catch(e) { window.location = "fallback.html" };
+try { if(/*!CSS.supports('display', 'flex') || */!window.FileReader) { window.location = "fallback.html" } } catch(e) { window.location = "fallback.html" };
 try { document.addEventListener('touchstart', handler, { passive: true }) } catch(err) { };
 window.onbeforeunload = function(e) {
     if (running > 0) {
