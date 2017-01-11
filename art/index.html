@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Laboratorio Lingua Inglese - ilmovnino.tk</title>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script src="jquery.js"></script>
+        <link rel="prefetch" href="guernica.svg">
+        <link rel="prefetch" href="starryNight.svg">
+        <link rel="prefetch" href="theBalletClass.svg">
+        <link rel="prefetch" href="theKiss.svg">
+        <style>
+            @font-face {
+                font-family: NinoFont;
+                 src: url('font/open-sans.light.ttf');
+                 font-weight: 200;
+            }
+            @font-face {
+                 font-family: NinoFont;
+                 src: url('font/open-sans.regular.ttf');
+                 font-weight: normal;
+            }
+            @font-face {
+                 font-family: NinoFont;
+                 src: url('font/open-sans.bold.ttf');
+                 font-weight: bold;
+            }
+            html {
+                background: black;
+            }
+            body {
+                margin: 0;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+                cursor: default!important;
+                font-family: NinoFont, Helvetica, sans-serif;
+                overflow: hidden;
+                height: 100vh;
+                color: rgba(255, 255, 255, 0.9);
+            }
+            #logo {
+                height: 100%;
+                background-color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 2.5em;
+            }
+            #main {
+                display: none;
+                height: 100%;
+            }
+            #nav {
+                height: 100%;
+                position: fixed;
+            }
+            .hot {
+                position: absolute;
+                height: 50vh;
+                width: 50vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: auto;
+                position: fixed;
+            }
+            .hint {
+                font-size: 5vmin;
+            }
+            #content {
+                height: 100%;
+                background: no-repeat center;
+                background-size: contain;
+            }
+        </style>
+        <script>
+            function Show(x) {
+                $(".hint").fadeOut(50);
+                $(".hot").css("border-top", "none");
+                $(".hot").css("border-bottom", "none");
+                $(".hot").css("border-left", "none");
+                $(".hot").css("border-right", "none");
+                switch(x) {
+                    case "a": document.getElementById("content").style.backgroundImage = "url('theBalletClass.jpg')"; break;
+                    case "b": document.getElementById("content").style.backgroundImage = "url('theKiss.jpg')"; break;
+                    case "c": document.getElementById("content").style.backgroundImage = "url('guernica.jpg')"; break;
+                    case "d": document.getElementById("content").style.backgroundImage = "url('starryNight.jpg')"; break;
+                    default: document.getElementById("content").style.backgroundImage = "none";
+                };
+            };
+            function Home(event) {
+                $(".hint").fadeIn(50);
+                document.getElementsByClassName("hot")[0].style.borderBottom = "1px dashed white";
+                document.getElementsByClassName("hot")[0].style.borderRight = "1px dashed white";
+                document.getElementsByClassName("hot")[1].style.borderBottom = "1px dashed white";
+                document.getElementsByClassName("hot")[2].style.borderRight = "1px dashed white";
+                document.getElementsByClassName("hot")[2].style.borderTop = "1px dashed white";
+                document.getElementsByClassName("hot")[1].style.borderLeft = "1px dashed white";
+                document.getElementsByClassName("hot")[3].style.borderTop = "1px dashed white";
+                document.getElementsByClassName("hot")[3].style.borderLeft = "1px dashed white";
+                document.getElementById("content").style.backgroundImage = "none";
+                if(event.preventDefault != undefined) event.preventDefault();
+                if(event.stopPropagation != undefined) event.stopPropagation();
+            };
+            window.addEventListener("contextmenu", function(event){ Home(event) });
+        </script>
+    </head>
+    <body onload='if( navigator.userAgent.match(/iPad/i) ) { document.getElementsByTagName("body")[0].style.height = "95vh"; }; setTimeout(function(){ $("#logo").fadeOut(500);$("#main").fadeIn(500); }, 500);'>
+        <div id="logo"><div>il<span style="font-weight:bolder">mov</span>nino<span style="font-weight:bolder">.tk</span></div></div>
+        <div id="main">
+            <div id="nav">
+                <div class="hot" onclick="Show('a')" style="top: 0; left: 0; border-bottom: 1px dashed white; border-right: 1px dashed white;"><div class="hint">The Ballet Class</div></div>
+                <div class="hot" onclick="Show('b')" style="top: 0; right: 0; border-bottom: 1px dashed white; border-left: 1px dashed white;"><div class="hint">The Kiss</div></div>
+                <div class="hot" onclick="Show('c')" style="bottom: 0; left: 0; border-top: 1px dashed white; border-right: 1px dashed white;"><div class="hint">Guernica</div></div>
+                <div class="hot" onclick="Show('d')" style="bottom: 0; right: 0; border-top: 1px dashed white; border-left: 1px dashed white;"><div class="hint">Starry Night</div></div>
+            </div>
+            <div id="content"></div>
+        </div>
+    </body>
+</html>
