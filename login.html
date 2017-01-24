@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
     <meta name="robots" content="noindex">
     <meta name="application-name" content="ilmovnino.tk" /> <meta name="msapplication-tooltip" content="Lo spazio web del 5 Scientifico" /> <meta name="msapplication-starturl" content="index.html" /> <meta name="msapplication-task" content="name=Wiki;action-uri=index.html#wiki;icon-uri=assets/arrow.ico" /> <meta name="msapplication-task" content="name=Agenda;action-uri=index.html#agenda;icon-uri=assets/arrow.ico" /> <meta name="msapplication-task" content="name=Feed;action-uri=index.html#feed;icon-uri=assets/arrow.ico" /> <meta name="msapplication-task" content="name=Home;action-uri=index.html#home;icon-uri=assets/arrow.ico" />
-    <style>p{margin: 1% 5%;}.time-set-label{margin-top: 0.1em;}a{text-decoration:none!important}#bottom-links div:hover{opacity:0.5!important}</style>
+    <style>p{margin: 1% 5%;}.time-set-label{margin-top: 0.1em;}a{text-decoration:none!important}#bottom-links div:hover{opacity:0.5!important} #bottom-buttons { display: flex;width: 100%;justify-content: center;align-items: center;color: rgba(0, 0, 0, 0.8);font-size: 0.85em;padding-top: 1.5em; } .bb-button { display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 1em; } .bb-button:hover { opacity: 0.6; cursor: pointer } .bb-icon { height: 3.5em; width: 3.5em; border-radius: 100%; background-position: center; background-size: contain; margin-bottom: 3px; opacity: 0.7; } .welcome { font-size: 2em; cursor: default; flex-shrink: 0; text-align: center } .desc { margin: 0.5em; margin-bottom: 1em; cursor: default; flex-shrink: 0 } .lf-button { display: flex; justify-content: center; align-items: center; } .lf-button:hover { opacity: 0.5; cursor: pointer } button { background-color: rgba(46, 106, 178, 0.8)!important } button:hover { background-color: rgba(117 , 167, 220, 1)!important; } .lf-button .olh-title { cursor: pointer; } .buttonloading { background-color: rgba(0, 0, 0, 0.35)!important; } .buttonloading:hover { background-color: rgba(0, 0, 0, 0.35)!important; opacity: 1!important; cursor: default!important; } .disabled { opacity: 0.3!important; cursor: default!important; } .disabled:hover { opacity: 0.3!important; cursor: default!important; } .delete:hover { cursor: pointer!important; opacity: 0.3!important; } @media screen and (max-width: 840px) { .lf-button { flex-direction: column; } .lf-button img { height: 3em!important; width: 3em!important; margin-bottom: 0.3em;} .lf-button div { margin: 0; font-size: 1em!important; text-align: center; text-transform: none; width: auto!important; } } </style>
     <link rel="stylesheet" href="style.css"/>
     <script type="text/javascript" src="login.js"></script>
     <script src="assets/scripts/backendless.js"></script>
@@ -14,11 +14,12 @@
             SECRET_KEY     = 'B6F6AF1B-4E52-6FDD-FF57-46296FF26800',
             VERSION        = 'v1'; //default application version;
         Backendless.initApp(APPLICATION_ID, SECRET_KEY, VERSION);
+        Backendless.enablePromises();
     </script>
 </head>
-<body onload="CheckLoginPage();">
+<body onload="checkcustom();asyncCheckLoginPage();">
     <div id="wallpaper"></div>
-    <div id="page-container" style="align-self: center!important;background-color:transparent;background: radial-gradient(circle, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0)); margin: auto; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute; max-height: 21.7em;overflow:hidden">
+    <div id="page-container" style="align-self: center!important;background-color:transparent;background: radial-gradient(circle, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.40), rgba(255, 255, 255, 0)); margin: auto; left: 0px; top: 0px; right: 0px; bottom: 0px; position: absolute; max-height: 23.3em;overflow:hidden; -webkit-transform: max-height 0.3s; transform: max-height 0.3s">
         <div id="login-container">
             <div class="logo">il<span class="bolder">mov</span>nino<span class="bolder">.tk</span></div>
             <div class="login-buttons-container">
@@ -27,28 +28,29 @@
                     <div class="login-text">LOGIN</div>
                 </div></a>
             </div>
-            <div id="bottom-links">
-                <a href="legacy.html"><div class="support-link">Sito pubblico</div></a>
+            <div id="bottom-buttons">
+                <div class="bb-button" onclick="window.open('what.html', 'what', 'width=450,height=430,fullscreen=no,toolbar=no,status=no,location=no,left=' + ( (screen.width / 2) - 220 ) + ',top=' + ( (screen.height / 2) - 210 ) + '');"><div class="bb-icon" style="background-image: url('assets/icons/help.svg')"></div><div>Che cos'&egrave;</div></div><div class="bb-button" onclick="window.location = 'legacy.html'"><div class="bb-icon" style="background-image: url('assets/icons/web-black.svg')"></div><div>Sito Vecchio</div></div><div class="bb-button" onclick="window.location = 'scecilia/index.html'"><div class="bb-icon" style="background-image: url('assets/icons/cd.svg')"></div><div>S. Cecilia</div></div>
             </div>
         </div>
-        <div id="fields-container" style="padding-bottom: 1.5em; display: none;">
-            <div class="ol-header">
-                <a href="javascript:void(0);"><img class="olh-button" src="assets/icons/arrow-black.svg" onclick="LoginBack();"/></a>
+        <div id="fields-container" style="padding-bottom: 1.5em;margin: 0 auto; box-sizing: border-box; min-height: 100vh; display: none; flex-direction: column; max-width: 100vw;">
+            <div class="ol-header" style="flex-shrink: 0">
+                <a href="javascript:void(0);"><img class="olh-button" src="assets/icons/arrow-black.svg" onclick="LoginBack();"></a>
                 <div class="olh-separator"></div>
                 <div class="olh-content">
+                    <img class="olh-pic" src="assets/icons/key.svg" style="height: 2.3em">
                     <div class="olh-title">Login</div>
-                    <a href="javascript:void(0);"><img class="olh-button olhb-reverse" src="assets/icons/arrow-black.svg" onclick="Login();"/></a>
                 </div>
             </div>
-            <div class="ol-body" style="padding-top: 1em">
+            <div class="ol-body" style="padding-top: 1em;flex-grow: 2;align-items: center;justify-content: center;flex-shrink: 0;min-height: calc(100vh - 16em );">
+                <div class="welcome">Benvenuto</div><div class="desc">Inserisci i tuoi dati nei campi qui sotto</div>
                 <form id="logform" action="#">
-                    <input id="username-field" class="login" type="text" placeholder="nomecognome" style="width: 17em; margin: 2% auto; display: block; padding-left: 0.3em;" onkeypress="return EnterInUsername(event)" autofocus/>
-                    <input id="password-field" class="login" type="password" placeholder="Password" style="width: 17em; margin: 2% auto; display: block; font-size: 1em; height: 1.7em; padding-left: 0.3em;" onkeypress="return EnterInPassword(event)"/>
+                    <input id="username-field" class="login" type="text" placeholder="nomecognome" style="width: 17em;margin: 2% auto;display: block;height: 2.2em;padding-left: 0.3em;box-sizing: border-box;font-family: NinoFont, Arial, sans-serif;" onkeypress="return EnterInUsername(event)" autofocus="autofocus">
+                    <input id="password-field" class="login" type="password" placeholder="Password" style="width: 17em;margin: 2% auto;display: block;font-size: 1em;height: 2.2em;padding-left: 0.3em;box-sizing: border-box;font-family: NinoFont, Arial, sans-serif;" onkeypress="return EnterInPassword(event)">
+                    <button onclick="Login();" id="lgb" class="overlay-button" style="width: 17em;margin: 2% auto;display: block;font-size: 1em;height: 2.2em;box-sizing: border-box;background-color: rgba(0, 0, 0, 0.45);font-family: NinoFont, Arial, sans-serif;">LOGIN</button>
+                    <label style="font-size: 0.8em;padding: 1em;margin: 0;width: 21.5em;box-sizing: border-box;"><input type="checkbox" id="savepw" style="font-size: 3em;height: auto;">Salva Password su questo dispositivo</label>
                 </form>
             </div>
-            <div id="bottom-links">
-                <a href="javascript:void(0);" onclick="StinoRecovery();"><div class="support-link">Password dimenticata</div></a>
-            </div>
+            <div class="ol-header login-footer" style="flex-shrink: 0;"><div class="lf-button" onclick="window.open('loghelp.html', 'pwrec', 'width=450,height=430,fullscreen=no,toolbar=no,status=no,location=no,left=' + ( (screen.width / 2) - 220 ) + ',top=' + ( (screen.height / 2) - 210 ) + '');"><img class="olh-pic" src="assets/icons/help.svg" style="height: 2.3em"><div class="olh-title" style="margin: 0;font-size: 1.5em;">Ho bisogno di aiuto</div></div><div class="lf-button"  onclick="StinoRecovery();"><img class="olh-pic" src="assets/icons/key.svg" style="height: 2.3em"><div class="olh-title" style="margin: 0;font-size: 1.5em;">Password Dimenticata</div></div></div>
         </div>
     </div>
 </body>

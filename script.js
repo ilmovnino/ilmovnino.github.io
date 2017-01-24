@@ -160,10 +160,10 @@ var Start = function() {
     Backendless.UserService.isValidLogin().then(function(result){
         valid_login = result;
         if (valid_login) {
-            var timeFinished = false; var loggedFinished = false; var usersFinished = false; var query = new Backendless.DataQuery(); query.options = {pageSize: 100, sortBy: "last_name"}; query.properties = ["name","first_name","ownerId","last_name","class","objectId","email","receiveFiles","registred"]; var hundred = new Backendless.DataQuery().options = {pageSize: 100}; Backendless.Persistence.of( Timetable ).find(hundred).then( function(result) { tempTimetable = result; timetableStorage = tempTimetable.data; try { localStorage.offlineTimetable = JSON.stringify(timetableStorage) } catch(err) {}; CreateOrario(); timeFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } }  ).catch( function(err) {  console.log(err)  } ); Backendless.Persistence.of( Backendless.User ).find(query).then( function(result) { tempUsers = result; userStorage = tempUsers.data; try { localStorage.offlineUsers = JSON.stringify(userStorage) } catch(err) {}; CreateClass(); usersFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } }  ).catch( function(err) {  console.log(err)  } ); Backendless.UserService.getCurrentUser().then( function(result) { LoggedUser = result; try { localStorage.offlineLoggedUser = JSON.stringify(LoggedUser) } catch(err) {}; document.getElementById("mm-fullName").innerHTML = LoggedUser.first_name + " " + LoggedUser.last_name;document.getElementById("greeting-message").innerHTML = "Ciao " + LoggedUser.first_name + " " + LoggedUser.last_name + "!";document.getElementById("set-name").innerHTML = LoggedUser.first_name;document.getElementById("set-surname").innerHTML = LoggedUser.last_name;document.getElementById("settings-username").innerHTML = LoggedUser.name;document.getElementById("settings-email").innerHTML = LoggedUser.email;document.getElementById("notify-file").checked = LoggedUser.receiveFiles; document.getElementById("awareness-check").checked = LoggedUser.awareness; ApplyWallpaper(LoggedUser.wallpaper_choice); console.log("%cil%cmov%cnino%c.tk", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); console.log("%cCiao " + LoggedUser.first_name + " " + LoggedUser.last_name + "!", "color:black;font-size:2em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); console.log("%cAttenzione! Questa è una funzionalità per sviluppatori, per qualsiasi problema o richiesta rivolgiti all'amministratore del sito","font-size:1.8em;font-weight:bolder;color:darkred;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); if(LoggedUser.awareness) {var channel = "Awareness", callback = function (data) { var messagesArray = data["messages"]; ExecuteTransmission(messagesArray);}, subOps = new SubscriptionOptions({}); Backendless.Messaging.subscribe(channel, callback, subOps);}; loggedFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } } ).catch( function(err) { console.log(err) } ); try { localStorage.lastUpdated = "" + new Date() } catch(err) {}; EnableActivePiantina();ActivePiantina();
+            var timeFinished = false; var loggedFinished = false; var usersFinished = false; var query = new Backendless.DataQuery(); query.options = {pageSize: 100, sortBy: "last_name"}; query.properties = ["name","first_name","ownerId","last_name","class","objectId","email","receiveFiles","registred"]; var hundred = new Backendless.DataQuery().options = {pageSize: 100}; Backendless.Persistence.of( Timetable ).find(hundred).then( function(result) { tempTimetable = result; timetableStorage = tempTimetable.data; try { localStorage.offlineTimetable = JSON.stringify(timetableStorage) } catch(err) {}; CreateOrario(); timeFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } }  ).catch( function(err) {  console.log(err)  } ); Backendless.Persistence.of( Backendless.User ).find(query).then( function(result) { tempUsers = result; userStorage = tempUsers.data; try { localStorage.offlineUsers = JSON.stringify(userStorage) } catch(err) {}; CreateClass(); usersFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } }  ).catch( function(err) {  console.log(err)  } ); Backendless.UserService.getCurrentUser().then( function(result) { LoggedUser = result; try { localStorage.offlineLoggedUser = JSON.stringify(LoggedUser) } catch(err) {}; document.getElementById("mm-fullName").innerHTML = LoggedUser.first_name + " " + LoggedUser.last_name;document.getElementById("greeting-message").innerHTML = "Ciao " + LoggedUser.first_name + " " + LoggedUser.last_name + "!";document.getElementById("set-name").innerHTML = LoggedUser.first_name;document.getElementById("set-surname").innerHTML = LoggedUser.last_name;document.getElementById("settings-username").innerHTML = LoggedUser.name;document.getElementById("settings-email").innerHTML = LoggedUser.email;document.getElementById("notify-file").checked = LoggedUser.receiveFiles; ApplyWallpaper(LoggedUser.wallpaper_choice); console.log("%cil%cmov%cnino%c.tk", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); console.log("%cCiao " + LoggedUser.first_name + " " + LoggedUser.last_name + "!", "color:black;font-size:2em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); console.log("%cAttenzione! Questa è una funzionalità per sviluppatori, per qualsiasi problema o richiesta rivolgiti all'amministratore del sito","font-size:1.8em;font-weight:bolder;color:darkred;font-family:NinoFont, Arial, sans-serif;opacity:0.7"); loggedFinished = true; if(timeFinished && loggedFinished && usersFinished) { AddEventHashChange(); HashFunction(); loggedAt = new Date().getTime(); initialized = true; } } ).catch( function(err) { console.log(err) } ); try { localStorage.lastUpdated = "" + new Date() } catch(err) {}; EnableActivePiantina();ActivePiantina();
         } else {
             OneSignal.push(["setSubscription", false]);
-            localStorage.clear();
+            try{localStorage.removeItem("Backendless")}catch(e){};
             window.location = "login.html#from=" + location.hash.slice(1);
         };
     }).catch(function(err) {
@@ -218,6 +218,7 @@ var HashFunction = function() {
         document.getElementById("ab-home").style.display = "flex";
         document.getElementById("c-home").style.display = "block";
         try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
+        FillPrint();
     } else if (location.hash == "#feed") {
         if ( jQuery.isEmptyObject(feedStorage) ) {
             document.getElementById("c-feed").innerHTML = '<span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span>';
@@ -234,19 +235,23 @@ var HashFunction = function() {
         };
         document.getElementById("page-container").style.alignSelf = "flex-start";
         try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
+        FillPrint();
     } else if (location.hash == "#agenda") {
         if ( jQuery.isEmptyObject(agendaStorage) ) {
             CreateAgenda();
-        };
+        } else { FillPrint("agenda") };
         HideAnything();
         document.getElementById("navigate").value = "agenda";
         document.getElementById("main-layer").style.display = "block";
         document.getElementById("ab-agenda").style.display = "block";
         document.getElementById("c-agenda").style.display = "block";
         try{ document.getElementById("onesignal-bell-container").style.display = "block" } catch(e) {};
+        FillPrint("agenda")
     } else if (location.hash.slice(0, 8) == "#content") {
         LoadContent();
+        FillPrint("element");
     } else if (location.hash.slice(0, 8) == "#publish") {
+        FillPrint();
       if (navigator.onLine) {
         var source = location.hash.slice(9);
         HideAnything();
@@ -289,6 +294,7 @@ var HashFunction = function() {
           OnBack();
       };
     } else if (location.hash.slice(0,5) == "#wiki") {
+        FillPrint();
       var Subject = location.hash.slice(6);
       if(Subject == "") {
         if(!wikiInitialized) {
@@ -307,6 +313,7 @@ var HashFunction = function() {
         };
       } else { WikiGet(Subject) };
     } else if (location.hash == "#settings") {
+        FillPrint();
       if (navigator.onLine) {
         HideAnything();
         document.getElementById("over-layer").style.display = "flex";
@@ -317,6 +324,7 @@ var HashFunction = function() {
           OnBack();
       };
     } else if (location.hash == "#timetable") {
+        FillPrint();
       if (navigator.onLine) {
         HideAnything();
         document.getElementById("over-layer").style.display = "flex";
@@ -326,6 +334,7 @@ var HashFunction = function() {
           OnBack();
       };
     } else if (location.hash == "#classroom") {
+        FillPrint();
       if (navigator.onLine) {
         HideAnything();
         document.getElementById("over-layer").style.display = "flex";
@@ -335,6 +344,7 @@ var HashFunction = function() {
           OnBack();
       };
     } else if (location.hash.slice(0, 5) == "#info") {
+        FillPrint();
         var source = location.hash.slice(6, location.hash.indexOf("&"));
         var currentID = location.hash.slice(location.hash.lastIndexOf("=") + 1);
         HideAnything();
@@ -342,6 +352,7 @@ var HashFunction = function() {
         document.getElementById("ol-info").style.display = "block";
         LoadInfo(source, currentID);
     } else if (location.hash.slice(0, 5) == "#edit") { 
+        FillPrint();
       if (navigator.onLine) {
         var source = location.hash.slice(6, location.hash.indexOf("&"));
         var currentID = location.hash.slice(location.hash.lastIndexOf("=") + 1);
@@ -362,6 +373,7 @@ var HashFunction = function() {
           OnBack();
       };
     } else {
+        FillPrint();
         location.hash = "home";
     };
 };
@@ -520,6 +532,7 @@ var LoadContent = function(offline) {
                     var current_text = current_item.text;
                     document.getElementById("ol-content").innerHTML = olContent_incipit + '<div class="olh-separator"></div><div class="olh-content olh-content-center"><div class="content-metadata"><div class="content-author"><div class="ct-author-profile"></div><div class="ct-author-name">' + author_string + '</div></div><div class="author-extradetail">' + current_creationDate + " " + current_creationTime + '</div></div></div></div><div class="ol-body"><div class="olc-title">' + current_title + '</div><div class="olc-content">' + current_text + '</div></div>';
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if(current_type == "Youtube") {
                     var current_title = current_item.title;
                     historyTitle = current_title;
@@ -528,6 +541,7 @@ var LoadContent = function(offline) {
                     var current_url = current_item.url;
                     document.getElementById("ol-content").innerHTML = olContent_incipit + '<div class="olh-separator"></div><div class="olh-content olh-content-center"><div class="content-metadata"><div class="content-author"><div class="ct-author-profile"></div><div class="ct-author-name">' + author_string + '</div></div><div class="author-extradetail">' + current_creationDate + " " + current_creationTime + '</div></div></div></div><div class="ol-body"><iframe onload="LoadYoutubeBackground()" allowfullscreen src="http://www.youtube.com/embed/' + current_url + '?showinfo=0&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;hl=it&amp;disablekb=1" class="olc-youtube"></iframe><div class="olc-title">' + current_title + '</div><div class="olc-content">' + current_text + '</div></div>';
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint();
                 } else if(current_type == "Domanda") {
                     var current_title = current_item.title;
                     historyTitle = current_title;
@@ -535,6 +549,7 @@ var LoadContent = function(offline) {
                     document.getElementById("ol-content").innerHTML = olContent_incipit + '<div class="olh-separator"></div><div class="olh-content olh-content-center"><div class="content-metadata"><div class="content-author"><div class="ct-author-profile"></div><div class="ct-author-name">' + author_string + '</div></div><div class="author-extradetail">' + current_creationDate + " " + current_creationTime + '</div></div></div></div><div class="ol-body"><div class="olc-title">' + current_title + '</div></div>';
                     $( "#ol-content .ol-body" ).append(modifyBar);  $( "#ol-content .ol-body" ).append('<div class="olc-answer"><input id="olca-text" type="text" placeholder="Scrivi qualcosa..." oninput="OnAnswerType()" onkeypress="return EnterInAnswers(event,' + "'" + current_id + "'" + ',' + "'" + current_item.author_username + "'" + ')"><div style="height: 100%"><img onclick="EnterInFile()" src="assets/icons/attach-black.svg" title="Allega massimo 5MB" id="olca-draft"><input type="file" id="fileAnswer" onchange="SendFileAnswer(' + "'" + current_id + "'" + ',' + "'" + current_item.author_username + "'" + ')" style="display:none"/><div onclick="SendTextAnswer(' + "'" + current_id + "'" + ',' + "'" + current_item.author_username + "'" + ')" id="olca-send" style="display: none;">Invia</div></div></div><div id="olc-answers"><span style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</span></div>');
                     LoadAnswers(current_id);
+                    FillPrint();
                 } else if (current_type == "Compito") {
                     var current_subject = current_item.subject;
                     current_subject = current_subject.capitalizeFirstLetter();
@@ -553,6 +568,7 @@ var LoadContent = function(offline) {
                         $( "#ol-content .ol-body" ).append( '<div class="content-hint"><img src="assets/icons/warning.svg" class="content-hint-pic"><div class="content-hint-text">Attenzione!</div></div><div class="content-info">Controllo dello svolgimento</div>' );
                     };
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if (current_type == "Volontario") {
                     var current_subject = current_item.subject;
                     current_subject = current_subject.capitalizeFirstLetter();
@@ -568,6 +584,7 @@ var LoadContent = function(offline) {
                     var current_date = current_item.data;
                     document.getElementById("ol-content").innerHTML = olContent_incipit + '<div class="olh-separator"></div><div class="olh-content olh-content-center"><div class="content-metadata"><div class="content-author"><div class="ct-author-profile"></div><div class="ct-author-name">' + author_string + '</div></div><div class="author-extradetail">' + current_creationDate + " " + current_creationTime + '</div></div></div></div><div class="ol-body"><div class="olc-title">' + current_subject + '</div><div class="olc-content">' + current_text + '</div><div class="content-hint"><img src="assets/icons/calendar-black.svg" class="content-hint-pic"><div class="content-hint-text">Per il</div></div><div class="content-info">' + current_date + '</div></div>';
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if (current_type == "Valutazione") {
                     var current_subject = current_item.subject;
                     current_subject = current_subject.capitalizeFirstLetter();
@@ -589,6 +606,7 @@ var LoadContent = function(offline) {
                         $( "#ol-content .ol-body" ).append( '<div class="content-hint"><img src="assets/icons/warning.svg" class="content-hint-pic"><div class="content-hint-text">Attenzione!</div></div><div class="content-info">Fa Media</div>' );
                     };
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if (current_type == "Promemoria") {
                     var current_text = current_item.text;
                     var current_date = current_item.data;
@@ -596,6 +614,7 @@ var LoadContent = function(offline) {
                     historyLink = "#content=agenda&id=" + current_id;
                     document.getElementById("ol-content").innerHTML = olContent_incipit + '<div class="olh-separator"></div><div class="olh-content olh-content-center"><div class="content-metadata"><div class="content-author"><div class="ct-author-profile"></div><div class="ct-author-name">' + author_string + '</div></div><div class="author-extradetail">' + current_creationDate + " " + current_creationTime + '</div></div></div></div><div class="ol-body"><div class="olc-title">' + current_text + '</div><div class="content-hint"><img src="assets/icons/calendar-black.svg" class="content-hint-pic"><div class="content-hint-text">Per il</div></div><div class="content-info">' + current_date + '</div></div>';
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if (current_type == "Evento") {
                     var current_title = current_item.title;
                     historyTitle = current_title;
@@ -627,13 +646,14 @@ var LoadContent = function(offline) {
                     };
                     document.getElementById("content-partecipanti-hint").innerText = current_numOfAttendees + " Partecipanti";
                     $( "#ol-content .ol-body" ).append(modifyBar);
+                    FillPrint("element");
                 } else if (current_type == "Wiki") {
                     var current_title = current_item.title;
                     var current_nwp = current_item.url.slice(1,-1);
                     historyTitle = current_title;
                     historyLink = "#content=wiki&id=" + current_id;
                     document.getElementById("ol-content").innerHTML = '<div class="ol-header wiki-creation-header"><a href="javascript:void(0);"><img class="olh-button" src="assets/icons/arrow-black.svg" onclick="OnBack();"></a><div class="olh-separator"></div><div class="olh-content olh-publisher" style="display: flex;"><div class="olh-content"><a href="javascript:void(0)" style="margin: 0 0.5em"><img title="Puoi avere una versione più aggiornata della pagina" id="wikiAlertButton" onclick="UpdateReadWiki()" class="olh-pic" src="assets/icons/alert.svg" style="height:1.6em;width:1.6em;display:none"></a><a href="javascript:void(0)" style="margin: 0 0.6em"><img title="Stampa" onclick="PrintWiki()" class="olh-pic" src="assets/icons/printer.svg"></a><a href="#edit=wiki&id=' + current_id + '"><img title="Modifica" class="olh-pic" src="assets/icons/edit.svg" style="margin: 0 0.6em"></a><a href="#info=wiki&id=' + current_id + '" style="margin: 0 0.6em"><img title="Informazioni" class="olh-pic" src="assets/icons/info.svg"></a></div></div></div><div class="ol-body"><div class="wiki-creation-body"><div id="wiki-html-view"><div style="-webkit-filter: invert(100%);filter: invert(100%);">' + svgLoader + '</div></div></div></div>';
-                    var xhr = new XMLHttpRequest(); xhr.open("GET", current_nwp, true); xhr.onload = function () { if(location.hash.slice(location.hash.lastIndexOf("=") + 1) == current_id) { document.getElementById("wiki-html-view").innerHTML = decodeURIComponent(xhr.responseText) } }; xhr.onerror = function (e) {}; xhr.setRequestHeader('user-token', JSON.parse(localStorage["Backendless"].replace("user-token","userToken")).userToken); xhr.send();
+                    var xhr = new XMLHttpRequest(); xhr.open("GET", current_nwp, true); xhr.onload = function () { if(location.hash.slice(location.hash.lastIndexOf("=") + 1) == current_id) { document.getElementById("wiki-html-view").innerHTML = decodeURIComponent(xhr.responseText); FillPrint("wikielement"); } }; xhr.onerror = function (e) {FillPrint()}; xhr.setRequestHeader('user-token', JSON.parse(localStorage["Backendless"].replace("user-token","userToken")).userToken); xhr.send();
                 } else if (current_type == "File" || current_type == "Link") {
 		    var current_title = current_item.title;
                     var current_url = current_item.url;
@@ -720,7 +740,7 @@ var LoadEdit = function(source) {
                     document.getElementById("title-field").value = current_item.title;
                     document.getElementById("text-field").value = current_item.text;
                 } else if (current_type == "Link") {
-                    document.getElementById("olp-body").innerHTML = '<input maxlength="500" type="text" id="title-field" placeholder="Titolo"><textarea maxlength="21000" id="text-field" placeholder="Commento"></textarea><input type="url" id="url-field" placeholder="Es. http://ilmovnino.tk/"><div class="cfb-footer delete-footer"><a href="javascript:void(0);"><div class="cfb-button delete-button" onclick="DeleteElement(' + "'feed'" + ')">Elimina</div></a></div>';
+                    document.getElementById("olp-body").innerHTML = '<input maxlength="500" type="text" id="title-field" placeholder="Titolo"><textarea maxlength="21000" id="text-field" placeholder="Commento"></textarea><input type="url" id="url-field" placeholder="Es. https://ilmovnino.tk/"><div class="cfb-footer delete-footer"><a href="javascript:void(0);"><div class="cfb-button delete-button" onclick="DeleteElement(' + "'feed'" + ')">Elimina</div></a></div>';
                     document.getElementById("title-field").value = current_item.title;
                     document.getElementById("text-field").value = current_item.text;
                     document.getElementById("url-field").value = current_item.url;
@@ -1263,6 +1283,7 @@ var CreateAgenda = function() {
             };
         };
       };
+      FillPrint("agenda");
       if ( jQuery.isEmptyObject(agendaStorage) ) { agendaStorage = [ "vuoto" ]; };
     }).catch( function(err) { console.log(err) } );
 };
@@ -1505,7 +1526,7 @@ var OnUpdateOrario = function() {
             current_item.friday = document.getElementById("ven5").value;
             current_item.saturday = document.getElementById("sab5").value;
         };
-        Backendless.Persistence.of( Timetable ).save( current_item ).then(function(){ timetableFinished += 1; if(timetableFinished = 5) { try{ SuccessBanner(orarioId) }catch(err){}; SendNotification(null, null, "Orario aggiornato da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Visualizza le modifiche", "http://www.ilmovnino.tk/#timetable")};}).catch(function(err){try{ ErrorBanner(orarioId) }catch(err){}});
+        Backendless.Persistence.of( Timetable ).save( current_item ).then(function(){ timetableFinished += 1; if(timetableFinished = 5) { try{ SuccessBanner(orarioId) }catch(err){}; SendNotification(null, null, "Orario aggiornato da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Visualizza le modifiche", "https://www.ilmovnino.tk/#timetable")};}).catch(function(err){try{ ErrorBanner(orarioId) }catch(err){}});
     };
     DisplayBanner(orarioId, "Aggiorno Orario...");
     OnBack();
@@ -1748,8 +1769,8 @@ var SavePiantina = function() {
     var PiantinaToUpload = document.getElementById("piantina").innerHTML;
     var xhr  = new XMLHttpRequest();
     var type = 'POST';
-    var url  = 'http://api.backendless.com/v1/data/Piantina';
-    xhr.onload = function() { $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block"); originalPiantina = PiantinaToUpload; RestoreRealPiantina(); SendNotification(null, null, "Piantina aggiornata da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Puoi visualizzarla, stamparla o modificarla", "http://www.ilmovnino.tk/#classroom") };
+    var url  = 'https://api.backendless.com/v1/data/Piantina';
+    xhr.onload = function() { $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block"); originalPiantina = PiantinaToUpload; RestoreRealPiantina(); SendNotification(null, null, "Piantina aggiornata da " + LoggedUser.first_name + " " + LoggedUser.last_name, "Puoi visualizzarla, stamparla o modificarla", "https://www.ilmovnino.tk/#classroom") };
     xhr.onerror = function (e) { alert("Errore, riprova"); };
     xhr.open(type, url, true);
     xhr.setRequestHeader('application-id', 'EFCE3663-EC61-9735-FF32-1297E1FF6E00');
@@ -1783,7 +1804,7 @@ var LoadPiantina = function() {
     $("#piantina").css("display", "none");
     var xhr  = new XMLHttpRequest();
     var type = 'GET';
-    var url  = 'http://api.backendless.com/v1/data/Piantina';
+    var url  = 'https://api.backendless.com/v1/data/Piantina';
     xhr.onload = function() { document.getElementById("piantina").innerHTML = JSON.parse(xhr.responseText).data[0].html; originalPiantina = document.getElementById("piantina").innerHTML; InitializePiantina(); ExitModifyPiantina(); $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block"); };
     xhr.onerror = function (e) { HidePiantina() };
     xhr.open(type, url, true);
@@ -1794,10 +1815,10 @@ var LoadPiantina = function() {
 };
 // Add Show/Hide Functions here
 var OpenPiantina = function() {
-    document.getElementById("piantina-grandfather").style.display = "flex"; document.getElementsByTagName("body")[0].style.overflow = "hidden"; LoadPiantina();
+    document.getElementById("piantina-grandfather").style.display = "flex"; document.getElementsByTagName("body")[0].style.overflow = "hidden"; LoadPiantina(); FillPrint("piantina");
 };
 var HidePiantina = function() {
-    document.getElementById("piantina-grandfather").style.display = "none"; document.getElementsByTagName("body")[0].style.overflow = "";
+    document.getElementById("piantina-grandfather").style.display = "none"; document.getElementsByTagName("body")[0].style.overflow = ""; FillPrint();
 };
 var ModifyPiantina = function() {
     document.getElementById("piantina-modify").style.display = "flex";
@@ -1820,28 +1841,7 @@ var ChangePiantinaMode = function() {
 var RestoreRealPiantina = function() {
     piantinaHistory = []; document.getElementById("piantina").innerHTML = originalPiantina; InitializePiantina(); ExitModifyPiantina(); $("#pbBusy").css("display", "none"); $("#piantina").css("display", "block");
 };
-// Awareness push
-var SendTransmission = function(id,table,event,banner,link) {
-    var message_object = { "id": id, "table": table,"event": event,"banner":banner, "link":link };
-    Backendless.Messaging.publish("Awareness", JSON.stringify(message_object),null,null).then(function(result){transmissionHistory.splice(0,0,result.messageId)}).catch();
-};
-var ExecuteTransmission = function(array) {
-    for(i=0;i < array.length;i++) {
-        var data = JSON.parse(array[i].data);
-        var okTransmission = true;
-        for(j=0;j < transmissionHistory.length;j++) { if(transmissionHistory[j] == array[i].messageId) {okTransmission = false} };
-        if(loggedAt > array[i].publishedAt) {okTransmission = false};
-        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-        if(okTransmission) {
-            switch(data.table) {
-                case "Feed": if(data.event == "Publish") { if( !jQuery.isEmptyObject(feedStorage)) { Backendless.Persistence.of( Feed ).findById(data.id).then(function(result){feedStorage.unshift(result); PushFeed([result], "Prepend");}).catch()}; TransmissionBanner(data.banner,data.link); try{window.navigator.vibrate([400,400])}catch(e){} } else if(data.event == "Edit") {if( !jQuery.isEmptyObject(feedStorage)) { Backendless.Persistence.of( Feed ).findById(data.id).then(function(result){if ( !jQuery.isEmptyObject(feedStorage) ) { feedStorage.unshift(result); }; PushFeed([result], "Replace");}).catch()}} else if (data.event == "Delete") { try{document.getElementById("c-feed").removeChild(document.getElementById(data.id));}catch(e){}; index_to_get_rid_of = -1; for (var item = 0, item_limit=feedStorage.length; item < item_limit; item++) { var current_item_id = feedStorage[item].objectId; if (current_item_id == data.id) { index_to_get_rid_of = item; }; }; feedStorage.splice(index_to_get_rid_of,1);}; break;
-                case "Agenda": if( !jQuery.isEmptyObject(agendaStorage)) { CreateAgenda(); }; if(data.event == "Publish") { TransmissionBanner(data.banner,data.link); try{window.navigator.vibrate([400,400])}catch(e){} }; break;
-                case "Answers": if(location.hash == data.link){if( document.getElementById(data.id) == null ){Backendless.Persistence.of( Answers ).findById(data.id).then(function(result){PushAnswers([result],"Prepend")}).catch(function(e){})}} else { TransmissionBanner(data.banner,data.link);try{window.navigator.vibrate([400,400])}catch(e){} };break;
-                case "Wiki": if(data.event == "Publish") { TransmissionBanner(data.banner,data.link); try{window.navigator.vibrate([400,400])}catch(e){}; wikiInitialized = false; if(location.hash.slice(0,5) == "#wiki") {HashFunction()}; } else if(data.event == "Edit") { if(data.id == location.hash.slice(location.hash.lastIndexOf("=") + 1)) { if(location.hash.slice(0,13) == "#content=wiki") { document.getElementById("wikiAlertButton").style.display = "block"; try{window.navigator.vibrate([400,400])}catch(e){} }; if(location.hash.slice(0,10) == "#edit=wiki") { document.getElementById("wikiAlertEditButton").style.display = "block"; try{window.navigator.vibrate([400,400])}catch(e){} } } };
-            };
-        };
-    };
-};
+
 var UpdateEditWiki = function() { var condition = confirm("Questa pagina è stata modificata. Vuoi aprirla in un'altra scheda?"); if(condition) { window.open(window.location) } }; var UpdateReadWiki = function() { var condition = confirm("Questa pagina è stata modificata. Vuoi aggiornarla?"); if(condition) { HashFunction() } };
 
 // Publish Menus
@@ -1911,7 +1911,7 @@ var OnPublish = function(selection) {
             var file_url;
             var file_element;
             if (file_size < 25165824) {
-                function FileUpload(where_to_upload) { Backendless.Files.upload( file_to_upload, where_to_upload, false).then( function(result) { file_url = result.fileURL; var databaseFileUrl = file_url.replace("files//", "files/"); var dataStore = Backendless.Persistence.of( Feed ); var feedObject = new Feed( { type: "File", title: file_title, text: file_text, url: databaseFileUrl, size: file_size, author_username: Author.name, author_fullname: FullName } ); dataStore.save( feedObject ).then( function(result) { file_element = result; feedStorage.unshift(result); PushFeed([result], "Prepend"); var recipients = []; for (var i=0, i_limit=userStorage.length; i < i_limit; i++) { var current_user = userStorage[i]; if (current_user.receiveFiles) { if (current_user.registred) { var current_email = current_user.email; recipients.push(current_email); }; }; };current_user = LoggedUser; var subject = "" + current_user.first_name + " " + current_user.last_name + " ha pubblicato il file '" + file_title + "'"; var bodyParts = new Bodyparts(); bodyParts.textmessage = ""; bodyParts.htmlmessage = "<!DOCTYPE html><html><header></header><body style='font-family: sans-serif;'><div style='font-size: 50px;'>il<strong>mov</strong>nino<strong>.tk</strong></div><div style='font-size: 30px; font-weight: lighter;'>email</div><h3 style='font-weight:lighter;'>" + subject + "</h3><p style='font-weight: lighter;'>" + file_text + "</p><h3 style='font-weight:lighter;'>" + file_name + " - " + formatBytes(file_size) + "</h3><p>Trovi questo file tra gli allegati della mail</p><h4>RIGUARDO IL SITO</h6><p>'ilmovnino.tk' &egrave; lo spazio web riservato al 5 Scientifico dove condividere, comunicare, informarsi.</p><a href='http://www.ilmovnino.tk/'>ilmovnino.tk</a></body></html>"; var attachments = []; var file_to_send = file_url.slice(file_url.indexOf("/web/files/")); attachments.push(file_to_send);Backendless.Messaging.sendEmail( subject, bodyParts, recipients, attachments ).then( function(result) { try{PingEdit(result.objectId,"feed")}catch(e){}; SendTransmission(result.objectId,"Feed","Publish","File da " + FullName,databaseFileUrl); SendNotification(file_element, bannerID); } ).catch( function(err) { console.log(err); SendNotification(file_element, bannerID); } ); }).catch( function(err) { ErrorBanner(bannerID); var file_to_remove = file_url.replace("files//", "files/"); Backendless.Files.remove( file_to_remove ); } ); } ).catch( function(err) { if (firstTime) { var randomUrl = "" + Math.random();randomUrl = randomUrl.replace(".","");var where_to_upload = "/web/files/" + randomUrl; FileUpload(where_to_upload);firstTime = false; } else { ErrorBanner(bannerID) }; }); };
+                function FileUpload(where_to_upload) { Backendless.Files.upload( file_to_upload, where_to_upload, false).then( function(result) { file_url = result.fileURL; var databaseFileUrl = file_url.replace("files//", "files/"); var dataStore = Backendless.Persistence.of( Feed ); var feedObject = new Feed( { type: "File", title: file_title, text: file_text, url: databaseFileUrl, size: file_size, author_username: Author.name, author_fullname: FullName } ); dataStore.save( feedObject ).then( function(result) { file_element = result; feedStorage.unshift(result); PushFeed([result], "Prepend"); var recipients = []; for (var i=0, i_limit=userStorage.length; i < i_limit; i++) { var current_user = userStorage[i]; if (current_user.receiveFiles) { if (current_user.registred) { var current_email = current_user.email; recipients.push(current_email); }; }; };current_user = LoggedUser; var subject = "" + current_user.first_name + " " + current_user.last_name + " ha pubblicato il file '" + file_title + "'"; var bodyParts = new Bodyparts(); bodyParts.textmessage = ""; bodyParts.htmlmessage = "<!DOCTYPE html><html><header></header><body style='font-family: sans-serif;'><div style='font-size: 50px;'>il<strong>mov</strong>nino<strong>.tk</strong></div><div style='font-size: 30px; font-weight: lighter;'>email</div><h3 style='font-weight:lighter;'>" + subject + "</h3><p style='font-weight: lighter;'>" + file_text + "</p><h3 style='font-weight:lighter;'>" + file_name + " - " + formatBytes(file_size) + "</h3><p>Trovi questo file tra gli allegati della mail</p><h4>RIGUARDO IL SITO</h6><p>'ilmovnino.tk' &egrave; lo spazio web riservato al 5 Scientifico dove condividere, comunicare, informarsi.</p><a href='https://www.ilmovnino.tk/'>ilmovnino.tk</a></body></html>"; var attachments = []; var file_to_send = file_url.slice(file_url.indexOf("/web/files/")); attachments.push(file_to_send);Backendless.Messaging.sendEmail( subject, bodyParts, recipients, attachments ).then( function(result) { try{PingEdit(result.objectId,"feed")}catch(e){}; SendTransmission(result.objectId,"Feed","Publish","File da " + FullName,databaseFileUrl); SendNotification(file_element, bannerID); } ).catch( function(err) { console.log(err); SendNotification(file_element, bannerID); } ); }).catch( function(err) { ErrorBanner(bannerID); var file_to_remove = file_url.replace("files//", "files/"); Backendless.Files.remove( file_to_remove ); } ); } ).catch( function(err) { if (firstTime) { var randomUrl = "" + Math.random();randomUrl = randomUrl.replace(".","");var where_to_upload = "/web/files/" + randomUrl; FileUpload(where_to_upload);firstTime = false; } else { ErrorBanner(bannerID) }; }); };
                 FileUpload("/web/files");
                 DisplayBanner(bannerID, "Carico File...");
                 OnBack();
@@ -2475,18 +2475,6 @@ var FileOnOff = function() {
       alert("Connettiti ad Internet");
   };
 };
-var AwarenessOnOff = function() {
-  if (navigator.onLine) {
-    var bannerID = "" + new Date().getTime();
-    var choice = document.getElementById("awareness-check").checked;
-    if(choice) { var revertChoice = false} else { var revertChoice = true};
-    document.getElementById("awareness-check").disabled = true;
-    Backendless.UserService.getCurrentUser().then(function(result) { result.awareness = choice; Backendless.UserService.update( result ).then(function(){document.getElementById("awareness-check").disabled = false; SuccessBanner(bannerID);location.reload();}).catch(function(err){document.getElementById("awareness-check").disabled = false; document.getElementById("awareness-check").checked = revertChoice; ErrorBanner(bannerID)});}).catch(function(err){document.getElementById("awareness-check").disabled = false; document.getElementById("awareness-check").checked = revertChoice; ErrorBanner(bannerID)});
-    DisplayBanner(bannerID,"Aggiorno impostazioni...");
-  } else {
-      alert("Connettiti ad Internet");
-  };
-};
 
 // Notifiche e RSS
 var SendNotification = function(currentElement, bannerID, custo_title, custo_text, custo_url, answerReciever) {
@@ -2495,17 +2483,17 @@ var SendNotification = function(currentElement, bannerID, custo_title, custo_tex
     if(currentElement.text == "") {currentElement.text = "Contenuto non disponibile"};
     try{if (currentElement.subject == "ScienzeMotorie") { currentElement.subject = "Educazione Fisica"; } else if (currentElement.subject == "ArteDisegno") { currentElement.subject = "Arte e disegno"; };} catch(e){};
     switch(currentElement.type) {
-        case "Notizia": title = "Notizia da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
-        case "Domanda": title = "Domanda da " + currentElement.author_fullname ; content = currentElement.title; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
-        case "Link": title = "Link da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
-        case "File": title = "File da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
-        case "Youtube": title = "Youtube da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
-        case "Compito": title = "Compito da " + currentElement.author_fullname + ": " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
-        case "Valutazione": title = "Valutazione da " + currentElement.author_fullname + ": " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
-        case "Volontario": title = currentElement.author_fullname + " è volontario di " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
-        case "Promemoria": title = "Promemoria da " + currentElement.author_fullname + " per il " + currentElement.data; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
-        case "Evento": title = "Evento da " + currentElement.author_fullname + ": '" + currentElement.title + "' per il " + currentElement.data; content = currentElement.text; link = "http://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
-        case "Wiki": title = "Pagina da " + currentElement.author_fullname + " di " + currentElement.subject.capitalizeFirstLetter(); content = currentElement.title; link = "http://www.ilmovnino.tk/#content=wiki&id=" + currentElement.objectId; break;
+        case "Notizia": title = "Notizia da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
+        case "Domanda": title = "Domanda da " + currentElement.author_fullname ; content = currentElement.title; link = "https://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
+        case "Link": title = "Link da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
+        case "File": title = "File da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
+        case "Youtube": title = "Youtube da " + currentElement.author_fullname + ": '" + currentElement.title + "'"; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=feed&id=" + currentElement.objectId; break;
+        case "Compito": title = "Compito da " + currentElement.author_fullname + ": " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
+        case "Valutazione": title = "Valutazione da " + currentElement.author_fullname + ": " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
+        case "Volontario": title = currentElement.author_fullname + " è volontario di " + currentElement.subject.capitalizeFirstLetter() + " per il " + currentElement.data; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
+        case "Promemoria": title = "Promemoria da " + currentElement.author_fullname + " per il " + currentElement.data; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
+        case "Evento": title = "Evento da " + currentElement.author_fullname + ": '" + currentElement.title + "' per il " + currentElement.data; content = currentElement.text; link = "https://www.ilmovnino.tk/#content=agenda&id=" + currentElement.objectId; break;
+        case "Wiki": title = "Pagina da " + currentElement.author_fullname + " di " + currentElement.subject.capitalizeFirstLetter(); content = currentElement.title; link = "https://www.ilmovnino.tk/#content=wiki&id=" + currentElement.objectId; break;
         case "Custom": title = custo_title; content = custo_text; link = custo_url; bannerOK = false; if(answerReciever!=null){notificationRelation = "=";currentElement.author_username = answerReciever; rssOK = false;}; break;
         default: alertOK = false; rssOK = false; break;
     };
@@ -2555,7 +2543,7 @@ var SendNotification = function(currentElement, bannerID, custo_title, custo_tex
 					});
                     for(p=0;p<items.length;p++){if(items[p] != undefined){ var tempRSSstring = "<item>" + items[p].context.innerHTML + "</item>"; stringItems.push(tempRSSstring) } };
                     stringItems = stringItems.slice(0,26);
-                    var rss = "<?xml version=\"1.0\" encoding=\"utf-8\"?><rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel><title>ilmovnino.tk RSS</title><atom:link href=\"http://beta.ilmovnino.tk/feed/feed.xml\" rel=\"self\" type=\"application/rss+xml\"/><link>http://ilmovnino.tk/</link><description>\"ilmovnino.tk RSS\" è il feed RSS che propone gli ultimi 25 elementi pubblicati su \"ilmovnino.tk\". Riguardo il sito: \"ilmovnino.tk\" è lo spazio web riservato al 5 Scientifico dove condividere, comunicare, informarsi.</description><item><title><![CDATA[" + title + "]]></title><link><![CDATA[" + link + "]]></link><guid><![CDATA[" + link + "]]></guid><pubDate>" + new Date(currentElement.created).toUTCString() + "</pubDate><description><![CDATA[" + content + "]]></description></item>" + stringItems.join("") + "</channel></rss>";
+                    var rss = "<?xml version=\"1.0\" encoding=\"utf-8\"?><rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\"><channel><title>ilmovnino.tk RSS</title><atom:link href=\"http://api.ilmovnino.tk/feed/feed.xml\" rel=\"self\" type=\"application/rss+xml\"/><link>https://ilmovnino.tk/</link><description>\"ilmovnino.tk RSS\" è il feed RSS che propone gli ultimi 25 elementi pubblicati su \"ilmovnino.tk\". Riguardo il sito: \"ilmovnino.tk\" è lo spazio web riservato al 5 Scientifico dove condividere, comunicare, informarsi.</description><item><title><![CDATA[" + title + "]]></title><link><![CDATA[" + link + "]]></link><guid><![CDATA[" + link + "]]></guid><pubDate>" + new Date(currentElement.created).toUTCString() + "</pubDate><description><![CDATA[" + content + "]]></description></item>" + stringItems.join("") + "</channel></rss>";
                     var byteArray = new Blob( [rss] ); 
                     Backendless.Files.saveFile( "/web/feed", "feed.xml", byteArray, true ).then(function(result){ rssFinished = true;if(alertFinished && bannerOK) { SuccessBanner(bannerID); }; }).catch(function(err){ rssFinished = true;if(alertFinished && bannerOK) { SuccessBanner(bannerID); }; console.log(err) });
                 } else {
@@ -2568,6 +2556,61 @@ var SendNotification = function(currentElement, bannerID, custo_title, custo_tex
         };
         xhr.send(null);
     }; 
+};
+
+// Print
+var FillPrint = function(what) {
+    var filling = "";
+    if ( what == "element" ) {
+        document.getElementById("print-body").className = "";
+        filling = document.getElementById("ol-content").innerHTML;
+    } else if ( what == "wikielement" ) {
+        document.getElementById("print-body").className = "";
+        filling = document.getElementById("wiki-html-view").innerHTML;
+    } else if ( what == "agenda" ) {
+        document.getElementById("print-body").className = ""; var fil1 = ""; var fill2 = "";
+        if(document.getElementById("agenda-field").value != "") {
+            current_input = document.getElementById("agenda-field").value;
+            current_input = current_input.slice(3,5) + "/" + current_input.slice(0,2) + current_input.slice(5);
+            var current_date = new Date(current_input);
+        } else {
+            var current_date = new Date();
+        };
+        var HomeGiorno, HomeMese, HomeAnno = current_date.getFullYear(), HomeNum = current_date.getDate();
+        switch(current_date.getDay()) {
+            case 0: HomeGiorno = "Domenica"; break;
+            case 1: HomeGiorno = "Luned&igrave;"; break;
+            case 2: HomeGiorno = "Marted&igrave;"; break;
+            case 3: HomeGiorno = "Mercoled&igrave;"; break;
+            case 4: HomeGiorno = "Gioved&igrave;"; break;
+            case 5: HomeGiorno = "Venerd&igrave;"; break;
+            case 6: HomeGiorno = "Sabato"; break;
+        };
+        switch(current_date.getMonth()) {
+            case 0: HomeMese = "Gennaio"; break;
+            case 1: HomeMese = "Febbraio"; break;
+            case 2: HomeMese = "Marzo"; break;
+            case 3: HomeMese = "Aprile"; break;
+            case 4: HomeMese = "Maggio"; break;
+            case 5: HomeMese = "Giugno"; break;
+            case 6: HomeMese = "Gennaio"; break;
+            case 7: HomeMese = "Agosto"; break;
+            case 8: HomeMese = "Settembre"; break;
+            case 9: HomeMese = "Ottobre"; break;
+            case 10: HomeMese = "Novembre"; break;
+            case 11: HomeMese = "Dicembre"; break;
+        };
+        fill1 = '<div style="width=100%;display: flex;font-size: 2.2em;justify-content: center;flex-wrap: wrap;box-sizing:border-box; padding:1em;">' + HomeGiorno + ", " + HomeNum + " " + HomeMese + " " + HomeAnno + '</div>';
+        fill2 = document.getElementById("c-agenda").innerHTML;
+        filling = fill1 + fill2;
+    } else if ( what == "piantina" ) {
+        document.getElementById("print-body").className = "no-print";
+        filling = '<div style="width: 30em;height: 30em;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;opacity: 0.8"><img src="assets/icons/printer.svg" style="width: 12em;max-width: auto !important;margin-bottom: 1em"><div style="font-family:NinoFont;font-weight:lighter;font-size:2em;margin: 0 0.5em;">per stampare la piantina premi il pulsante "stampa" accanto a "modifica"</div><a href="https://www.ilmovnino.tk/legacy" style="color: black;margin: 0.7em;font-family: NinoFont;font-weight: lighter;text-decoration: none;font-size: 1.2em;">il<span style="font-weight: 800;">mov</span><span style="font-weight:normal">nino</span><span style="font-weight:800">.tk</span></a></div>';
+    } else {
+        document.getElementById("print-body").className = "no-print";
+        filling = '<div style="width: 30em;height: 30em;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;opacity: 0.8"><img src="assets/icons/printer.svg" style="width: 12em;max-width: auto !important;margin-bottom: 1em"><div style="font-family:NinoFont;font-weight:lighter;font-size:2em;margin: 0 0.5em;">non c' + "'" + 'è nulla da stampare</div><a href="https://www.ilmovnino.tk/legacy" style="color: black;margin: 0.7em;font-family: NinoFont;font-weight: lighter;text-decoration: none;font-size: 1.2em;">il<span style="font-weight: 800;">mov</span><span style="font-weight:normal">nino</span><span style="font-weight:800">.tk</span></a></div>';
+    };
+    document.getElementById("print-body").innerHTML = filling;
 };
 
 var DisplayBanner = function(id, text) {
@@ -2638,3 +2681,4 @@ $(function() {
     $( "#agenda-field" ).datepicker();
     $( "#date-field" ).datepicker();
 });
+function SendTransmission() {};
