@@ -102,14 +102,15 @@ var Login = function() {
         document.getElementById("lgb").className += " buttonloading";
         document.getElementById("lgb").innerText = "ATTENDI...";
         Backendless.UserService.login( username, password, true ).then(function(user) {
-            document.getElementById("logform").submit();
             var condition = user.registred;
             if (condition) {
                 if(location.hash.slice(1,5) == "from") {
                     if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
+                    document.getElementById("logform").submit();
                     window.location = "index.html#" + location.hash.slice(6);
                 } else {
                     if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
+                    document.getElementById("logform").submit();
                     window.location = "index.html";
                 };
             } else {
