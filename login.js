@@ -117,15 +117,32 @@ var Login = function() {
                 window.location = "register.html";
             };
         }).catch(function(err) {
-            PageAvaileble = true; EnableAll(true);
-            document.getElementById("lgb").className = "overlay-button";
-            document.getElementById("lgb").innerText = "LOGIN";
-            if(err.code == 3003) {
-                alert("Username o Password errati");
-            } else {
-                alert("Errore, riprova");
-            };
-            console.log(err);
+            Backendless.UserService.login( username, password, true ).then(function(user) {
+                var condition = user.registred;
+                if (condition) {
+                    if(location.hash.slice(1,5) == "from") {
+                        if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
+                        document.getElementById("logform").submit();
+                        window.location = "index.html#" + location.hash.slice(6);
+                    } else {
+                        if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
+                        document.getElementById("logform").submit();
+                        window.location = "index.html";
+                    };
+                } else {
+                    window.location = "register.html";
+                };
+            }).catch(function(err) {
+                PageAvaileble = true; EnableAll(true);
+                document.getElementById("lgb").className = "overlay-button";
+                document.getElementById("lgb").innerText = "LOGIN";
+                if(err.code == 3003) {
+                    alert("Username o Password errati");
+                } else {
+                    alert("Errore, riprova");
+                };
+                console.log(err);
+            });
         });
     };
   } else {
