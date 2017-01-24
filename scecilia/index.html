@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sales Festival Night DV - ilmovnino.tk</title>
+        <meta charset="utf-8">
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <link type="text/css" rel="stylesheet" href="animate.css">
+        <script src="script.js"></script>
+        <script src="jquery.js"></script>
+        <script src="gapless5.js"></script>
+        <script src="range-touch.min.js"></script>
+        <script src="CSS.supports.js"></script>
+    </head>
+    <body onload="Start(); iOSaudio();">
+        <div id="closemenu" onclick="CloseShareMenu()"></div>
+        <div id="wallpaper"></div>
+        <header>
+            <div class="header-container" id="home-header">
+                <div title="Attiva / Disattiva sottofondo musicale" class="h-button" onclick="SwitchVolume()" id="h-volume1"></div>
+                <div class="h-title">home</div>
+                <div title="Ricarica la pagina" class="h-button" onclick="Reload()" id="h-reload"></div>
+            </div>
+            <div class="header-container" id="folder-header" style="display:none">
+                <div title="Indietro" class="h-button" onclick="Back()" id="h-back"></div>
+                <div class="h-title" id="fh-title">Selezione scene</div>
+                <div title="Attiva / Disattiva sottofondo musicale" class="h-button" onclick="SwitchVolume()" id="h-volume2"></div>
+            </div>
+        </header>
+        <div id="container" onclick="CloseShareMenu()">
+            <div id="home">
+                <div class="center-body">
+                    <div class="cb-left">
+                        <div class="big-title margin-bot">Sales<br>Festival<br>Night</div>
+                    </div>
+                    <div class="cb-right">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4')">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div class="el-title">Guarda la serata completa</div>
+                        </div>
+                        <div class="play-element" onclick="OpenFolder('scene')">
+                            <img class="folder-prev" src="folder.svg" />
+                            <div class="el-title">Selezione scene</div>
+                        </div>
+                        <div class="play-element" onclick="OpenFolder('extra')">
+                            <img class="folder-prev" src="folder.svg" />
+                            <div class="el-title">Extra</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="folder-scene" class="folder-container">
+                <div class="folder-body">
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 56)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">"Buona la prima"</div><div>Con Domenico Belfiore</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 187)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Fabrizio Garipoli</div><div>Don Paolo Fichera</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 285)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Scena Supereroi</div><div>"Super-Supereroi"</div></div>
+                        </div>
+                    </div>
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 574)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Fabrizio Garipoli</div><div>Nuvole Bianche di Ludovico Einaudi</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 1020)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Riccardo L'Ex allievo</div><div>Bob Dylan e Inedito</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 1630)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Ballo 3 Classico</div></div>
+                        </div>
+                    </div>
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 1995)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Tiziano Grancagnolo</div><div>Coat of Arms dei Sabaton</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 2251)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Video 5 Scientifico</div><div>Il Trono di Pali e Ricordi</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 3113)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Tiffany Ott</div><div>When I was a man di Bruno Mars</div></div>
+                        </div>
+                    </div>
+                    <div class="folder-block">
+                        
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 3376)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div class="el-title">Ballo 5 Scientifico</div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 3659)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Martina Terranova</div><div>Invece no di Laura Pausini</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 3956)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Video 3 Classico</div><div>"A contro B"</div></div>
+                        </div>
+                    </div>
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 4351)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Giovanni Coppola</div><div>Monologo The Killing jocker</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 4548)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Ballo "Candy Man"</div><div>Marzia/Federico Carla/Mirto Dalila/Giuseppe</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 4727)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Martina Terranova</div><div>Allelujiah di Cohen</div></div>
+                        </div>
+                    </div>
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 5072)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Scena Romantica</div><div>"Lui, lei e Leo"</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/full_hd.mp4','video/full_sd.mp4', 5435)">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div class="el-title">Canzone Finale</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="folder-extra" class="folder-container">
+                <div class="folder-body">
+                    <div class="folder-block">
+                        <div class="play-element" onclick="WatchVideo('video/il_trono_di_pali_hd.mp4','video/il_trono_di_pali_sd.mp4')">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div><div class="el-title">Il Trono di Pali</div><div>Riuscirà il nostro eroe a schivare il palo?</div></div>
+                        </div>
+                        <div class="play-element" onclick="WatchVideo('video/ricordi_5sc.mp4')">
+                            <div class="video-prev"><img src="play.svg"></div>
+                            <div class="el-title">Ricordi 5 Scientifico</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="player">
+            <div id="fallback-controls"></div>
+            <div id="back-gradient" class="firstload"></div>
+            <div id="loader" class="sk-fading-circle"><div class="sk-circle1 sk-circle"></div><div class="sk-circle2 sk-circle"></div><div class="sk-circle3 sk-circle"></div><div class="sk-circle4 sk-circle"></div><div class="sk-circle5 sk-circle"></div><div class="sk-circle6 sk-circle"></div><div class="sk-circle7 sk-circle"></div><div class="sk-circle8 sk-circle"></div><div class="sk-circle9 sk-circle"></div><div class="sk-circle10 sk-circle"></div><div class="sk-circle11 sk-circle"></div><div class="sk-circle12 sk-circle"></div></div>
+            <video id="video" webkit-playsinline="true" playsinline="true" onloadedmetadata="AfterWV()" ontimeupdate="UpdateTime()" ondurationchange="UpdateDuration()" onwaiting="CannotPlay()" oncanplaythrough="CanPlay()" onseeking="CannotPlay()" onseeked="CanPlay()" onplaying="Playing()" onpause="Paused()" onended="Paused()"></video>
+            <div id="video-controls" class="firstload">
+                <div id="top-controls">
+                    <div title="Indietro" class="h-button" onclick="ExitPlay()" ontouchstart="Stopp(event)" id="h-backVideo"></div>
+                    <div id="real-time" class="video-time"><div id="time-passed">00:00:15</div>&nbsp;/&nbsp;<div id="total-time">00:07:56</div></div>
+                    <div id="scrub-time" class="video-time"><div id="scrub-passed">00:00:15</div>&nbsp;/&nbsp;<div id="total-scrub">00:07:56</div></div>
+                </div>
+                <!--<div id="touchstartold" ontouchstart="HideControls()" style="flex-grow: 2;width: 100%;"></div>-->
+                <div id="touchstart" style="position: fixed;width: 100vw;height: 100vh;left: 0;right: 0;top: 0;bottom: 0;margin: auto;z-index: 0;"></div>
+                <div id="bottom-controls">
+                    <div id="bc-top" ontouchstart="Stopp(event)"><div id="buffered"></div><div id="played"></div><input id="scrub" ontouchstart="OnScrubDown()" ontouchend="OnScrubUp()" onmousedown="OnScrubDown()" onmouseup="OnScrubUp()" oninput="OnScrubInput()" type="range" step="0.001" min="0" max="100" value="0"></div>
+                    <div id="bc-bottom"><div id="def-controls"><div id="h-hd" onclick="SwitchDef()" ontouchstart="Stopp(event)" style="display: none;"><div class="hhs1">HD</div><div class="hhs2">SD</div></div><div id="h-sd" onclick="SwitchDef()" ontouchstart="Stopp(event)" style="display: none;"><div class="hhs1">SD</div><div class="hhs2">HD</div></div></div><div style="display: flex"><div title="Indietro di 30 Secondi" class="h-button" onclick="Prev()" ontouchstart="Stopp(event)" id="h-prev"></div><div title="Riproduci" class="h-button" onclick="Play(null, true)" ontouchstart="Stopp(event)" id="h-play" style="display: block;"></div><div title="Pausa" class="h-button" onclick="Pause(null, true)" ontouchstart="Stopp(event)" id="h-pause" style="display: none;"></div><div title="Avanti di 30 secondi" class="h-button" onclick="Next()" ontouchstart="Stopp(event)" id="h-next"></div></div><div style="font-size: 0.9em;display: flex;justify-content: space-between;width: 65px;"><div title="Scarica" class="h-button" onclick="Download()" ontouchstart="Stopp(event)" id="h-backVideo" style="background-image: url(&quot;download.svg&quot;); height: 1.8em;"></div><div title="Attiva schermo intero" class="h-button" onclick="FullOn()" ontouchstart="Stopp(event)" id="h-fullIn"></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div id="garbage" style="display: none"></div>
+        <a id="a" download href="" style="display: none"></a>
+        <audio id="background" controls><source src="background.mp3" type="audio/mpeg"></audio>
+        <footer>
+          <div id="footer-container">
+              <div id="share-menu" onclick="CloseShareMenu()">
+                  <a title="Condividi su Facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.ilmovnino.tk/scecilia"><div class="sm-choice"><img src="facebook.svg" /><div>Facebook</div></div></a>
+                  <a title="Condividi su Twitter" target="_blank" href="https://twitter.com/home?status=Guarda%20Sales%20Festival%20Night%20da%20questo%20link%3A%20http%3A//www.ilmovnino.tk/scecilia"><div class="sm-choice"><img src="twitter.svg" /><div>Twitter</div></div></a>
+                  <a title="Condividi su Google+" target="_blank" href="https://plus.google.com/share?url=http%3A//www.ilmovnino.tk/scecilia"><div class="sm-choice"><img src="google+.svg" /><div>Google+</div></div></a>
+                  <a title="Condividi su Whatsapp" id="toremifnotm" target="_blank" href="whatsapp://send?text=Guarda Sales Festival Night da questo link: http://www.ilmovnino.tk/scecilia" data-action="share/whatsapp/share" id="toremifnotm"><div class="sm-choice"><img src="whatsapp.svg" /><div>Whatsapp</div></div></a>
+                  <a title="Condividi via Mail" id="shareNewsA" href="mailto:?&amp;subject=Guarda Sales Festival Night&amp;body=Guarda Sales Festival Night da questo link: http://www.ilmovnino.tk/scecilia"><div class="sm-choice"><img src="mail.svg" /><div>Mail</div></div></a>
+              </div>
+              <div id="share-container" onclick="OpenShareMenu()"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU4IDU4IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1OCA1ODsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIzMnB4IiBoZWlnaHQ9IjMycHgiPgo8Zz4KCTxwYXRoIGQ9Ik01NC4zMTksMzcuODM5QzU0Ljc2MiwzNS45MTgsNTUsMzMuOTYsNTUsMzJjMC05LjA5NS00LjYzMS0xNy4zNzctMTIuMzg5LTIyLjE1M2MtMC40NzMtMC4yOS0xLjA4Ny0wLjE0My0xLjM3NiwwLjMyNyAgIGMtMC4yOSwwLjQ3MS0wLjE0MywxLjA4NiwwLjMyNywxLjM3NkM0OC43MjQsMTUuOTYsNTMsMjMuNjA0LDUzLDMyYzAsMS43MjYtMC4yLDMuNDUxLTAuNTczLDUuMTQ3QzUxLjk2NiwzNy4wNTEsNTEuNDg5LDM3LDUxLDM3ICAgYy0zLjg2LDAtNywzLjE0MS03LDdzMy4xNCw3LDcsN3M3LTMuMTQxLDctN0M1OCw0MS4zNDEsNTYuNTA5LDM5LjAyNCw1NC4zMTksMzcuODM5eiBNNTEsNDljLTIuNzU3LDAtNS0yLjI0My01LTVzMi4yNDMtNSw1LTUgICBzNSwyLjI0Myw1LDVTNTMuNzU3LDQ5LDUxLDQ5eiIgZmlsbD0iI0ZGRkZGRiIvPgoJPHBhdGggZD0iTTM4LjE3MSw1NC4xODJDMzUuMjU2LDU1LjM4OCwzMi4xNzEsNTYsMjksNTZjLTYuMzg1LDAtMTIuNTI3LTIuNTc1LTE3LjAxNy03LjA5MkMxMy4yMjksNDcuNjQzLDE0LDQ1LjkxMSwxNCw0NCAgIGMwLTMuODU5LTMuMTQtNy03LTdzLTcsMy4xNDEtNyw3czMuMTQsNyw3LDdjMS4yMjYsMCwyLjM3OC0wLjMxOSwzLjM4MS0wLjg3NUMxNS4yNiw1NS4xMzYsMjEuOTk0LDU4LDI5LDU4ICAgYzMuNDM1LDAsNi43NzgtMC42NjMsOS45MzYtMS45NzFjMC41MS0wLjIxMSwwLjc1My0wLjc5NiwwLjU0Mi0xLjMwN0MzOS4yNjcsNTQuMjEzLDM4LjY4MSw1My45NzEsMzguMTcxLDU0LjE4MnogTTIsNDQgICBjMC0yLjc1NywyLjI0My01LDUtNXM1LDIuMjQzLDUsNXMtMi4yNDMsNS01LDVTMiw0Ni43NTcsMiw0NHoiIGZpbGw9IiNGRkZGRkYiLz4KCTxwYXRoIGQ9Ik00LDMxLjIxM2MwLjAyNCwwLjAwMiwwLjA0OCwwLjAwMywwLjA3MSwwLjAwM2MwLjUyMSwwLDAuOTU5LTAuNDAyLDAuOTk3LTAuOTNjMC43MTItMTAuMDg5LDcuNTg2LTE4LjUyLDE3LjIyLTIxLjMxNCAgIEMyMy4xNDIsMTEuODc0LDI1LjgyNSwxNCwyOSwxNGMzLjg2LDAsNy0zLjE0MSw3LTdzLTMuMTQtNy03LTdjLTMuODUxLDAtNi45ODUsMy4xMjctNi45OTksNi45NzUgICBDMTEuNDIsOS45MjIsMy44NTEsMTkuMTIsMy4wNzMsMzAuMTQ2QzMuMDM0LDMwLjY5NiwzLjQ0OSwzMS4xNzUsNCwzMS4yMTN6IE0yOSwyYzIuNzU3LDAsNSwyLjI0Myw1LDVzLTIuMjQzLDUtNSw1cy01LTIuMjQzLTUtNSAgIFMyNi4yNDMsMiwyOSwyeiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="><div id="s-text">condividi</div></div>
+              <a title="ilmovnino.tk &egrave; lo spazio web del 5 Scientifico dove condividere, comunicare, informarsi" target="_blank" href="http://www.ilmovnino.tk/" style="font-size: 2em"><div id="logo">il<span style="font-weight:bolder">mov</span>nino<span style="font-weight:bolder">.tk</span></div></a>
+        </div>
+        </footer>
+    </body>
+</html>

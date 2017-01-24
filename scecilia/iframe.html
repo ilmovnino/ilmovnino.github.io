@@ -1,0 +1,113 @@
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Upload to Cloudinary with pure JavaScript</title>
+
+  
+    
+
+
+
+
+<script type="text/javascript">//<![CDATA[
+window.onload=function(){
+window.ajaxSuccess = function () {
+	response = JSON.parse(this.responseText);
+  console.log("ajaxSuccess", typeof this.responseText);
+  document.getElementById('uploaded').setAttribute("src", response["secure_url"]);
+  document.getElementById('results').innerText = this.responseText;
+}
+
+window.AJAXSubmit = function (formElement) {
+  console.log("starting AJAXSubmit");
+  if (!formElement.action) { return; }
+  var xhr = new XMLHttpRequest();
+  xhr.onload = ajaxSuccess;
+  xhr.open("post", "https://api.cloudinary.com/v1_1/dlrnip7px/image/upload");
+  xhr.send(new FormData(formElement));
+}
+}//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <h1>Upload to Cloudinary with FormData</h1>
+<div>
+<p>
+
+Set your cloud name in the API URL in the code:  "https://api.cloudinary.com/v1_1/<strong>&lt;cloud&nbsp;name&gt;</strong>/image/upload" before running the example.
+</p>
+</div>
+<form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
+  <fieldset>
+    <legend>Upload example</legend>
+    <p>
+      <label for="upload_preset">Unsigned upload Preset: <input type="text" name="upload_preset">(set it <a href="https://cloudinary.com/console/settings/upload#upload_presets">here</a>)</label>
+    </p>
+    <p>
+      <label>Select your photo:
+      <input type="file" name="file" multiple=""></label>
+    </p>
+    
+    <p>
+      <input type="submit" value="Submit">
+    </p>
+    <img id="uploaded">
+    <div id="results"></div>
+  </fieldset>
+</form>
+zah2tttd
+
+
+
+
+
+
+  
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "None"
+    }], "*")
+  }
+</script>
+
+
+
+
+
+</body></html>
