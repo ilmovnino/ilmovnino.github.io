@@ -106,12 +106,12 @@ var Login = function() {
             if (condition) {
                 if(location.hash.slice(1,5) == "from") {
                     if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
-                    window.location = "index.html#" + location.hash.slice(6);
                     document.getElementById("logform").submit();
+                    window.location = "index.html#" + location.hash.slice(6);
                 } else {
                     if(document.getElementById("savepw").checked) { if(window.btoa) { localStorage.pw = window.btoa( document.getElementById("password-field").value ) } } else {};
-                    window.location = "index.html";
                     document.getElementById("logform").submit();
+                    window.location = "index.html";
                 };
             } else {
                 window.location = "register.html";
