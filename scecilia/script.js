@@ -86,7 +86,7 @@ function Start() {
         playOnLoad: true
     });
     if( navigator.userAgent.match(/iPad/i) ) { document.getElementsByTagName("body")[0].style.minHeight = "95vh"; document.getElementById("video").style.height = "93vh"; $("#closemenu ,#home ,.center-body ,.folder-container").addClass("iPad"); $("#container").addClass("miniPad"); };
-    HashFunction(first);
+    HashFunction(true);
     $("#video-controls").removeClass("firstload"); $("#back-gradient").removeClass("firstload");
     try { SetKeyUp() } catch(e) {};
     console.log("%cil%cmov%cnino%c.tk%c DV", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7");
