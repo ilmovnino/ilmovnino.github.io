@@ -34,7 +34,7 @@ function DetectiOS() {
 try{document.addEventListener('touchstart', document.getElementsByTagName("body")[0], { passive: true});
 }catch(err){};
 window.addEventListener("hashchange", function(event){ if((Previous[0] != event.oldURL) && (PrevPage != event.oldURL)) { Previous.unshift(event.oldURL); PrevPage = ""; }; HashFunction() });
-function HashFunction() {
+function HashFunction(first) {
     HideAnything();
     if (location.hash == "#home") {
         $("header").css("display", "flex");
@@ -54,7 +54,7 @@ function HashFunction() {
         $("#folder-extra").css("display", "flex");
         $("footer").css("display", "flex");
     } else if (location.hash.slice(0,6) == "#watch") {
-        window.history.go(-1);
+        if(!first) { window.history.go(-1) };
     } else {
         location.hash = "home";
     };
@@ -86,7 +86,7 @@ function Start() {
         playOnLoad: true
     });
     if( navigator.userAgent.match(/iPad/i) ) { document.getElementsByTagName("body")[0].style.minHeight = "95vh"; document.getElementById("video").style.height = "93vh"; $("#closemenu ,#home ,.center-body ,.folder-container").addClass("iPad"); $("#container").addClass("miniPad"); };
-    HashFunction();
+    HashFunction(first);
     $("#video-controls").removeClass("firstload"); $("#back-gradient").removeClass("firstload");
     try { SetKeyUp() } catch(e) {};
     console.log("%cil%cmov%cnino%c.tk%c DV", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:bolder;font-family:NinoFont, Arial, sans-serif;opacity:0.7", "color:black;font-size:5em;font-weight:lighter;font-family:NinoFont, Arial, sans-serif;opacity:0.7");
