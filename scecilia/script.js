@@ -41,12 +41,20 @@ function HashFunction(first) {
         $("#home-header").css("display", "flex");
         $("#home").css("display", "block");
         $("footer").css("display", "flex");
+        $("body").removeClass("playing-body");
+        Ended();
+        $("#player").fadeOut(150);
+        if (intentionallyOn) { player.play(); $("#h-volume1").css("background-image", "url('volume-up.svg')"); $("#h-volume2").css("background-image", "url('volume-up.svg')"); intentionallyOn = false; };
     } else if (location.hash == "#scene") {
         $("header").css("display", "flex");
         $("#folder-header").css("display", "flex");
         document.getElementById("fh-title").innerText = "Selezione Scene";
         $("#folder-scene").css("display", "flex");
         $("footer").css("display", "flex");
+        $("body").removeClass("playing-body");
+        Ended();
+        $("#player").fadeOut(150);
+        if (intentionallyOn) { player.play(); $("#h-volume1").css("background-image", "url('volume-up.svg')"); $("#h-volume2").css("background-image", "url('volume-up.svg')"); intentionallyOn = false; };
     } else if (location.hash == "#extra") {
         $("header").css("display", "flex");
         $("#folder-header").css("display", "flex");
@@ -191,13 +199,13 @@ function Next(e) { if(!isHidden(document.getElementById("video-controls"))) { do
 function FullOn(e) { if(!isHidden(document.getElementById("video-controls"))) { try { document.getElementById("video").requestFullscreen() } catch(e) { try { document.getElementById("video").webkitRequestFullscreen() } catch(e) { try { document.getElementById("video").mozRequestFullScreen() } catch(e) { try { document.getElementById("video").msRequestFullscreen() } catch(e) { try { document.getElementById("video").webkitEnterFullscreen() } catch(e) { alert("Il tuo browser non supporta lo schermo intero"); } } } } } } };
 function UpdateTime() { document.getElementById("time-passed").innerText = new Date(document.getElementById("video").currentTime * 1000).toISOString().substr(11, 8); UpdateDuration(); UpdateScrubBar(); document.getElementById("video").volume = 1; document.getElementById("video").muted = false; document.getElementById("video").playbackRate = 1.0; };
 function UpdateDuration() { try { document.getElementById("total-time").innerText = new Date(document.getElementById("video").duration * 1000).toISOString().substr(11, 8); document.getElementById("total-scrub").innerText = new Date(document.getElementById("video").duration * 1000).toISOString().substr(11, 8); /*document.getElementById("scrub").max = document.getElementById("video").duration;*/ } catch(e) {} };
-function ExitPlay() { if(!isHidden(document.getElementById("video-controls"))) {
+function ExitPlay() {
     $("body").removeClass("playing-body");
     Ended();
     $("#player").fadeToggle(150);
-    if (intentionallyOn) { SwitchVolume(); intentionallyOn = false; };
+    if (intentionallyOn) { player.play(); $("#h-volume1").css("background-image", "url('volume-up.svg')"); $("#h-volume2").css("background-image", "url('volume-up.svg')"); intentionallyOn = false; };
     window.history.go(-1);
-}};
+};
 function SwitchDef() { if(!isHidden(document.getElementById("video-controls"))) {
   if(VideoSrcs.sd != "") {
       Pause();
