@@ -24,6 +24,7 @@ function SetKeyUp() {
     };
   };
 };
+function isIE() { return ((navigator.appName == 'Microsoft Internet Explorer') || ((navigator.appName == 'Netscape') && (new RegExp("Trident/.*rv:([0-9]{1,}[\.0-9]{0,})").exec(navigator.userAgent) != null))); }
 function isHidden(e) { return !( e.offsetWidth || e.offsetHeight || e.getClientRects().length ) };
 function DetectMobile() { 
  if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ){ return true; } else { return false; }
@@ -128,6 +129,7 @@ function Start() {
         document.getElementById("player").addEventListener("mouseenter", function(event){ ShowControls(); mouseover = true; });
         document.getElementById("player").addEventListener("mouseleave", function(event){ HideControls(); mouseover = false; });
     };
+  if(isIE()) { document.getElementById("share-menu").className = "sm-ie" };
     document.addEventListener("mozfullscreenchange", function( event ) {
         if ( document.mozFullScreen ) {
             document.getElementById("video").setAttribute("controls", "controls");
