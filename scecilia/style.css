@@ -220,7 +220,15 @@ footer {
     display: none;
 }
 .sm-ie {
-    margin-left: -24.45em!important;
+    z-index: 5;
+    position: fixed;
+    margin: auto;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-height: 11.99em;
+    font-size: 1.2em;
 }
 .sm-choice {
     padding: 0.4em 0.8em;
@@ -736,9 +744,6 @@ input[type=range]:focus {
         right: 0px;
         max-height: 11.99em;
         font-size: 1.2em;
-    }
-    .sm-ie {
-        margin-left: auto!important;
     }
     #s-text {
         display: none;
