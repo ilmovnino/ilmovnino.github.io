@@ -220,15 +220,15 @@ footer {
     display: none;
 }
 .sm-ie {
-    z-index: 5;
-    position: fixed;
-    margin: auto;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    z-index: 5!important;
+    position: fixed!important;
+    margin: auto!important;
+    top: 0px!important;
+    bottom: 0px!important;
+    left: 0px!important;
+    right: 0px!important;
     max-height: 11.99em;
-    font-size: 1.2em;
+    font-size: 1.2em!important;
 }
 .sm-choice {
     padding: 0.4em 0.8em;
