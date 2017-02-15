@@ -263,3 +263,4 @@ var Register = function() {
       alert("Connettiti ad Internet");
   }};
 };
+forcehttps();
