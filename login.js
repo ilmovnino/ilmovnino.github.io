@@ -57,6 +57,7 @@ var asyncCheckLoginPage = function() {
   } else {
       document.write("<h1>Connettiti ad Internet</h1>");
   };
+  document.getElementsByClassName("ol-body")[0].style.width = "100%";
 };
 var checkcustom = function() {
     if(localStorage.lastUpdated && localStorage.lastUpdated != "" && localStorage.offlineLoggedUser && localStorage.offlineLoggedUser != "") {
@@ -264,4 +265,3 @@ var Register = function() {
   }};
 };
 forcehttps();
-document.getElementsByClassName("ol-body")[0].style.width = "100%";
