@@ -264,3 +264,4 @@ var Register = function() {
   }};
 };
 forcehttps();
+document.getElementsByClassName("ol-body")[0].style.width = "100%";
