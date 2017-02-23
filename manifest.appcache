@@ -95,9 +95,6 @@ assets/icons/youtube.svg
 assets/font/open-sans.bold.ttf
 assets/font/open-sans.light.ttf
 assets/font/open-sans.regular.ttf
-login.html
-register.html
-login.js
 
 # Use from network if available
 NETWORK:
