@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# ilmovnino.tk Platform v1.1 2017-02-20 16:04
+# ilmovnino.tk Platform v1.1 2017-02-23 23:20
 index.html
 script.js
 style.css
@@ -95,14 +95,14 @@ assets/icons/youtube.svg
 assets/font/open-sans.bold.ttf
 assets/font/open-sans.light.ttf
 assets/font/open-sans.regular.ttf
-
-# Use from network if available
-NETWORK:
 login.html
 register.html
 login.js
+
+# Use from network if available
+NETWORK:
 *
 
 # Fallback content
 FALLBACK:
-/ offline.html
+/ 404.html
