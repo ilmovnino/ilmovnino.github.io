@@ -295,7 +295,7 @@ function Paused() {
     setTimeout(function(){ doyes = true; }, 101);
 };
 function Ended() {
-    Paused(); document.getElementById("video").src = "empty"; $("#played").css("width", "0%"); document.getElementById("scrub").value = 0; $("#buffered").css("width", "0%"); $("#buffered").css("margin-right", "0%");
+    Paused(); document.getElementById("video").src = "empty.mp4"; $("#played").css("width", "0%"); document.getElementById("scrub").value = 0; $("#buffered").css("width", "0%"); $("#buffered").css("margin-right", "0%");
 };
 function ShowControls() {
     if(document.getElementById("video-controls").style.display == "none") {
