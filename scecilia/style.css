@@ -135,7 +135,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 1em
+    margin-right: 1em:
+    flex-shrink: 0;
 }
 .play-element {
     display: flex;
