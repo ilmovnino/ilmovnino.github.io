@@ -30,7 +30,7 @@ function DetectMobile() {
  if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ){ return true; } else { return false; }
 };
 function DetectiOS() { 
- if( navigator.userAgent.match( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) ) ){ return true; } else { return false; }
+ if( navigator.userAgent.match( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || ( navigator.userAgent.match(/Macintosh/i) && navigator.userAgent.match(/AppleWebKit/i) && ( navigator.userAgent.match(/Version\/11/i) || navigator.userAgent.match(/Version\/12/i) || navigator.userAgent.match(/Version\/13/i) || navigator.userAgent.match(/Version\/14/i) )) ) ){ return true; } else { return false; }
 };
 try{document.addEventListener('touchstart', document.getElementsByTagName("body")[0], { passive: true});
 }catch(err){};
