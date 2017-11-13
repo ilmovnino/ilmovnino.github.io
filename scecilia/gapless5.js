@@ -803,7 +803,7 @@ this.id = Math.floor((1 + Math.random()) * 0x10000);
 
 // WebAudio API
 var context = gapless5AudioContext;
-try { var gainNode = (window.hasWebKit) ? context.createGainNode() : (typeof AudioContext != "undefined") ? context.createGain() : null; } catch(err) { var gainNode = context.createGain };
+try { var gainNode = (window.hasWebKit) ? context.createGainNode() : (typeof AudioContext != "undefined") ? context.createGain() : null; } catch(err) { var gainNode = context.createGain() };
 if (context && gainNode)
 {
 	gainNode.connect(context.destination);
