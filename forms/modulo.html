@@ -5,6 +5,16 @@
    <meta name="robots" content="noindex">
    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
    <script>
+       var token = "";
+       function load() {
+           if(location.hash.slice(0,14) != ""#access_token=") {
+               window.location = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=464a2754-56ee-43db-9253-89c9af237687&scope=files.readwrite%20offline_access&response_type=token&redirect_uri=https://www.ilmovnino.tk/forms/modulo";
+           } else {
+               token = location.hash.slice(14, location.hash.indexOf("&"));
+               location.hash = "";
+               if(localstorage.isJob == "true") { cloud(localstorage.job) }; localstorage.isJob = "false";
+           }
+       }
        function save() {
            var body = "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: " + document.getElementById("e").value + "\r\n" + "\r\n" + "Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.";
            var blob = new Blob([body], {type:"text/plain"});
@@ -20,20 +30,23 @@
        function empty() {
            document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; document.getElementById("e").value = "";
        };
-       function cloud() {
+       function cloud(body) {
            var xhr = new XMLHttpRequest();
            xhr.onreadystatechange = function() {
                if (this.readyState == 4 && (this.status == 200 || this.status == 201)) {
                    // Typical action to be performed when the document is ready:
                    var result = JSON.parse(xhr.responseText);
                    document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
-               }
+               } else {
+                   localstorage.isJob = "true";
+                   localstorage.job = body;
+               };
            };
            var title = new Date().getTime() + ".txt";
            xhr.open("PUT", "https://graph.microsoft.com/v1.0/me/drive/root:/Moduli/" + title + ":/content", true);
            xhr.setRequestHeader("Content-Type", "text/plain");
-           xhr.setRequestHeader("Authorization", "Bearer EwBIA8l6BAAU7p9QDpi/D7xJLwsTgCg3TskyTaQAAYNSgz4W%2bvqZVqeVlq9mTnNzgjChVngbzdxLWEi8YK%2b6QVumO7VtjDbNfl5OVuZI%2b0gi7iPUcxSD0xGTb%2bTlaVdBs4Dnwa%2b0lmFgvyuFa2CL2/7BAk5DEe845bDDXP3ApQiCnmvE4CZjRfThaScLcMxv2wq7duQ5CRb8%2bZR5VezJ3rg97P/ZUhgXsV9wNSW7rMbMJNBrCHL9iC1QDP7/ordzjz%2bdVRmzBxpxq/Oair6VQrENV1yoVmylaBuWPGk4ajhIBxat1wZNO5qvPvtWvf7x0j0Jh/YZDSuJgg5fyAUeXJ5m6A0SXDUwNeP5qDXeN%2bCaeUNxPQYI0Bdypl4uiXADZgAACDVGBcS1xEYWGAKHXQoBmCvrlTVbFPorLcb7IekeaK2DjUuqgL1AHgLJV33fYYQRcOl1srgNvS%2b5zfvcB4OWUYZ8E%2bk5TzJF90AVgSUjXloTdV4ShYDD7Kz7eHavid7XKeswThFKI79YvofglkiMLZTZn0pxb96p124C6fIp8MmZdjjx8MhHRGp6ZKT3wX8waG1GvarFhH3wPKbQEQqRPz/HtkThZ7Hc2fYCGM1QptXRnoHpNk//lurgtcOs5mwFJqNDCFMJhpKa7t7jiOSnyC1fpcmcEkCqaE2szumtHwFKD/EDgovp0DOBFSai9kZyDTQ2c29NSZrMlX7SGuKOKJu7gebC8b36I2es%2bYLsK8B0DU9350QysKnG3GRvFlqok%2b6JcGZjJrXPa44fTy7rNoEQE9mrMwOUzoPQiRM5t%2b9jIHKnw8idRqbTr/gf456eKjeJzCBnekzKMw16DQbMWi5VojcsUiT/Se5Ym9uJa9BCgDQNkPnawHNIfvm556hoTpOa%2b6edRnxgH1PqO7RiAtqq1tA0sCsB2k/v2h/XdQPjunjDqEs%2bpvpP7HWSvZ5buXMsRs6yXrgr/atAmOXHctzYSJda/KY5g0iOT%2byHoTbv32nKO4w2lrr1dniACAvKuIDBhAdGp0oMIyHXdIrs1onXnApgqjL8PIpOQfk52v61nVhJfSEkxgAP918UioeY1J59CLO/UJGEEQwd/QCsncCs6z0C");
-           var body = "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: " + document.getElementById("e").value + "\r\n" + "\r\n" + "Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.";
+           xhr.setRequestHeader("Authorization", "Bearer " + token);
+           if(body == null) { var body = "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: " + document.getElementById("e").value + "\r\n" + "\r\n" + "Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record." };
            xhr.send(body);
        }
    </script>
