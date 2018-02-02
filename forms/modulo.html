@@ -7,7 +7,7 @@
    <script>
        var token = "";
        function load() {
-           if(location.hash.slice(0,14) != ""#access_token=") {
+           if(location.hash.slice(0,14) != "#access_token=") {
                window.location = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=464a2754-56ee-43db-9253-89c9af237687&scope=files.readwrite%20offline_access&response_type=token&redirect_uri=https://www.ilmovnino.tk/forms/modulo";
            } else {
                token = location.hash.slice(14, location.hash.indexOf("&"));
