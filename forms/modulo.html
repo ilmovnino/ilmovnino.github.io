@@ -26,7 +26,7 @@
                if (this.readyState == 4 && this.status == 200) {
                    // Typical action to be performed when the document is ready:
                    var result = JSON.parse(xhr.responseText);
-                   document.getElementById("f").innerHTML += "<a href='" + url + "' download='" + result.webUrl + "'>" + result.name + "</a><br/>";
+                   document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
                }
            };
            var title = new Date().getTime() + ".txt";
