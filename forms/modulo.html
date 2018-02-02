@@ -13,7 +13,7 @@
            } else {
                token = location.hash.slice(14, location.hash.indexOf("&"));
                location.hash = "";
-               if(localstorage.isJob == "true") { cloud(localstorage.job) }; localstorage.isJob = "false";
+               if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
            };
          } else {
              document.getElementById("cloud").innerHTML = "Sei offline";
@@ -43,8 +43,8 @@
                    var result = JSON.parse(xhr.responseText);
                    document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
                } else {
-                   localstorage.isJob = "true";
-                   localstorage.job = body;
+                   localStorage.isJob = "true";
+                   localStorage.job = body;
                };
            };
            var title = new Date().getTime() + ".txt";
