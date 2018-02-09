@@ -30,6 +30,7 @@
                url = reader.result;
                var title = new Date().getTime() + ".txt";
                document.getElementById("f").innerHTML += "<a href='" + url + "' download='" + title + "'>" + title + "</a><br/>";
+
            }, false);
            reader.readAsDataURL(blob);
        };
@@ -70,6 +71,13 @@
          doc.setFontSize(16)
          doc.text(texts, 20, 30);
          return doc.output()
+      }
+      function choice() {
+          switch(document.getElementById("choice").value) {
+              case "a": document.getElementById("inglese").style.display = "block"; document.getElementById("italiano").style.display = "none"; document.getElementById("itaeng").style.display = "none"; document.getElementById("engita").style.display = "none"; break;
+              case "b": document.getElementById("inglese").style.display = "none"; document.getElementById("italiano").style.display = "block"; document.getElementById("itaeng").style.display = "none"; document.getElementById("engita").style.display = "none"; break;
+              case "c": document.getElementById("inglese").style.display = "block"; document.getElementById("italiano").style.display = "block"; document.getElementById("itaeng").style.display = "block"; document.getElementById("engita").style.display = "block"; break;
+          }
       }
    </script>
 </head>
