@@ -141,9 +141,9 @@ Scegli la composizione del modulo:
     </div>
  <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button disabled="" onclick="cloud()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
 <h3 id="mo">Moduli caricati su OneDrive:</h3>
-<p>Troppi elementi? <a href="javascript:void(0)">Svuota</a> questa lista, i file li troverai sempre nella cartella "Moduli" nella radice del tuo OneDrive</p><div id="f"></div>
+<p>Troppi elementi? <a href="javascript:void(0)" onclick="empty('drive')">Svuota</a> questa lista, i file li troverai sempre nella cartella "Moduli" nella radice del tuo OneDrive</p><div id="f"></div>
 <h3 id="bl">Bozze locali:</h3>
-    <p>Troppi elementi? <a href="javascript:void(0)">Svuota</a> questa lista, ma gli elementi associati saranno pure eliminati!</p>
+    <p>Troppi elementi? <a href="javascript:void(0)" onclick="empty('draft')">Svuota</a> questa lista, ma gli elementi associati saranno pure eliminati!</p>
     <div id="g"></div>
 
 <br>il<span style="font-weight:bold">mov</span>nino<span style="font-weight:bold">.tk</span> - <a href="javascript:void(0)">Vai al sito</a>
