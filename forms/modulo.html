@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
    <script src="jspdf.js"></script>
    <script>
-       var token = "";
+       var token = ""; var doc;
        function load() {
          if (navigator.onLine) {
            if(location.hash.slice(0,14) != "#access_token=") {
