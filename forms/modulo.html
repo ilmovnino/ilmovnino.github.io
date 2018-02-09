@@ -60,17 +60,16 @@
          var doc = new jsPDF()
          doc.setFontSize(22)
          doc.text(20, 20, 'WO-6181235');
+         var texts = [
+             "Problem Reported: " + document.getElementById("a").value,
+             "Problem Observed: " + document.getElementById("b").value,
+             "Problem Cause: " + document.getElementById("c").value,
+             "Solution: " + document.getElementById("d").value,
+             "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record."
+         ];
          doc.setFontSize(16)
-         doc.text(20, 30, "Problem Reported: " + document.getElementById("a").value);
-         doc.setFontSize(16)
-         doc.text(20, 30, "Problem Observed: " + document.getElementById("b").value);
-         doc.setFontSize(16)
-         doc.text(20, 30, "Problem Cause: " + document.getElementById("c").value);
-         doc.setFontSize(16)
-         doc.text(20, 30, "Solution: " + document.getElementById("d").value);
-         doc.setFontSize(16)
-         doc.text(20, 30, "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.");
-         doc.save('WO-6181235.pdf');
+         doc.text(texts, 20, 30);
+         return doc.output()
       }
    </script>
 </head>
