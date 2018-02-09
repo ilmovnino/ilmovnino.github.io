@@ -74,14 +74,20 @@
          doc.setFontSize(16)
          doc.text(texts, 20, 30);
          return doc.output()
-      }
+      };
       function choice() {
           switch(document.getElementById("choice").value) {
               case "a": document.getElementById("inglese").style.display = "block"; document.getElementById("italiano").style.display = "none"; document.getElementById("itaeng").style.display = "none"; document.getElementById("engita").style.display = "none"; break;
               case "b": document.getElementById("inglese").style.display = "none"; document.getElementById("italiano").style.display = "block"; document.getElementById("itaeng").style.display = "none"; document.getElementById("engita").style.display = "none"; break;
               case "c": document.getElementById("inglese").style.display = "block"; document.getElementById("italiano").style.display = "block"; document.getElementById("itaeng").style.display = "block"; document.getElementById("engita").style.display = "block"; break;
-          }
-      }
+          };
+      };
+      function translate(where) {
+          switch(where) {
+              case "itaeng": window.open("https://translate.google.it/?hl=it#it/en/" + encodeURI("Sintomo Riportato: " + document.getElementById("j").value) + "%0A%0A" + encodeURI("Problema Osservato: " + document.getElementById("k").value) + "%0A%0A" + encodeURI("Causa: " + document.getElementById("l").value) + "%0A%0A" + encodeURI("Soluzione: " + document.getElementById("m").value)); break;
+              case "engita": window.open("https://translate.google.it/?hl=it#en/it/" + encodeURI("Problem Reported: " + document.getElementById("a").value) + "%0A%0A" + encodeURI("Problem Observed: " + document.getElementById("b").value) + "%0A%0A" + encodeURI("Problem Cause: " + document.getElementById("c").value) + "%0A%0A" + encodeURI("Solution: " + document.getElementById("d").value)); break;
+          };
+      };
    </script>
 </head>
 <body onload="load()" style="font-family: arial">
