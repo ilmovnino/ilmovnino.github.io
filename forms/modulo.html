@@ -14,7 +14,10 @@
            } else {
                token = location.hash.slice(14, location.hash.indexOf("&"));
                location.hash = "";
-               if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
+               try { var tempdraft = JSON.parse(localStorage.localmodulodraft) } catch(err) { var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft) };
+               try { var tempdrive = JSON.parse(localStorage.localmodulodrive) } catch(err) { var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive) };
+               pushDraft(tempdraft); pushDrive(tempdrive);
+               // if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
            };
          } else {
              document.getElementById("cloud").innerHTML = "Sei offline";
@@ -38,6 +41,8 @@
            switch(what) {
                case "eng": document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; break;
                case "ita": document.getElementById("j").value = ""; document.getElementById("k").value = ""; document.getElementById("l").value = ""; document.getElementById("m").value = ""; break;
+               case "draft": document.getElementById("g").innerHTML = ""; var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft); break;
+               case "drive": document.getElementById("f").innerHTML = ""; var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive); break;
            };
        };
        function cloud(body) {
@@ -46,8 +51,9 @@
                if (this.readyState == 4 && (this.status == 200 || this.status == 201)) {
                    // Typical action to be performed when the document is ready:
                    var result = JSON.parse(xhr.responseText);
-                   //document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
-                   document.getElementById("f").innerHTML += "<a href='" + result["@microsoft.graph.downloadUrl"] + "' download='" + result.name + "'>" + result.name + "</a><br/>";
+                   // document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
+                   // document.getElementById("f").innerHTML += "<a href='" + result["@microsoft.graph.downloadUrl"] + "' download='" + result.name + "'>" + result.name + "</a><br/>";
+                   var tempdrive = JSON.parse(localStorage.localmodulodrive); tempdrive.push({"title": result.name, "url": result["@microsoft.graph.downloadUrl"] }); localStorage.localmodulodrive = JSON.stringify(tempdrive); pushdrive(tempdrive);
                } else {
                    localStorage.isJob = "true";
                    localStorage.job = body;
@@ -87,6 +93,22 @@
               case "itaeng": window.open("https://translate.google.it/?hl=it#it/en/" + encodeURI("Sintomo Riportato: " + document.getElementById("j").value) + "%0A%0A" + encodeURI("Problema Osservato: " + document.getElementById("k").value) + "%0A%0A" + encodeURI("Causa: " + document.getElementById("l").value) + "%0A%0A" + encodeURI("Soluzione: " + document.getElementById("m").value)); break;
               case "engita": window.open("https://translate.google.it/?hl=it#en/it/" + encodeURI("Problem Reported: " + document.getElementById("a").value) + "%0A%0A" + encodeURI("Problem Observed: " + document.getElementById("b").value) + "%0A%0A" + encodeURI("Problem Cause: " + document.getElementById("c").value) + "%0A%0A" + encodeURI("Solution: " + document.getElementById("d").value)); break;
           };
+      };
+      function pushdraft(list) {
+          document.getElementById("g").innerHTML = "";
+          for(i=0; i<list.length; i++) document.getElementById("g").innerHTML += "<a href='javascript:void(0)' onclick='fillform(" + i + ")>" + list[i].display + "</a><br/>";
+      };
+      function pushdrive(list) {
+          document.getElementById("f").innerHTML = "";
+          for(i=0; i<list.length; i++) document.getElementById("f").innerHTML += "<a href='" + list[i].url + "' target='_blank' download='" + list[i].title + "'>" + list[i].title + "</a><br/>";
+      };
+      function savedraft() {
+          var date = new Date(); var day = date.getDate(); if(day < 10) day = "0" + day; var month = date.getMonth() + 1; if(month < 10) month = "0" + month; var hours = date.getHours(); if(hours < 10) hours = "0" + hours; var minutes = date.getMinutes() + 1; if(minutes < 10) minutes = "0" + minutes; date = day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
+          var tempdraft = JSON.parse(localStorage.localmodulodraft); tempdraft.push({"display": date, "a": document.getElementById("a").value, "b": document.getElementById("b").value, "c": document.getElementById("c").value, "d": document.getElementById("d").value, "j": document.getElementById("j").value, "k": document.getElementById("k").value, "l": document.getElementById("l").value, "m": document.getElementById("m").value, "t": document.getElementById("dotext").checked, "title": document.getElementById("wo").value, "s": document.getElementById("choice").value}); localStorage.localmodulodraft = JSON.stringify(tempdraft); pushdraft(tempdraft);
+      };
+      function filldraft(i) {
+          var tempdraft = JSON.parse(localStorage.localmodulodraft);
+          document.getElementById("a").value = tempdraft[i].a; document.getElementById("b").value = tempdraft[i].b; document.getElementById("c").value = tempdraft[i].c; document.getElementById("d").value = tempdraft[i].d; document.getElementById("j").value = tempdraft[i].j; document.getElementById("k").value = tempdraft[i].k; document.getElementById("l").value = tempdraft[i].l; document.getElementById("m").value = tempdraft[i].m; document.getElementById("dotext").checked = tempdraft[i].t; document.getElementById("wo").value = tempdraft[i].title; document.getElementById("choice").value = tempdraft[i].s;
       };
    </script>
 </head>
