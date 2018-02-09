@@ -34,8 +34,11 @@
            }, false);
            reader.readAsDataURL(blob);
        };
-       function empty() {
-           document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; document.getElementById("e").value = "";
+       function empty(what) {
+           switch(what) {
+               case "eng": document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; break;
+               case "ita": document.getElementById("j").value = ""; document.getElementById("k").value = ""; document.getElementById("l").value = ""; document.getElementById("m").value = ""; break;
+           };
        };
        function cloud(body) {
            var xhr = new XMLHttpRequest();
