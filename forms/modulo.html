@@ -59,7 +59,7 @@
       function pdf() {
          var doc = new jsPDF()
          doc.setFontSize(22)
-         doc.text(20, 20, 'WO-6181235.txt');
+         doc.text(20, 20, 'WO-6181235');
          doc.setFontSize(16)
          doc.text(20, 30, "Problem Reported: " + document.getElementById("a").value);
          doc.setFontSize(16)
@@ -70,6 +70,7 @@
          doc.text(20, 30, "Solution: " + document.getElementById("d").value);
          doc.setFontSize(16)
          doc.text(20, 30, "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.");
+         doc.save('WO-6181235.pdf');
       }
    </script>
 </head>
