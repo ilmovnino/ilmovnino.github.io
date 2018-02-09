@@ -16,7 +16,7 @@
                location.hash = "";
                try { var tempdraft = JSON.parse(localStorage.localmodulodraft) } catch(err) { var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft) };
                try { var tempdrive = JSON.parse(localStorage.localmodulodrive) } catch(err) { var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive) };
-               pushDraft(tempdraft); pushDrive(tempdrive);
+               pushdraft(tempdraft); pushdrive(tempdrive);
                // if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
            };
          } else {
