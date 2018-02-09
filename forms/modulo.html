@@ -74,14 +74,38 @@
    </script>
 </head>
 <body onload="load()" style="font-family: arial">
-    <h1>Modulo</h1>
-    Problem Reported: <input type="text" id="a"><br/>
-    Problem Observed: <input type="text" id="b"><br/>
-    Problem Cause: <input type="text" id="c"><br/>
-    Solution: <input type="text" id="d"><br/>
-    Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.<br/><br/>
-    <button onclick="save()">Salva</button> <button onclick="empty()">Svuota</button> <button onclick="cloud()" id="cloud">Carica</button><br/><br/>
-    <h3>File salvati o caricati:</h3>
-    <div id="f"></div><br/>
-    <p>Premi "Salva" per creare un file .txt in locale che puoi scaricare facendo click sul link oppure premi "Carica" per creare un file .txt all'interno della cartella "Moduli" che trovi nella radice del tuo OneDrive. Premi "Svuota" per svuotare tutti i campi.</p>
+   <noscript>Attiva Javascript per utilizzare il sito</noscript>
+    <div style="margin-bottom: 8px;"><h1 style="display: inline;">WO-</h1> <input type="text" id="wo" placeholder="6181235" style="font-size: 2em;width: 6em;"></div>
+    Se non inserisci un nome, i file che salvi saranno chiamati <div id="pdf" style="display: inline; font-weight: bold">1518190871946.pdf</div> e <div id="txt" style="display: inline; font-weight: bold">1518190871946.txt</div><br>Ricorda, inoltre, che se è già presente un modulo con lo stesso nome, saranno sovrascritti<br><br>
+    Vai a <a href="javascript:void(0)" onclick="godraft()">Bozze</a> o a <a href="javascript:void(0)" onclick="goup()">Caricati</a> o a <a href="javascript:void(0)" onclick="gobutton">Carica su OneDrive</a><br><br>
+Scegli la composizione del modulo:
+    <select id="choice" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%; margin-top:8px" onchange="choice()"><option value="a" selected="">Solo Inglese</option><option value="b">Solo Italiano</option><option value="c">Sia Inglese che Italiano</option></select><br>
+<div id="inglese">
+    <h1 style="
+    font-weight: 100;
+">Inglese</h1>
+    <h3 style="margin-bottom: 8px">Problem Reported:</h3><input type="text" id="a" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="What was reported by the client?"><br>
+<h3 style="margin-bottom: 8px">Problem Observed:</h3><input type="text" id="b" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="What problem have you observed?"><br>
+<h3 style="margin-bottom: 8px">Problem Cause:</h3><input type="text" id="c" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="What was the real problem?"><br>
+<h3 style="margin-bottom: 8px">Solution:</h3><input type="text" id="d" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="How did you soved the problem?"><br>
+<h3 style="margin-bottom: 8px">Verification of Repair:</h3>Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.<br><br><a href="javascript:void(0)" onclick="empty('eng')">Vuoi svuotare i campi?</a><br><br>
+    <a href="javascript:void(0)" id="itaeng">Hai bisogno di aiuto per tradurre i campi da Italiano a Inglese?</a>
+    </div>
+    <div id="italiano" style="display: none">
+    <h1 style="font-weight: 100">Italiano</h1>
+    <h3 style="margin-bottom: 8px">Sintomo Riportato:</h3><input type="text" id="j" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Cosa ha segnalato il cliente?"><br>
+<h3 style="margin-bottom: 8px">Problema Osservato:</h3><input type="text" id="k" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Cosa avete trovato con le indagini?"><br>
+<h3 style="margin-bottom: 8px">Causa:</h3><input type="text" id="l" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Qual'era il vero problema?"><br>
+<h3 style="margin-bottom: 8px">Soluzione:</h3><input type="text" id="m" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Come avete risolto il problema?"><br>
+<h3 style="margin-bottom: 8px">Verifica della Riparazione:</h3>Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente.<br><br><a href="javascript:void(0)" onclick="empty('ita')">Vuoi svuotare i campi?</a><br><br>
+    <a href="javascript:void(0)" id="engita">Hai bisogno di aiuto per tradurre i campi da Inglese a Italiano?</a>
+    </div>
+ <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button disabled="" onclick="cloud()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)">Salva il modulo come bozza</a> e ricarica la pagina</p>
+<h3 id="mo">Moduli caricati su OneDrive:</h3>
+<p>Troppi elementi? <a href="javascript:void(0)">Svuota</a> questa lista, i file li troverai sempre nella cartella "Moduli" nella radice del tuo OneDrive</p><div id="f"></div>
+<h3 id="bl">Bozze locali:</h3>
+    <p>Troppi elementi? <a href="javascript:void(0)">Svuota</a> questa lista, ma gli elementi associati saranno pure eliminati!</p>
+    <div id="g"></div>
+
+<br>il<span style="font-weight:bold">mov</span>nino<span style="font-weight:bold">.tk</span> - <a href="javascript:void(0)">Vai al sito</a>
 </body>
