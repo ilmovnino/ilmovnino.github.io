@@ -18,11 +18,12 @@
                try { var tempdraft = JSON.parse(localStorage.localmodulodraft) } catch(err) { var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft) };
                try { var tempdrive = JSON.parse(localStorage.localmodulodrive) } catch(err) { var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive) };
                pushdraft(tempdraft); pushdrive(tempdrive);
+               setTimeout(function(){ document.getElementById("cloud").disabled = true; document.getElementById("cloud").innerHTML = "Sessione scaduta"; }, 3600000);
                // if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
            };
          } else {
-             document.getElementById("cloud").innerHTML = "Sei offline";
-             document.getElementById("cloud").createAttribute("disabled","disabled");
+             document.getElementById("cloud").innerText = "Sei offline";
+             document.getElementById("cloud").disabled = true;
          };
        }
        function save() {
@@ -140,7 +141,7 @@ Scegli la composizione del modulo:
 <h3 style="margin-bottom: 8px">Verifica della Riparazione:</h3>Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente.<br><br><a href="javascript:void(0)" onclick="empty('ita')">Vuoi svuotare i campi?</a><br><br>
     <a href="javascript:void(0)" id="engita" onclick="translation('engita')">Hai bisogno di aiuto per tradurre i campi da Inglese a Italiano?</a>
     </div>
- <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button disabled="" onclick="cloud()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
+ <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button onclick="cloud()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
 <h3 id="mo">Moduli caricati su OneDrive:</h3>
 <p>Troppi elementi? <a href="javascript:void(0)" onclick="empty('drive')">Svuota</a> questa lista, i file li troverai sempre nella cartella "Moduli" nella radice del tuo OneDrive</p><div id="f"></div>
 <h3 id="bl">Bozze locali:</h3>
