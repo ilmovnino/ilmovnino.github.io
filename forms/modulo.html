@@ -43,32 +43,11 @@
        };
        function empty(what) {
            switch(what) {
-               case "eng": document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; break;
-               case "ita": document.getElementById("j").value = ""; document.getElementById("k").value = ""; document.getElementById("l").value = ""; document.getElementById("m").value = ""; break;
+               case "eng": document.getElementById("a").value = ""; document.getElementById("b").value = ""; document.getElementById("c").value = ""; document.getElementById("d").value = ""; document.getElementById("e").value = ""; break;
+               case "ita": document.getElementById("j").value = ""; document.getElementById("k").value = ""; document.getElementById("l").value = ""; document.getElementById("m").value = ""; document.getElementById("n").value = ""; break;
                case "draft": document.getElementById("g").innerHTML = ""; var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft); break;
                case "drive": document.getElementById("f").innerHTML = ""; var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive); break;
            };
-       };
-       function cloud(body) {
-           var xhr = new XMLHttpRequest();
-           xhr.onreadystatechange = function() {
-               if (this.readyState == 4 && (this.status == 200 || this.status == 201)) {
-                   // Typical action to be performed when the document is ready:
-                   var result = JSON.parse(xhr.responseText);
-                   // document.getElementById("f").innerHTML += "<a href='" + result.webUrl + "' download='" + result.name + "'>" + result.name + "</a><br/>";
-                   // document.getElementById("f").innerHTML += "<a href='" + result["@microsoft.graph.downloadUrl"] + "' download='" + result.name + "'>" + result.name + "</a><br/>";
-                   var tempdrive = JSON.parse(localStorage.localmodulodrive); tempdrive.push({"title": result.name, "url": result["@microsoft.graph.downloadUrl"] }); localStorage.localmodulodrive = JSON.stringify(tempdrive); pushdrive(tempdrive);
-               } else {
-                   localStorage.isJob = "true";
-                   localStorage.job = body;
-               };
-           };
-           var title = new Date().getTime() + ".txt";
-           xhr.open("PUT", "https://graph.microsoft.com/v1.0/me/drive/root:/Moduli/" + title + ":/content", true);
-           xhr.setRequestHeader("Content-Type", "text/plain");
-           xhr.setRequestHeader("Authorization", "Bearer " + token);
-           if(body == null) { var body = "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record." };
-           xhr.send(body);
        };
        function upload() {
            var doc = new jsPDF();
@@ -83,7 +62,8 @@
                    "Problem Observed: " + document.getElementById("b").value,
                    "Problem Cause: " + document.getElementById("c").value,
                    "Solution: " + document.getElementById("d").value,
-                   "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record."
+                   "Verification of Repair: " + document.getElementById("e").value,
+                   "Verified repair per enstablished procedures: Results meet published performance specifications. System validation documented in customer QC record."
                ];
                 
                for(i=0;i<en_texts.length;i++) {
@@ -136,7 +116,8 @@
                    "Problema Osservato: " + document.getElementById("k").value,
                    "Causa: " + document.getElementById("l").value,
                    "Soluzione: " + document.getElementById("m").value,
-                   "Verifica della Riparazione: Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente."
+                   "Verifica della Riparazione: " + document.getElementById("n").value,
+                   "Riparazione verificata secondo le procedure stabilite: I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente."
                ];
                
                for(i=0;i<it_texts.length;i++) {
@@ -187,9 +168,9 @@
            };
            
            var body = "";
-           if( ((selection == "a") || (selection == "c")) && document.getElementById("dotext").checked) { body += "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record." };
+           if( ((selection == "a") || (selection == "c")) && document.getElementById("dotext").checked) { body += "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: " + document.getElementById("e").value + "\r\n" + "Verified repair per enstablished procedures: Results meet published performance specifications. System validation documented in customer QC record." };
            if( (selection == "c") && document.getElementById("dotext").checked ) { body += "\r\n\r\n" };
-           if( ((selection == "b") || (selection == "c")) && document.getElementById("dotext").checked) { body += "Sintomo Riportato: " + document.getElementById("j").value + "\r\n" + "Problema Osservato: " + document.getElementById("k").value + "\r\n" + "Causa: " + document.getElementById("l").value + "\r\n" + "Soluzione: " + document.getElementById("m").value + "\r\n" + "Verifica della Riparazione: Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente." };
+           if( ((selection == "b") || (selection == "c")) && document.getElementById("dotext").checked) { body += "Sintomo Riportato: " + document.getElementById("j").value + "\r\n" + "Problema Osservato: " + document.getElementById("k").value + "\r\n" + "Causa: " + document.getElementById("l").value + "\r\n" + "Soluzione: " + document.getElementById("m").value + "\r\n" + "Verifica della Riparazione: " + document.getElementById("n").value + "\r\n" + "Riparazione verificata secondo le procedure stabilite: I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente." };
            
            var txtready = false; var pdfready = false; var error = false; if(!document.getElementById("dotext").checked) { txtready = true };
            
@@ -249,21 +230,6 @@
                xhr2.send(body);
            };
        };
-      function pdf() {
-         var doc = new jsPDF()
-         doc.setFontSize(22)
-         doc.text(20, 20, 'WO-6181235');
-         var texts = [
-             "Problem Reported: " + document.getElementById("a").value,
-             "Problem Observed: " + document.getElementById("b").value,
-             "Problem Cause: " + document.getElementById("c").value,
-             "Solution: " + document.getElementById("d").value,
-             "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record."
-         ];
-         doc.setFontSize(16)
-         doc.text(texts, 20, 30);
-         return doc.output()
-      };
       function choice() {
           switch(document.getElementById("choice").value) {
               case "a": document.getElementById("inglese").style.display = "block"; document.getElementById("italiano").style.display = "none"; document.getElementById("itaeng").style.display = "none"; document.getElementById("engita").style.display = "none"; break;
@@ -273,8 +239,8 @@
       };
       function translation(where) {
           switch(where) {
-              case "itaeng": window.open("https://translate.google.it/?hl=it#it/en/" + encodeURI("Sintomo Riportato: " + document.getElementById("j").value) + "%0A%0A" + encodeURI("Problema Osservato: " + document.getElementById("k").value) + "%0A%0A" + encodeURI("Causa: " + document.getElementById("l").value) + "%0A%0A" + encodeURI("Soluzione: " + document.getElementById("m").value)); break;
-              case "engita": window.open("https://translate.google.it/?hl=it#en/it/" + encodeURI("Problem Reported: " + document.getElementById("a").value) + "%0A%0A" + encodeURI("Problem Observed: " + document.getElementById("b").value) + "%0A%0A" + encodeURI("Problem Cause: " + document.getElementById("c").value) + "%0A%0A" + encodeURI("Solution: " + document.getElementById("d").value)); break;
+              case "itaeng": window.open("https://translate.google.it/?hl=it#it/en/" + encodeURI("Sintomo Riportato: " + document.getElementById("j").value) + "%0A%0A" + encodeURI("Problema Osservato: " + document.getElementById("k").value) + "%0A%0A" + encodeURI("Causa: " + document.getElementById("l").value) + "%0A%0A" + encodeURI("Soluzione: " + document.getElementById("m").value) + "%0A%0A" + encodeURI("Verifica della Riparazione: " + document.getElementById("n").value)); break;
+              case "engita": window.open("https://translate.google.it/?hl=it#en/it/" + encodeURI("Problem Reported: " + document.getElementById("a").value) + "%0A%0A" + encodeURI("Problem Observed: " + document.getElementById("b").value) + "%0A%0A" + encodeURI("Problem Cause: " + document.getElementById("c").value) + "%0A%0A" + encodeURI("Solution: " + document.getElementById("d").value) + "%0A%0A" + encodeURI("Verification of Repair: " + document.getElementById("e").value)); break;
           };
       };
       function pushdraft(list) {
@@ -287,11 +253,11 @@
       };
       function savedraft() {
           var date = new Date(); var day = date.getDate(); if(day < 10) day = "0" + day; var month = date.getMonth() + 1; if(month < 10) month = "0" + month; var hours = date.getHours(); if(hours < 10) hours = "0" + hours; var minutes = date.getMinutes() + 1; if(minutes < 10) minutes = "0" + minutes; date = day + "/" + month + "/" + date.getFullYear() + " - " + hours + ":" + minutes;
-          var tempdraft = JSON.parse(localStorage.localmodulodraft); tempdraft.push({"display": date, "a": document.getElementById("a").value, "b": document.getElementById("b").value, "c": document.getElementById("c").value, "d": document.getElementById("d").value, "j": document.getElementById("j").value, "k": document.getElementById("k").value, "l": document.getElementById("l").value, "m": document.getElementById("m").value, "t": document.getElementById("dotext").checked, "title": document.getElementById("wo").value, "s": document.getElementById("choice").value}); localStorage.localmodulodraft = JSON.stringify(tempdraft); pushdraft(tempdraft); alert("Bozza salvata correttamente come '" + date + "'");
+          var tempdraft = JSON.parse(localStorage.localmodulodraft); tempdraft.push({"display": date, "a": document.getElementById("a").value, "b": document.getElementById("b").value, "c": document.getElementById("c").value, "d": document.getElementById("d").value, "e": document.getElementById("e").value, "j": document.getElementById("j").value, "k": document.getElementById("k").value, "l": document.getElementById("l").value, "m": document.getElementById("m").value, "n": document.getElementById("n").value, "t": document.getElementById("dotext").checked, "title": document.getElementById("wo").value, "s": document.getElementById("choice").value}); localStorage.localmodulodraft = JSON.stringify(tempdraft); pushdraft(tempdraft); alert("Bozza salvata correttamente come '" + date + "'");
       };
       function fillform(i) {
           var tempdraft = JSON.parse(localStorage.localmodulodraft);
-          document.getElementById("a").value = tempdraft[i].a; document.getElementById("b").value = tempdraft[i].b; document.getElementById("c").value = tempdraft[i].c; document.getElementById("d").value = tempdraft[i].d; document.getElementById("j").value = tempdraft[i].j; document.getElementById("k").value = tempdraft[i].k; document.getElementById("l").value = tempdraft[i].l; document.getElementById("m").value = tempdraft[i].m; document.getElementById("dotext").checked = tempdraft[i].t; document.getElementById("wo").value = tempdraft[i].title; document.getElementById("choice").value = tempdraft[i].s; choice(); window.scroll(0,0);
+          document.getElementById("a").value = tempdraft[i].a; document.getElementById("b").value = tempdraft[i].b; document.getElementById("c").value = tempdraft[i].c; document.getElementById("d").value = tempdraft[i].d; document.getElementById("e").value = tempdraft[i].e; document.getElementById("j").value = tempdraft[i].j; document.getElementById("k").value = tempdraft[i].k; document.getElementById("l").value = tempdraft[i].l; document.getElementById("m").value = tempdraft[i].m; document.getElementById("n").value = tempdraft[i].n; document.getElementById("dotext").checked = tempdraft[i].t; document.getElementById("wo").value = tempdraft[i].title; document.getElementById("choice").value = tempdraft[i].s; choice(); window.scroll(0,0);
       };
    </script>
 </head>
@@ -311,7 +277,8 @@ Scegli la composizione del modulo:
 <h3 style="margin-bottom: 8px">Problem Observed:</h3><input type="text" id="b" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="What problem have you observed?"><br>
 <h3 style="margin-bottom: 8px">Problem Cause:</h3><input type="text" id="c" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="What was the real problem?"><br>
 <h3 style="margin-bottom: 8px">Solution:</h3><input type="text" id="d" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="How did you soved the problem?"><br>
-<h3 style="margin-bottom: 8px">Verification of Repair:</h3>Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record.<br><br><a href="javascript:void(0)" onclick="empty('eng')">Vuoi svuotare i campi?</a><br><br>
+<h3 style="margin-bottom: 8px">Verification of Repair:</h3><input type="text" id="e" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="How did you verified the solution?"><br>
+    <h3 style="margin-bottom: 8px">Verified repair per enstablished procedures:</h3>Results meet published performance specifications. System validation documented in customer QC record.<br><br><a href="javascript:void(0)" onclick="empty('eng')">Vuoi svuotare i campi?</a><br><br>
     <a href="javascript:void(0)" id="itaeng" onclick="translation('itaeng')">Hai bisogno di aiuto per tradurre i campi da Italiano a Inglese?</a>
     </div>
     <div id="italiano" style="display: none">
@@ -320,7 +287,8 @@ Scegli la composizione del modulo:
 <h3 style="margin-bottom: 8px">Problema Osservato:</h3><input type="text" id="k" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Cosa avete trovato con le indagini?"><br>
 <h3 style="margin-bottom: 8px">Causa:</h3><input type="text" id="l" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Qual'era il vero problema?"><br>
 <h3 style="margin-bottom: 8px">Soluzione:</h3><input type="text" id="m" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Come avete risolto il problema?"><br>
-<h3 style="margin-bottom: 8px">Verifica della Riparazione:</h3>Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente.<br><br><a href="javascript:void(0)" onclick="empty('ita')">Vuoi svuotare i campi?</a><br><br>
+<h3 style="margin-bottom: 8px">Verifica della Riparazione:</h3><input type="text" id="n" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%" placeholder="Come hai verificato la soluzione?"><br>
+    <h3 style="margin-bottom: 8px">Riparazione verificata secondo le procedure stabilite:</h3>I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente.<br><br><a href="javascript:void(0)" onclick="empty('ita')">Vuoi svuotare i campi?</a><br><br>
     <a href="javascript:void(0)" id="engita" onclick="translation('engita')">Hai bisogno di aiuto per tradurre i campi da Inglese a Italiano?</a>
     </div>
  <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button onclick="upload()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
