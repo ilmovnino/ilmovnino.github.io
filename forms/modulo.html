@@ -19,11 +19,13 @@
                try { var tempdrive = JSON.parse(localStorage.localmodulodrive) } catch(err) { var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive) };
                pushdraft(tempdraft); pushdrive(tempdrive);
                setTimeout(function(){ document.getElementById("cloud").disabled = true; document.getElementById("cloud").innerText = "Sessione scaduta"; }, 3600000);
-               // if(localStorage.isJob == "true") { cloud(localStorage.job) }; localStorage.isJob = "false";
+               document.getElementById("loading").style.display = "none";
            };
          } else {
              document.getElementById("cloud").innerText = "Sei offline";
              document.getElementById("cloud").disabled = true;
+             document.getElementById("loading").style.display = "none";
+             alert("Sei offline: non puoi caricare nulla sul tuo OneDrive, ma puoi sempre salvare qualcosa nelle bozze");
          };
        }
        function save() {
@@ -224,7 +226,7 @@
                xhr2.onreadystatechange = function() {
                    if (this.readyState == 4) {
                        if (this.status == 200 || this.status == 201) {
-                           var result = JSON.parse(xhr.responseText); txtready = true;
+                           var result = JSON.parse(xhr2.responseText); txtready = true;
                            var tempdrive = JSON.parse(localStorage.localmodulodrive); tempdrive.push({"title": result.name, "url": result["@microsoft.graph.downloadUrl"] }); localStorage.localmodulodrive = JSON.stringify(tempdrive); pushdrive(tempdrive);
                            document.getElementById("cloud").disabled = false; document.getElementById("cloud").innerText = "Carica su OneDrive";
                            if(pdfready) {
@@ -294,7 +296,8 @@
    </script>
 </head>
 <body onload="load()" style="font-family: arial">
-   <noscript>Attiva Javascript per utilizzare il sito</noscript>
+    <noscript>Attiva Javascript per utilizzare il sito</noscript>
+    <div id="loading" style="position:fixed; top:0; bottom:0; left:0; right:0; margin: auto; background-color:white; margin:8px"><h1>Accesso a OneDrive...</h1></div>
     <div style="margin-bottom: 8px;"><h1 style="display: inline;">WO-</h1> <input type="text" id="wo" placeholder="6181235" style="font-size: 2em;width: 6em;"></div>
     Se non inserisci un nome, i file che salvi saranno chiamati <div id="pdf" style="display: inline; font-weight: bold">1518190871946.pdf</div> e <div id="txt" style="display: inline; font-weight: bold">1518190871946.txt</div><br>Ricorda, inoltre, che se &egrave; gi&agrave; presente un modulo con lo stesso nome, sar&agrave; sovrascritto<br><br>
     Vai a <a href="javascript:void(0)" onclick="document.getElementById('bl').scrollIntoView()">Bozze</a> o a <a href="javascript:void(0)" onclick="document.getElementById('mo').scrollIntoView()">Caricati</a> o a <a href="javascript:void(0)" onclick="document.getElementById('cloud').scrollIntoView()">Carica su OneDrive</a><br><br>
