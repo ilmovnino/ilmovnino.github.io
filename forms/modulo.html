@@ -161,21 +161,21 @@
            
                doc.setFont("arial");
                doc.setFontSize(22);
-               doc.text(15, 20, temptitle + " (Inglese)");
-               for(i=0; i < en_strings.length; i) {
+               doc.text(15, 20, temptitle + " (Italiano)");
+               for(i=0; i < it_strings.length; i) {
                    if(i!=0) {
                        doc.addPage();
-                       var temp = en_strings.slice(i, i + 41);
+                       var temp = it_strings.slice(i, i + 41);
                        if((temp[0] == "") && (temp.length > 1)) {
                            i += 1;
-                           var temp = en_strings.slice(i, i + 41);
+                           var temp = it_strings.slice(i, i + 41);
                        };
                        i += 40;
                        doc.setFont("monospace");
                        doc.setFontSize(16);
                        doc.text(temp, 15, 20);
                    } else {
-                       var temp = en_strings.slice(i, i + 39);
+                       var temp = it_strings.slice(i, i + 39);
                        i += 38;
                        doc.setFont("monospace");
                        doc.setFontSize(16);
@@ -189,6 +189,7 @@
                if (this.readyState == 4 && (this.status == 200 || this.status == 201)) {
                    var result = JSON.parse(xhr.responseText);
                    var tempdrive = JSON.parse(localStorage.localmodulodrive); tempdrive.push({"title": result.name, "url": result["@microsoft.graph.downloadUrl"] }); localStorage.localmodulodrive = JSON.stringify(tempdrive); pushdrive(tempdrive);
+                   alert("Modulo salvato correttamente come '" + title + "'");
                };
            };
            var title = temptitle + ".pdf";
@@ -246,7 +247,7 @@
 <body onload="load()" style="font-family: arial">
    <noscript>Attiva Javascript per utilizzare il sito</noscript>
     <div style="margin-bottom: 8px;"><h1 style="display: inline;">WO-</h1> <input type="text" id="wo" placeholder="6181235" style="font-size: 2em;width: 6em;"></div>
-    Se non inserisci un nome, i file che salvi saranno chiamati <div id="pdf" style="display: inline; font-weight: bold">1518190871946.pdf</div> e <div id="txt" style="display: inline; font-weight: bold">1518190871946.txt</div><br>Ricorda, inoltre, che se è già presente un modulo con lo stesso nome, saranno sovrascritti<br><br>
+    Se non inserisci un nome, i file che salvi saranno chiamati <div id="pdf" style="display: inline; font-weight: bold">1518190871946.pdf</div> e <div id="txt" style="display: inline; font-weight: bold">1518190871946.txt</div><br>Ricorda, inoltre, che se &egrave; gi&agrave; presente un modulo con lo stesso nome, sar&agrave; sovrascritto<br><br>
     Vai a <a href="javascript:void(0)" onclick="document.getElementById('bl').scrollIntoView()">Bozze</a> o a <a href="javascript:void(0)" onclick="document.getElementById('mo').scrollIntoView()">Caricati</a> o a <a href="javascript:void(0)" onclick="document.getElementById('cloud').scrollIntoView()">Carica su OneDrive</a><br><br>
 Scegli la composizione del modulo:
     <select id="choice" style="font-size: 1.1em;padding: 0.3em 0.2em;width: 96%; margin-top:8px" onchange="choice()"><option value="a" selected="">Solo Inglese</option><option value="b">Solo Italiano</option><option value="c">Sia Inglese che Italiano</option></select><br>
