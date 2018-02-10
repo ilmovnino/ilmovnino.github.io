@@ -68,6 +68,135 @@
            if(body == null) { var body = "Problem Reported: " + document.getElementById("a").value + "\r\n" + "Problem Observed: " + document.getElementById("b").value + "\r\n" + "Problem Cause: " + document.getElementById("c").value + "\r\n" + "Solution: " + document.getElementById("d").value + "\r\n" + "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record." };
            xhr.send(body);
        };
+       function upload() {
+           var doc = new jsPDF();
+           var wo = document.getElementById("wo").value;
+           if(wo != "") { var temptitle = "WO-" + wo } else { var temptitle = fallbacktitle };
+           var selection = document.getElementById("choice").value;
+           
+           if((selection == "a") || (selection == "c")) {
+               var en_strings = [];
+               var en_texts = [
+                   "Problem Reported: " + document.getElementById("a").value,
+                   "Problem Observed: " + document.getElementById("b").value,
+                   "Problem Cause: " + document.getElementById("c").value,
+                   "Solution: " + document.getElementById("d").value,
+                   "Verification of Repair: Verified repair per enstablished procedures. Results meet published performance specifications. System validation documented in customer QC record."
+               ];
+                
+               for(i=0;i<en_texts.length;i++) {
+                   for(c = 0; c < en_texts[i].length; c) {
+                       var temp = en_texts[i].slice(c, c + 53);
+                       var space = temp.lastIndexOf(" ");
+                       if((space == -1) || temp.length < 53) {
+                           en_strings.push(temp);
+                           c += 52;
+                       } else {
+                           var resulting = temp.slice(0, space + 1);
+                           en_strings.push(resulting);
+                           c += resulting.length;
+                       };
+                   };
+                   en_strings.push("");
+              };
+               
+               var popped = en_strings.pop();
+               if(popped != "") { en_strings.push(popped) };
+               
+               doc.setFont("arial");
+               doc.setFontSize(22);
+               doc.text(15, 20, temptitle + " (Inglese)");
+               for(i=0; i < en_strings.length; i) {
+                   if(i!=0) {
+                       doc.addPage();
+                       var temp = en_strings.slice(i, i + 41);
+                       if((temp[0] == "") && (temp.length > 1)) {
+                           i += 1;
+                           var temp = en_strings.slice(i, i + 41);
+                       };
+                       i += 40;
+                       doc.setFont("monospace");
+                       doc.setFontSize(16);
+                       doc.text(temp, 15, 20);
+                   } else {
+                       var temp = en_strings.slice(i, i + 39);
+                       i += 38;
+                       doc.setFont("monospace");
+                       doc.setFontSize(16);
+                       doc.text(temp, 15, 30);
+                   };
+               };
+           };
+           if((selection == "b") || (selection == "c")) {
+               var it_strings = [];
+               var it_texts = [
+                   "Sintomo Riportato: " + document.getElementById("j").value,
+                   "Problema Osservato: " + document.getElementById("k").value,
+                   "Causa: " + document.getElementById("l").value,
+                   "Soluzione: " + document.getElementById("m").value,
+                   "Verifica della Riparazione: Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente."
+               ];
+               
+               for(i=0;i<it_texts.length;i++) {
+                   for(c = 0; c < it_texts[i].length; c) {
+                       var temp = it_texts[i].slice(c, c + 53);
+                       var space = temp.lastIndexOf(" ");
+                       if((space == -1) || temp.length < 53) {
+                           it_strings.push(temp);
+                           c += 52;
+                       } else {
+                           var resulting = temp.slice(0, space + 1);
+                           it_strings.push(resulting);
+                           c += resulting.length;
+                       };
+                   };
+                   it_strings.push("");
+               };
+
+               var popped = it_strings.pop();
+               if(popped != "") { it_strings.push(popped) };
+                       
+               if(selection == "c") { doc.addPage() };
+          
+           
+               doc.setFont("arial");
+               doc.setFontSize(22);
+               doc.text(15, 20, temptitle + " (Inglese)");
+               for(i=0; i < en_strings.length; i) {
+                   if(i!=0) {
+                       doc.addPage();
+                       var temp = en_strings.slice(i, i + 41);
+                       if((temp[0] == "") && (temp.length > 1)) {
+                           i += 1;
+                           var temp = en_strings.slice(i, i + 41);
+                       };
+                       i += 40;
+                       doc.setFont("monospace");
+                       doc.setFontSize(16);
+                       doc.text(temp, 15, 20);
+                   } else {
+                       var temp = en_strings.slice(i, i + 39);
+                       i += 38;
+                       doc.setFont("monospace");
+                       doc.setFontSize(16);
+                       doc.text(temp, 15, 30);
+                   };
+               };
+           };
+         
+           var xhr = new XMLHttpRequest();
+           xhr.onreadystatechange = function() {
+               if (this.readyState == 4 && (this.status == 200 || this.status == 201)) {
+                   var result = JSON.parse(xhr.responseText);
+                   var tempdrive = JSON.parse(localStorage.localmodulodrive); tempdrive.push({"title": result.name, "url": result["@microsoft.graph.downloadUrl"] }); localStorage.localmodulodrive = JSON.stringify(tempdrive); pushdrive(tempdrive);
+               };
+           };
+           var title = temptitle + ".pdf";
+           xhr.open("PUT", "https://graph.microsoft.com/v1.0/me/drive/root:/Moduli/" + title + ":/content", true);
+           xhr.setRequestHeader("Content-Type", "text/plain");
+           xhr.setRequestHeader("Authorization", "Bearer " + token);
+           xhr.send(doc.output());
+       };
       function pdf() {
          var doc = new jsPDF()
          doc.setFontSize(22)
@@ -141,7 +270,7 @@ Scegli la composizione del modulo:
 <h3 style="margin-bottom: 8px">Verifica della Riparazione:</h3>Riparazione verificata secondo le procedure stabilite. I risultati soddisfano le specifiche prestazionali pubblicate. Convalida del sistema documentata nel registro QC del cliente.<br><br><a href="javascript:void(0)" onclick="empty('ita')">Vuoi svuotare i campi?</a><br><br>
     <a href="javascript:void(0)" id="engita" onclick="translation('engita')">Hai bisogno di aiuto per tradurre i campi da Inglese a Italiano?</a>
     </div>
- <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button onclick="cloud()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
+ <br><input type="checkbox" id="dotext"> Salva anche file .txt<br><br><button onclick="upload()" id="cloud" style="padding: 0.3em 1.5em;font-size: 1.1em;min-width: 210px;">Carica su OneDrive</button> <br><p>Hai problemi a fare l'upload? <a href="javascript:void(0)" onclick="savedraft()">Salva il modulo come bozza</a> e ricarica la pagina</p>
 <h3 id="mo">Moduli caricati su OneDrive:</h3>
 <p>Troppi elementi? <a href="javascript:void(0)" onclick="empty('drive')">Svuota</a> questa lista, i file li troverai sempre nella cartella "Moduli" nella radice del tuo OneDrive</p><div id="f"></div>
 <h3 id="bl">Bozze locali:</h3>
