@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
    <script src="jspdf.js"></script>
    <script>
-       var token = "";
+       var token = ""; var fallbacktitle = new Date().getTime();
        function load() {
          if (navigator.onLine) {
            if(location.hash.slice(0,14) != "#access_token=") {
@@ -14,6 +14,7 @@
            } else {
                token = location.hash.slice(14, location.hash.indexOf("&"));
                location.hash = "";
+               document.getElementById("pdf").innerText = fallbacktitle + ".pdf"; document.getElementById("txt").innerText = fallbacktitle + ".txt";
                try { var tempdraft = JSON.parse(localStorage.localmodulodraft) } catch(err) { var tempdraft = []; localStorage.localmodulodraft = JSON.stringify(tempdraft) };
                try { var tempdrive = JSON.parse(localStorage.localmodulodrive) } catch(err) { var tempdrive = []; localStorage.localmodulodrive = JSON.stringify(tempdrive) };
                pushdraft(tempdraft); pushdrive(tempdrive);
@@ -31,7 +32,7 @@
            var reader  = new FileReader();
            reader.addEventListener("load", function () {
                url = reader.result;
-               var title = new Date().getTime() + ".txt";
+               var title = fallbacktitle + ".txt";
                document.getElementById("f").innerHTML += "<a href='" + url + "' download='" + title + "'>" + title + "</a><br/>";
 
            }, false);
